@@ -133,8 +133,22 @@ async function startLooting(count, type) {
 		case "citizen": lootingList(count, "Citizen", "silver", {bp: [75, [1, 10]], ss: [75, [1, 10]], gc: [5, [1, 5]]}, {household_item: [0], jewelry: [1, [1, 1]], art: [0], clothes: [5, [1, 1]]}); break;
 		case "noble": lootingList(count, "Noble", "gold", {bp: [100, [1, 100]], ss: [100, [2, 20]], gc: [100, [1, 10]]}, {household_item: [0], jewelry: [50, [1, 5]], art: [5, [1, 1]], clothes: [100, [1, 5]]}); break;
 		case "wizard": lootingList(count, "Wizard", "gold", {bp: [25, [2, 20]], ss: [50, [2, 20]], gc: [50, [1, 10]]}, {household_item: [0], jewelry: [5, [1, 1]], art: [0], clothes: [1, [1, 1]]}); break;
-		case "flaws_weapon": result("<p><b>" + game.i18n.localize("WFRP4E.Looting.FlawsWeapon") + ":</b> <i>" + await rollFlaws("flaws-weapon") + "</i></p>"); break;
-		case "flaws_armour": result("<p><b>" + game.i18n.localize("WFRP4E.Looting.FlawsArmour") + ":</b> <i>" + await rollFlaws("flaws-armour") + "</i></p>"); break;
+		case "flaws_weapon": {
+			let i = 0
+			while (i < count) {
+				result("<p><b>" + game.i18n.localize("WFRP4E.Looting.FlawsWeapon") + ":</b> <i>" + await rollFlaws("flaws-weapon") + "</i></p>")
+				i++
+			}
+			break
+		}
+		case "flaws_armour": {
+			let i = 0
+			while (i < count) {
+				result("<p><b>" + game.i18n.localize("WFRP4E.Looting.FlawsArmour") + ":</b> <i>" + await rollFlaws("flaws-armour") + "</i></p>")
+				i++
+			}
+			break
+		}
 	}
 }
 
