@@ -10,3 +10,6 @@
 
 В графе "Количество бросков" вводится количество бросков обыска для выбранного типа:  
 ![Окно броска](https://raw.githubusercontent.com/nPocToI4eJI/wfrp4e-looting/refs/heads/main/example/1.png).
+
+Итоговый результат выглядит так:  
+![Сообщение в чате](https://raw.githubusercontent.com/nPocToI4eJI/wfrp4e-looting/refs/heads/main/example/3.png).
