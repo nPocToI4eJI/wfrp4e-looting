@@ -1,0 +1,52 @@
+{
+	"id": "wfrp4e-looting",
+	"title": "WFRP4e - Looting",
+	"description": "A QoL module that uses house rules for searching and looting bodies, chests, and rooms.",
+	"version": "1.0",
+	"compatibility": {
+		"minimum": "12",
+		"verified": "12"
+	},
+	"relationships": {
+		"systems": [
+			{
+				"id": "wfrp4e",
+				"type": "system",
+				"manifest": "https://github.com/moo-man/WFRP4e-FoundryVTT/releases/latest/download/system.json"
+			}
+		]
+	},
+	"authors": [
+		{
+			"name": "nPocTo_4eJI",
+			"url": "https://www.youtube.com/@nPocTo_4eJI",
+			"discord": "npocto_4eji"
+		}
+	],
+	"esmodules": [
+		"/looting.js"
+	],
+	"languages": [
+		{
+			"lang": "ru",
+			"name": "Russian",
+			"path": "lang/ru.json"
+		}
+	],
+	"packs": [
+		{
+			"name": "looting",
+			"label": "Looting",
+			"system": "wfrp4e",
+			"path": "packs/looting",
+			"type": "RollTable",
+			"ownership": {
+				"PLAYER": "OBSERVER",
+				"ASSISTANT": "OWNER"
+			}
+		}
+	],
+	"url": "https://github.com/nPocToI4eJI/wfrp4e-looting",
+	"manifest": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/latest/module.json",
+	"download": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/latest/wfrp4e-looting.zip"
+}
