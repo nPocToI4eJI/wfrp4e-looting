@@ -3,8 +3,13 @@
     "WFRP4E.Looting.Tables": "Таблицы случайных сокровищ",
     "WFRP4E.Looting.Quantity": "Количество бросков",
     "WFRP4E.Looting.Loot": "Обыскать!",
-    "WFRP4E.Looting.FlawsWeapon": "Недостатки оружия",
-    "WFRP4E.Looting.FlawsArmour": "Недостатки брони",
+    "WFRP4E.Looting.Nothing": "Ничего",
+    "WFRP4E.Looting.Prey": "Добыча",
+    "WFRP4E.Looting.ErrorImport": "Перед использованием импортируйте таблицы из библиотеки \"Мародёрство\"!",
+	
+    "WFRP4E.Looting.Modifier.Name": "Модификатор находимых монет",
+    "WFRP4E.Looting.Modifier.Hint": "Дополнительный модификатор, на который умножаются итоговые броски находимых монет. Например: \"2\", увеличит получаемые монеты вдвое, а \"0,5\", вдвое их уменьшит.",
+	
     "WFRP4E.Looting.Shack.Name": "Лачуга",
     "WFRP4E.Looting.Shack.Title": "Хижина, дом или лачуга крестьянина.",
     "WFRP4E.Looting.House.Name": "Дом",
@@ -37,7 +42,6 @@
     "WFRP4E.Looting.Noble.Title": "Аристократ или богатый представитель высшего класса общества, которому нравится выставлять напоказ свое богатство.",
     "WFRP4E.Looting.Wizard.Name": "Волшебник",
     "WFRP4E.Looting.Wizard.Title": "Эксцентричный или могущественный заклинатель может иметь при себе какой-нибудь редкий предмет.",
-    "WFRP4E.Looting.Nothing": "Ничего",
-    "WFRP4E.Looting.Prey": "Добыча",
-    "WFRP4E.Looting.ErrorImport": "Перед использованием импортируйте таблицы из библиотеки \"Мародёрство\"!"
+    "WFRP4E.Looting.FlawsWeapon": "Недостатки оружия",
+    "WFRP4E.Looting.FlawsArmour": "Недостатки брони"
 }

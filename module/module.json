@@ -2,7 +2,7 @@
 	"id": "wfrp4e-looting",
 	"title": "WFRP4e - Looting",
 	"description": "A QoL module that uses house rules for searching and looting bodies, chests, and rooms.",
-	"version": "1.0",
+	"version": "1.1",
 	"compatibility": {
 		"minimum": "12",
 		"verified": "12"

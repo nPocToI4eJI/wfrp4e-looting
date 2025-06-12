@@ -1,3 +1,14 @@
+Hooks.once('ready', () => {
+    game.settings.register("wfrp4e-looting", "modifier", {
+		name: game.i18n.localize("WFRP4E.Looting.Modifier.Name"),
+		hint: game.i18n.localize("WFRP4E.Looting.Modifier.Hint"),
+		scope: "world",
+        config: true,
+		default: "1",
+		type: Number
+	});
+});
+
 Hooks.on("chatMessage", (html, content, msg) => {
     let regExp;
     regExp = /(\S+)/g;
@@ -70,17 +81,21 @@ function lootCommand() {
 					div.dialog-content>select>option {
 						color: black;
 					}
-					div.dialog-content>select>option.brass {
+					div.dialog-content>select>option.brass,
+					div.dialog-content>select:has(>option.brass:checked) {
 						background: #B87333;
 					}
-					div.dialog-content>select>option.silver {
+					div.dialog-content>select>option.silver,
+					div.dialog-content>select:has(>option.silver:checked) {
 						background: #C0C0C0;
 					}
-					div.dialog-content>select>option.gold {
+					div.dialog-content>select>option.gold,
+					div.dialog-content>select:has(>option.gold:checked) {
 						background: #FFD700;
 					}
 					div.dialog-content>select>option.none {
 						color: white;
+						background: #33272C;
 					}
 				</style>
 			`,
@@ -117,22 +132,22 @@ async function startLooting(count, type) {
 	if (moneyList.filter(item => item.name == game.i18n.localize("NAME.GC"))[0] != undefined) {moneyName.gc = "@UUID[" + moneyList.filter(item => item.name == game.i18n.localize("NAME.GC"))[0].uuid + "]{/value/ " + game.i18n.localize("MARKET.Abbrev.GC") + "}"}
 
 	switch (type) {
-		case "shack": lootingList(count, "Shack", "brass", {bp: [50, [1, 10]], ss: [10, [1, 5]], gc: [1, [1, 1]]}, {household_item: [10, [1, 5]], jewelry: [0], art: [0], clothes: [10, [1, 1]]}); break;
-		case "house": lootingList(count, "House", "silver", {bp: [100, [6, 60]], ss: [100, [2, 20]], gc: [25, [1, 10]]}, {household_item: [100, [1, 10]], jewelry: [5, [1, 5]], art: [10, [1, 2]], clothes: [25, [1, 5]]}); break;
-		case "estate": lootingList(count, "Estate", "gold", {bp: [100, [2, 200]], ss: [100, [1, 100]], gc: [100, [1, 100]]}, {household_item: [100, [2, 20]], jewelry: [90, [1, 10]], art: [75, [1, 10]], clothes: [100, [1, 10]]}); break;
-		case "wizard_house": lootingList(count, "WizardHouse", "gold", {bp: [100, [3, 30]], ss: [75, [5, 50]], gc: [50, [3, 30]]}, {household_item: [25, [1, 5]], jewelry: [75, [1, 5]], art: [75, [1, 5]], clothes: [25, [1, 5]]}); break;
-		case "workshop": lootingList(count, "Workshop", "silver", {bp: [75, [1, 100]], ss: [50, [3, 30]], gc: [25, [1, 10]]}, {household_item: [10, [1, 5]], jewelry: [5, [1, 5]], art: [1, [1, 1]], clothes: [25, [1, 2]]}); break;
-		case "sanctuary": lootingList(count, "Sanctuary", "brass", {bp: [100, [1, 100]], ss: [50, [1, 10]], gc: [5, [1, 5]]}, {household_item: [0], jewelry: [25, [1, 1]], art: [75, [1, 1]], clothes: [5, [1, 1]]}); break;
-		case "temple": lootingList(count, "Temple", "gold", {bp: [100, [5, 500]], ss: [75, [1, 100]], gc: [50, [5, 50]]}, {household_item: [25, [1, 10]], jewelry: [75, [1, 5]], art: [50, [1, 5]], clothes: [100, [1, 10]]}); break;
-		case "little_monster": lootingList(count, "LittleMonster", "silver", {bp: [50, [1, 10]], ss: [15, [2, 20]], gc: [15, [1, 5]]}, {household_item: [0], jewelry: [15, [1, 1]], art: [0], clothes: [0]}); break;
-		case "big_monster": lootingList(count, "BigMonster", "gold", {bp: [75, [2, 200]], ss: [50, [1, 100]], gc: [25, [1, 100]]}, {household_item: [5, [1, 10]], jewelry: [75, [1, 10]], art: [0], clothes: [0]}); break;
-		case "chest_open": lootingList(count, "ChestOpen", "silver", {bp: [25, [1, 100]], ss: [25, [1, 10]], gc: [5, [1, 10]]}, {household_item: [5, [1, 1]], jewelry: [5, [1, 1]], art: [0], clothes: [5, [1, 1]]}); break;
-		case "chest_locked": lootingList(count, "ChestLocked", "gold", {bp: [100, [5, 50]], ss: [100, [3, 30]], gc: [50, [2, 20]]}, {household_item: [10, [1, 1]], jewelry: [15, [1, 10]], art: [5, [1, 1]], clothes: [15, [1, 1]]}); break;
-		case "chest_storage": lootingList(count, "ChestStorage", "gold", {bp: [100, [5, 500]], ss: [100, [4, 400]], gc: [100, [3, 300]]}, {household_item: [0], jewelry: [100, [1, 100]], art: [100, [1, 10]], clothes: [25, [1, 1]]}); break;
-		case "peasant": lootingList(count, "Peasant", "brass", {bp: [15, [1, 10]], ss: [5, [1, 2]], gc: [0]}, {household_item: [0], jewelry: [0], art: [0], clothes: [1, [1, 1]]}); break;
-		case "citizen": lootingList(count, "Citizen", "silver", {bp: [75, [1, 10]], ss: [75, [1, 10]], gc: [5, [1, 5]]}, {household_item: [0], jewelry: [1, [1, 1]], art: [0], clothes: [5, [1, 1]]}); break;
-		case "noble": lootingList(count, "Noble", "gold", {bp: [100, [1, 100]], ss: [100, [2, 20]], gc: [100, [1, 10]]}, {household_item: [0], jewelry: [50, [1, 5]], art: [5, [1, 1]], clothes: [100, [1, 5]]}); break;
-		case "wizard": lootingList(count, "Wizard", "gold", {bp: [25, [2, 20]], ss: [50, [2, 20]], gc: [50, [1, 10]]}, {household_item: [0], jewelry: [5, [1, 1]], art: [0], clothes: [1, [1, 1]]}); break;
+		case "shack": lootingList(count, "Shack", "brass", {bp: [50, [1, "10"]], ss: [10, [1, "5"]], gc: [1, [1, "1"]]}, {household_item: [10, [1, "5"]], jewelry: [0], art: [0], clothes: [10, [1, "1"]]}); break;
+		case "house": lootingList(count, "House", "silver", {bp: [100, [6, "10"]], ss: [100, [2, "10"]], gc: [25, [1, "10"]]}, {household_item: [100, [1, "10"]], jewelry: [5, [1, "5"]], art: [10, [1, "2"]], clothes: [25, [1, "5"]]}); break;
+		case "estate": lootingList(count, "Estate", "gold", {bp: [100, [2, "100"]], ss: [100, [1, "100"]], gc: [100, [1, "100"]]}, {household_item: [100, [2, "10"]], jewelry: [90, [1, 10]], art: [75, [1, "10"]], clothes: [100, [1, "10"]]}); break;
+		case "wizard_house": lootingList(count, "WizardHouse", "gold", {bp: [100, [3, "10"]], ss: [75, [5, "10"]], gc: [50, [3, "10"]]}, {household_item: [25, [1, "5"]], jewelry: [75, [1, "5"]], art: [75, [1, "5"]], clothes: [25, [1, "5"]]}); break;
+		case "workshop": lootingList(count, "Workshop", "silver", {bp: [75, [1, "100"]], ss: [50, [3, "10"]], gc: [25, [1, "10"]]}, {household_item: [10, [1, "5"]], jewelry: [5, [1, "5"]], art: [1, [1, "1"]], clothes: [25, [1, "2"]]}); break;
+		case "sanctuary": lootingList(count, "Sanctuary", "brass", {bp: [100, [1, "100"]], ss: [50, [1, "10"]], gc: [5, [1, "5"]]}, {household_item: [0], jewelry: [25, [1, "1"]], art: [75, [1, "1"]], clothes: [5, [1, "1"]]}); break;
+		case "temple": lootingList(count, "Temple", "gold", {bp: [100, [5, "100"]], ss: [75, [1, "100"]], gc: [50, [5, "10"]]}, {household_item: [25, [1, "10"]], jewelry: [75, [1, "5"]], art: [50, [1, "1"]], clothes: [100, [1, "10"]]}); break;
+		case "little_monster": lootingList(count, "LittleMonster", "silver", {bp: [50, [1, "10"]], ss: [15, [2, "10"]], gc: [15, [1, "5"]]}, {household_item: [0], jewelry: [15, [1, "1"]], art: [0], clothes: [0]}); break;
+		case "big_monster": lootingList(count, "BigMonster", "gold", {bp: [75, [2, "100"]], ss: [50, [1, "100"]], gc: [25, [1, "100"]]}, {household_item: [5, [1, "10"]], jewelry: [75, [1, "10"]], art: [0], clothes: [0]}); break;
+		case "chest_open": lootingList(count, "ChestOpen", "silver", {bp: [25, [1, "100"]], ss: [25, [1, "10"]], gc: [5, [1, "10"]]}, {household_item: [5, [1, "1"]], jewelry: [5, [1, "1"]], art: [0], clothes: [5, [1, "1"]]}); break;
+		case "chest_locked": lootingList(count, "ChestLocked", "gold", {bp: [100, [5, "10"]], ss: [100, [3, "10"]], gc: [50, [2, "10"]]}, {household_item: [10, [1, "1"]], jewelry: [15, [1, "10"]], art: [5, [1, "1"]], clothes: [15, [1, "1"]]}); break;
+		case "chest_storage": lootingList(count, "ChestStorage", "gold", {bp: [100, [5, "100"]], ss: [100, [4, "100"]], gc: [100, [3, "100"]]}, {household_item: [0], jewelry: [100, [1, "100"]], art: [100, [1, "10"]], clothes: [25, [1, "1"]]}); break;
+		case "peasant": lootingList(count, "Peasant", "brass", {bp: [15, [1, "10"]], ss: [5, [1, "2"]], gc: [0]}, {household_item: [0], jewelry: [0], art: [0], clothes: [1, [1, "1"]]}); break;
+		case "citizen": lootingList(count, "Citizen", "silver", {bp: [75, [1, "10"]], ss: [75, [1, "10"]], gc: [5, [1, "5"]]}, {household_item: [0], jewelry: [1, [1, "1"]], art: [0], clothes: [5, [1, "1"]]}); break;
+		case "noble": lootingList(count, "Noble", "gold", {bp: [100, [1, "100"]], ss: [100, [2, "10"]], gc: [100, [1, "10"]]}, {household_item: [0], jewelry: [50, [1, "5"]], art: [5, [1, "1"]], clothes: [100, [1, "5"]]}); break;
+		case "wizard": lootingList(count, "Wizard", "gold", {bp: [25, [2, "10"]], ss: [50, [2, "10"]], gc: [50, [1, "10"]]}, {household_item: [0], jewelry: [5, [1, "1"]], art: [0], clothes: [1, [1, "1"]]}); break;
 		case "flaws_weapon": {
 			let i = 0
 			while (i < count) {
@@ -172,17 +187,35 @@ async function rollMoney(value) {
 	let moneyResult = ""
 	if (value.gc[0] != 0) {
 		if (rand(1, 100) <= value.gc[0]) {
-			money.gc = rand(value.gc[1][0], value.gc[1][1])
+			let a = 0
+			while (a < value.gc[1][0]) {
+				let roll = (await new Roll(`1d${value.gc[1][1]}`).roll()).total
+				if (value.gc[1][1] >= 10 && value.gc[1][1] == roll) {a--}
+				money.gc += Math.round(roll * game.settings.get("wfrp4e-looting", "modifier"))
+				a++
+			}
 		}
 	}
 	if (value.ss[0] != 0) {
 		if (rand(1, 100) <= value.ss[0]) {
-			money.ss = rand(value.ss[1][0], value.ss[1][1])
+			let a = 0
+			while (a < value.ss[1][0]) {
+				let roll = (await new Roll(`1d${value.ss[1][1]}`).roll()).total
+				if (value.ss[1][1] >= 10 && value.ss[1][1] == roll) {a--}
+				money.ss += Math.round(roll * game.settings.get("wfrp4e-looting", "modifier"))
+				a++
+			}
 		}
 	}
 	if (value.bp[0] != 0) {
 		if (rand(1, 100) <= value.bp[0]) {
-			money.bp = rand(value.bp[1][0], value.bp[1][1])
+			let a = 0
+			while (a < value.bp[1][0]) {
+				let roll = (await new Roll(`1d${value.bp[1][1]}`).roll()).total
+				if (value.bp[1][1] >= 10 && value.bp[1][1] == roll) {a--}
+				money.bp += Math.round(roll * game.settings.get("wfrp4e-looting", "modifier"))
+				a++
+			}
 		}
 	}
 	if (money.gc == 0 && money.ss == 0 && money.bp == 0) {moneyResult = game.i18n.localize("WFRP4E.Looting.Nothing")}
@@ -222,13 +255,21 @@ async function rollItems(value, type) {
 	if (value.household_item[0] != 0) {
 		if (rand(1, 100) <= value.household_item[0]) {
 			let table = game.wfrp4e.tables.findTable("looting", "household_item") || ui.notifications.error(game.i18n.localize("WFRP4E.Looting.ErrorImport"));
-			let i = 0
-			while (i < rand(value.household_item[1][0], value.household_item[1][1])) {
-				if (items != "") {items = items + ", "}
-				let price = rand(1, 10)
-				money = money + price
-				items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
-				i++
+			let a = 0
+			while (a < value.household_item[1][0]) {
+				let roll = (await new Roll(`1d${value.household_item[1][1]}`).roll()).total
+				if (value.household_item[1][1] >= 10 && value.household_item[1][1] == roll) {a--}
+				let i = 0
+				while (i < roll) {
+					if (items != "") {items = items + ", "}
+					let price = Math.round(rand(1, 10) * game.settings.get("wfrp4e-looting", "modifier"))
+					if (price > 0) {
+						money = money + price
+						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+					}
+					i++
+				}
+				a++
 			}
 		}
 	}
@@ -241,39 +282,63 @@ async function rollItems(value, type) {
 			else {
 				table = game.wfrp4e.tables.findTable("looting", "jewelry") || ui.notifications.error(game.i18n.localize("WFRP4E.Looting.ErrorImport"))
 			}
-			let i = 0
-			while (i < rand(value.jewelry[1][0], value.jewelry[1][1])) {
-				if (items != "") {items = items + ", "}
-				let price = rand(1, 10) + rand(1, 10)
-				money = money + price
-				items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
-				i++
+			let a = 0
+			while (a < value.jewelry[1][0]) {
+				let roll = (await new Roll(`1d${value.jewelry[1][1]}`).roll()).total
+				if (value.jewelry[1][1] >= 10 && value.jewelry[1][1] == roll) {a--}
+				let i = 0
+				while (i < roll) {
+					if (items != "") {items = items + ", "}
+					let price = Math.round((rand(1, 10) + rand(1, 10)) * game.settings.get("wfrp4e-looting", "modifier"))
+					if (price > 0) {
+						money = money + price
+						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+					}
+					i++
+				}
+				a++
 			}
 		}
 	}
 	if (value.art[0] != 0) {
 		if (rand(1, 100) <= value.art[0]) {
 			let table = game.wfrp4e.tables.findTable("looting", "art") || ui.notifications.error(game.i18n.localize("WFRP4E.Looting.ErrorImport"))
-			let i = 0
-			while (i < rand(value.art[1][0], value.art[1][1])) {
-				if (items != "") {items = items + ", "}
-				let price = rand(1, 10) * 5
-				money = money + price
-				items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
-				i++
+			let a = 0
+			while (a < value.art[1][0]) {
+				let roll = (await new Roll(`1d${value.art[1][1]}`).roll()).total
+				if (value.art[1][1] >= 10 && value.art[1][1] == roll) {a--}
+				let i = 0
+				while (i < roll) {
+					if (items != "") {items = items + ", "}
+					let price = Math.round((rand(1, 10) * 5) * game.settings.get("wfrp4e-looting", "modifier"))
+					if (price > 0) {
+						money = money + price
+						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+					}
+					i++
+				}
+				a++
 			}
 		}
 	}
 	if (value.clothes[0] != 0) {
 		if (rand(1, 100) <= value.clothes[0]) {
 			let table = game.wfrp4e.tables.findTable("looting", "clothes") || ui.notifications.error(game.i18n.localize("WFRP4E.Looting.ErrorImport"))
-			let i = 0
-			while (i < rand(value.clothes[1][0], value.clothes[1][1])) {
-				if (items != "") {items = items + ", "}
-				let price = rand(1, 10)
-				money = money + price
-				items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
-				i++
+			let a = 0
+			while (a < value.clothes[1][0]) {
+				let roll = (await new Roll(`1d${value.clothes[1][1]}`).roll()).total
+				if (value.clothes[1][1] >= 10 && value.clothes[1][1] == roll) {a--}
+				let i = 0
+				while (i < roll) {
+					if (items != "") {items = items + ", "}
+					let price = Math.round(rand(1, 10) * game.settings.get("wfrp4e-looting", "modifier"))
+					if (price > 0) {
+						money = money + price
+						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+					}
+					i++
+				}
+				a++
 			}
 		}
 	}
