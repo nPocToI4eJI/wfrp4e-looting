@@ -68,6 +68,7 @@ function lootCommand() {
 						font-weight: bold;
 						height: auto;
 						padding: 3px;
+						color: white;
 						text-shadow: 1px 1px 2px black,
 						-1px 1px 2px black,
 						1px -1px 2px black,
@@ -125,11 +126,7 @@ async function result(value) {
 }
 
 async function startLooting(count, type) {
-	moneyName = {bp: "/value/ " + game.i18n.localize("MARKET.Abbrev.BP"), ss: "/value/ " + game.i18n.localize("MARKET.Abbrev.SS"), gc: "/value/ " + game.i18n.localize("MARKET.Abbrev.GC")}
-	let moneyList = game.items.filter(item => item.type == "money")
-	if (moneyList.filter(item => item.name == game.i18n.localize("NAME.BP"))[0] != undefined) {moneyName.bp = "@UUID[" + moneyList.filter(item => item.name == game.i18n.localize("NAME.BP"))[0].uuid + "]{/value/ " + game.i18n.localize("MARKET.Abbrev.BP") + "}"}
-	if (moneyList.filter(item => item.name == game.i18n.localize("NAME.SS"))[0] != undefined) {moneyName.ss = "@UUID[" + moneyList.filter(item => item.name == game.i18n.localize("NAME.SS"))[0].uuid + "]{/value/ " + game.i18n.localize("MARKET.Abbrev.SS") + "}"}
-	if (moneyList.filter(item => item.name == game.i18n.localize("NAME.GC"))[0] != undefined) {moneyName.gc = "@UUID[" + moneyList.filter(item => item.name == game.i18n.localize("NAME.GC"))[0].uuid + "]{/value/ " + game.i18n.localize("MARKET.Abbrev.GC") + "}"}
+	moneyName = {bp: "/value/" + game.i18n.localize("MARKET.Abbrev.BP").toLowerCase(), ss: "/value/" + game.i18n.localize("MARKET.Abbrev.SS").toLowerCase(), gc: "/value/" + game.i18n.localize("MARKET.Abbrev.GC").toLowerCase()};
 
 	switch (type) {
 		case "shack": lootingList(count, "Shack", "brass", {bp: [50, [1, "10"]], ss: [10, [1, "5"]], gc: [1, [1, "1"]]}, {household_item: [10, [1, "5"]], jewelry: [0], art: [0], clothes: [10, [1, "1"]]}); break;
@@ -232,13 +229,14 @@ async function rollMoney(value) {
 			moneyResult = moneyName.gc.replace("/value/", money.gc)
 		}
 		if (money.ss != 0) {
-			if (moneyResult != "") {moneyResult = moneyResult + ", "}
+			if (moneyResult != "") {moneyResult = moneyResult}
 			moneyResult = moneyResult + moneyName.ss.replace("/value/", money.ss)
 		}
 		if (money.bp != 0) {
-			if (moneyResult != "") {moneyResult = moneyResult + ", "}
+			if (moneyResult != "") {moneyResult = moneyResult}
 			moneyResult = moneyResult + moneyName.bp.replace("/value/", money.bp)
 		}
+		moneyResult = "@Credit[" + moneyResult + "]"
 	}
 	return moneyResult
 }
@@ -248,9 +246,9 @@ async function rollItems(value, type) {
 	let cost = []
 	let money = 0
 	switch (type) {
-		case "brass": cost = [moneyName.bp, " " + game.i18n.localize("MARKET.Abbrev.BP")]; break;
-		case "silver": cost = [moneyName.ss, " " + game.i18n.localize("MARKET.Abbrev.SS")]; break;
-		case "gold": cost = [moneyName.gc, " " + game.i18n.localize("MARKET.Abbrev.GC")]; break;
+		case "brass": cost = [moneyName.bp, game.i18n.localize("MARKET.Abbrev.BP").toLowerCase()]; break;
+		case "silver": cost = [moneyName.ss, game.i18n.localize("MARKET.Abbrev.SS").toLowerCase()]; break;
+		case "gold": cost = [moneyName.gc, game.i18n.localize("MARKET.Abbrev.GC").toLowerCase()]; break;
 	}
 	if (value.household_item[0] != 0) {
 		if (rand(1, 100) <= value.household_item[0]) {
@@ -265,7 +263,7 @@ async function rollItems(value, type) {
 					let price = Math.round(rand(1, 10) * game.settings.get("wfrp4e-looting", "modifier"))
 					if (price > 0) {
 						money = money + price
-						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+						items = items + (await table.roll()).results[0].name + " (" + "@Credit[" + price + cost[1] + "])"
 					}
 					i++
 				}
@@ -292,7 +290,7 @@ async function rollItems(value, type) {
 					let price = Math.round((rand(1, 10) + rand(1, 10)) * game.settings.get("wfrp4e-looting", "modifier"))
 					if (price > 0) {
 						money = money + price
-						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+						items = items + (await table.roll()).results[0].name + " (" + "@Credit[" + price + cost[1] + "])"
 					}
 					i++
 				}
@@ -313,7 +311,7 @@ async function rollItems(value, type) {
 					let price = Math.round((rand(1, 10) * 5) * game.settings.get("wfrp4e-looting", "modifier"))
 					if (price > 0) {
 						money = money + price
-						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+						items = items + (await table.roll()).results[0].name + " (" + "@Credit[" + price + cost[1] + "])"
 					}
 					i++
 				}
@@ -334,7 +332,7 @@ async function rollItems(value, type) {
 					let price = Math.round(rand(1, 10) * game.settings.get("wfrp4e-looting", "modifier"))
 					if (price > 0) {
 						money = money + price
-						items = items + (await table.roll()).results[0].text + " (" + price + cost[1] + ")"
+						items = items + (await table.roll()).results[0].name + " (" + "@Credit[" + price + cost[1] + "])"
 					}
 					i++
 				}
@@ -348,9 +346,9 @@ async function rollItems(value, type) {
 
 async function rollFlaws(type) {
 	let table = game.wfrp4e.tables.findTable("looting", type) || ui.notifications.error(game.i18n.localize("WFRP4E.Looting.ErrorImport"))
-	let flaw = (await table.roll()).results[0].text
-	if (flaw == "reroll") {
-		flaw = (await rollFlaws()) + ", " + (await rollFlaws())
+	let flaw = "@Property[" + (await table.roll()).results[0].name + "]"
+	if (flaw == "@Property[reroll]") {
+		flaw = (await rollFlaws(type)) + ", " + (await rollFlaws(type))
 	}
 	return flaw
 }
