@@ -1,15 +1,12 @@
 <b>WFRP4e - Мародёрство.</b>
 
-Этот модуль переносит правила из Главы 4 книги "Домашние правила - Оружейная Педомарина" ([автор](https://vk.com/wfrp_ru)).
+Этот модуль позволит Вам удобно создавать и использовать таблицы для генерации случайных наград, которые могут быть найдены игроками на просторах Старого Мира.
+![Меню](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/Menu.png?raw=true)
 
-Перед использованием экспортируйте все элементы из компендиума под названием "Looting".  
-Для использования введите в чат команду <b>"/loot"</b>.
+Тут Вы сможете совершать броски по пресетам, просматривать стандартные и изменять собственные.
+![Стандартный пресет](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/DefaultPreset.png?raw=true) ![Собственный пресет](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/CustomPreset.png?raw=true)
 
-В графе "Таблицы случайных сокровищ" выбирается тип контейнера для обыска:  
-![Таблицы случайных сокровищ](https://raw.githubusercontent.com/nPocToI4eJI/wfrp4e-looting/refs/heads/main/example/2.png)
+При использовании пресета, в чат будет выводится сообщение о полученной награде. Денежную стоимость этой награды можно прямо в чате передать игроку, нажав на неё.
+![Чат 1](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/Chat_1.png?raw=true) ![Чат 2](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/Chat_2.png?raw=true) ![Чат 3](https://github.com/nPocToI4eJI/wfrp4e-looting/blob/main/example/Chat_3.png?raw=true)
 
-В графе "Количество бросков" вводится количество бросков обыска для выбранного типа:  
-![Окно броска](https://raw.githubusercontent.com/nPocToI4eJI/wfrp4e-looting/refs/heads/main/example/1.png)
-
-Итоговый результат выглядит так:  
-![Сообщение в чате](https://raw.githubusercontent.com/nPocToI4eJI/wfrp4e-looting/refs/heads/main/example/3.png)
+Модуль использует правила книги "Unofficial Treasure $ Artefacts" за авторством Chris MacLean и её русской адаптации: глава 4 книги "Домашние правила - Оружейная Педомарина" ([автор](https://vk.com/wfrp_ru)).
