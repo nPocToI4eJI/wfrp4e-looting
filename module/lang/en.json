@@ -1,0 +1,148 @@
+{"WFRP4E.Looting": {
+    "Name": "Looting",
+    "Dialog": {
+        "Add": "Add a custom preset.",
+        "Copy": {
+            "Title": "Copy",
+            "Hint": "The preset settings are copied to the clipboard."
+        },
+        "Paste": {
+            "Title": "Paste",
+            "Hint": "The preset settings from the clipboard have been applied.",
+            "Error": "First, copy the preset whose settings you want to apply."
+        },
+        "Save": {
+            "Title": "Save",
+            "Complete": "The user preset has been saved successfully."
+        },
+        "Back": "Go back",
+        "Remove": "Remove preset",
+        "Presets": {
+            "Title": "Custom preset",
+            "TitleDefault": "Default preset (only view)",
+            "Hint": "LMB: make a roll of the preset.<br>RMB: open the preset settings.",
+            "Description": {
+                "DefaultValue": "Preset",
+                "Hint": "The name of your preset.",
+                "Tooltip": "Description of your preset.",
+                "Type": "Appropriate status level."
+            },
+            "Items": {
+                "Add": "Add a table of items",
+                "TableKey": "The \"Key\" value of the items table.",
+                "TableColumn": "The \"Column\" value of the items table.",
+                "Chance": "A chance to get this items.<br>- \"0\": impossible;<br>- \"100\": guaranteed.",
+                "Dices": {
+                    "Quantity": "How many dice will be rolled to determine the number of items.",
+                    "Price": "How many dice will be rolled to determine determine the price of items."
+                },
+                "Sides": {
+                    "Quantity": "Which dices will be rolled to determine the number of items.",
+                    "Price": "Which dices will be rolled to determine the price of items."
+                },
+                "Modifier": "Price Modifier. Examples:<br><i>5 <sub>or</sub> +5</i><br><i>-13</i><br><i>/2</i><br><i>*3</i>"
+            },
+            "Remove": "Delete the item table for this preset."
+        }
+    },
+    "Chat": {
+        "Nothing": "Nothing",
+        "Empty": "It's empty",
+        "Coins": "Coins",
+        "Prey": "Prey"
+    },
+    "Settings": {
+        "callType": {
+            "Name": "Control buttons",
+            "Hint": "Allows you to choose how you will access the Looting window.",
+            "Same": "Both options",
+            "Chat": "Using the \"\/loot\" command in the chat",
+            "ControlButton": "Using the button in the Journal Notes"
+        },
+        "CloseAfterRoll": {
+            "Name": "Close after roll",
+            "Hint": "Should I close the preset selection window after making a roll?"
+        },
+        "DefaultPresets": {
+            "Name": "Default presets",
+            "Hint": "Allows you to select the default presets that are displayed.",
+            "Pedomarine": "Presets from \"Unofficial Treasure & Artefacts\"",
+            "Looting": "Presets from \"Unofficial Treasure & Artefacts\" with rework by the author of the module",
+            "No": "Without default presets"
+        },
+        "Modifier": {
+            "Name": "Loot price modifier",
+            "Hint": "An additional modifier that multiplies the total rolls of the loots price. For example: \"2\" will double the price received, and \"0.5\" will halve them."
+        },
+        "UserList": {
+            "Name": "List of user presets",
+            "Hint": "If you want to transfer your presets between saves, copy the contents of this container to the target game.<br>After the change, restart the preset selection window if it was open."
+        }
+    },
+    "DefaultList": {
+        "Hovel": {
+            "Name": "Hovel",
+            "Title": "The hut, cottage, or hovel of a peasant."
+        },
+        "House": {
+            "Name": "House",
+            "Title": "The home of the burgeoning middle-class such as a small-time merchant, shop-keeper, tradesman, or scholar."
+        },
+        "Estate": {
+            "Name": "Estate",
+            "Title": "The mansion or secondary home of the richest members of society, such as wealthy merchants, gentry, or aristocrats."
+        },
+        "WizardsHouse": {
+            "Name": "Wizard’s Home",
+            "Title": "An established magician’s home or tower is likely to have some individual treasure."
+        },
+        "Workshop": {
+            "Name": "Workshop",
+            "Title": "Any workshop will contain items specific to the trade that goes on there. In addition, some items might be kept on the property for safe-keeping."
+        },
+        "Shrine": {
+            "Name": "Shrine",
+            "Title": "Small buildings or simple shelters dedicated to a minor god or long-dead local hero."
+        },
+        "Temple": {
+            "Name": "Temple",
+            "Title": "Depending on the locale and purpose, this might be a good bet for petty larceny. It might contain anything from golden candlesticks to the collection chest."
+        },
+        "SmallMonster": {
+            "Name": "Small Monster",
+            "Title": "Some humanoid creatures like Goblins or Fimir have an attraction to shinies."
+        },
+        "LargeMonster": {
+            "Name": "Large Monster",
+            "Title": "Many larger monsters are attracted to shiny or valuable objects, and have a propensity to hoard or collect treasure in secretive lairs."
+        },
+        "ChestOpen": {
+            "Name": "Chest: Open",
+            "Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+        },
+        "ChestSecure": {
+            "Name": "Chest: Secure",
+            "Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+        },
+        "ChestVault": {
+            "Name": "Chest: Vault",
+            "Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+        },
+        "Peasant": {
+            "Name": "Peasant",
+            "Title": "The beggars, villagers, and hard-working class which constitutes the majority of the Old World."
+        },
+        "Citizen": {
+            "Name": "Citizen",
+            "Title": "A semi-affluent member of the middle-class, such as shop-keepers and small merchants."
+        },
+        "Noble": {
+            "Name": "Noble",
+            "Title": "An aristocrat or wealthy upper-class member of society who enjoys flaunting their wealth."
+        },
+        "Wizard": {
+            "Name": "Wizard",
+            "Title": "An eccentric or powerful spellcaster might have some rare item on them."
+        }
+    }
+}}
