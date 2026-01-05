@@ -1,0 +1,230 @@
+:root {
+	--brass: #B87333;
+	--silver: #C0C0C0;
+	--gold: #FFD700;
+}
+
+.WFRP4eLooting .dialog-content>div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+	border: 2px dashed var(--color-cream);
+    border-radius: 4px;
+	padding: 3px;
+	position: relative;
+	margin-top: 10px;
+}
+.WFRP4eLooting .dialog-content>div>h6 {
+    background: var(--color-warm);
+    border: 1px solid var(--color-cream);
+    border-radius: 4px;
+    padding: 1px;
+	position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -50%);
+}
+.WFRP4eLooting .dialog-content>div>button {
+    padding: 3px;
+    font-size: 10px;
+    font-weight: bold;
+	text-shadow:
+		1px 1px black,
+		-1px 1px black,
+		1px -1px black,
+		-1px -1px black;
+}
+.WFRP4eLooting .dialog-content>div>button.add {
+	background: var(--color-level-info-bg);
+}
+.WFRP4eLooting .dialog-content .brass,
+.WFRP4eLooting_editPreset .brass {
+	color: var(--brass);
+}
+.WFRP4eLooting .dialog-content .silver,
+.WFRP4eLooting_editPreset .silver {
+	color: var(--silver);
+}
+.WFRP4eLooting .dialog-content .gold,
+.WFRP4eLooting_editPreset .gold {
+	color: var(--gold);
+}
+
+
+
+.WFRP4eLooting_editPreset {
+	min-width: 850px;
+	max-width: 1000px;
+	resize: both;
+}
+.WFRP4eLooting_editPreset div.header {
+	display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 50px;
+}
+.WFRP4eLooting_editPreset div.header > .body {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    height: 100%;
+}
+.WFRP4eLooting_editPreset div.header > .body > *,
+.WFRP4eLooting_editPreset div.money > .body * {
+	text-align: center;
+}
+.WFRP4eLooting_editPreset div.header > .body > input {
+	width: 100%;
+}
+.WFRP4eLooting_editPreset div.header > textarea {
+	flex: 3;
+	resize: none;
+	min-height: 100%;
+}
+.WFRP4eLooting_editPreset div.money {
+    display: flex;
+    gap: 5px;
+    border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting_editPreset div.money > .body {
+	display: grid;
+    height: 70px;
+	grid-template:
+        'a h' 20px
+        'a v' 50px;
+}
+.WFRP4eLooting_editPreset div.money > .body > img {
+	max-height: 100%;
+    grid-area: a;
+	border-right: 2px solid var(--table-header-border-color);
+}
+.WFRP4eLooting_editPreset div.money > .body > div:first-of-type {
+	grid-area: h;
+    display: flex;
+	align-items: center;
+	gap: 5px;
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding: 0 3px;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type {
+	grid-area: v;
+    display: flex;
+	gap: 5px;
+	padding: 0 3px;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type div:has(> select) {
+    display: flex;
+    align-items: center;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type div:has(> select) > input {
+	text-align: right;
+}
+.WFRP4eLooting_editPreset div.tables {
+	border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting_editPreset div.tables .body {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	gap: 5px;
+	padding: 2px;
+}
+.WFRP4eLooting_editPreset div.tables > .body {
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding-left: 19.5px;
+}
+.WFRP4eLooting_editPreset ul:has(> li > div.body) {
+	margin: unset;
+}
+.WFRP4eLooting_editPreset div.tables > ul .body {
+	height: 50px;
+}
+.WFRP4eLooting_editPreset div.tables .body > .table {
+    display: flex;
+    gap: 5px;
+}
+.WFRP4eLooting_editPreset div.tables .body > .table > input {
+	text-align: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#chance) {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#diceCount) {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div > input#diceCount {
+	text-align: right;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#diceCount) > span {
+	font-size: 14px;
+}
+.WFRP4eLooting_editPreset div.tables > .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding: 2px;
+}
+.WFRP4eLooting_editPreset div.tables > .buttons > button {
+	min-width: 15%;
+}
+.WFRP4eLooting_editPreset div.header:has(select#type > option.brass:checked) ~ div.tables select#table > option[data-type]:not([data-type="brass"]),
+.WFRP4eLooting_editPreset div.header:has(select#type > option.silver:checked) ~ div.tables select#table > option[data-type]:not([data-type="silver"]),
+.WFRP4eLooting_editPreset div.header:has(select#type > option.gold:checked) ~ div.tables select#table > option[data-type]:not([data-type="gold"]) {
+	display: none;
+}
+
+
+#WFRP4eLooting_Message:has(p[data-type="money"]):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'c p'
+        'i i';
+}
+#WFRP4eLooting_Message:not(:has(p[data-type="money"])):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'p p'
+        'i i';
+}
+#WFRP4eLooting_Message:has(p[data-type="money"]):not(:has(p[data-type="items"])) {
+    display: grid;
+    grid-template:
+        'c c'
+        'i i';
+}
+#WFRP4eLooting_Message p[data-type="nothing"] {
+	display: none;
+}
+#WFRP4eLooting_Message:not(:has(p[data-type="money"])):not(:has(p[data-type="items"])) p[data-type="nothing"] {
+	display: block;
+}
+#WFRP4eLooting_Message p {
+	text-align: center;
+}
+#WFRP4eLooting_Message a[data-action="clickCredit"] {
+    border: unset;
+    box-shadow: unset;
+    background: unset;
+    padding: unset;
+    font-weight: bold;
+}
+#WFRP4eLooting_Message ul {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-bottom: 5px;
+    border: 2px dashed var(--color-warm);
+    border-radius: 5px;
+}

@@ -1,0 +1,19 @@
+<div id="WFRP4eLooting_Message">
+	{{#if params.status.value}}
+
+	{{#if params.status.money}}
+	<p data-type="money" style="grid-area: c;"><b>{{localize 'WFRP4E.Looting.Chat.Coins'}}</b><br><a class="action-link" data-args="reason={{params.flavor}}. {{localize 'WFRP4E.Looting.Chat.Coins'}} amount={{money.bp}}{{localize 'MARKET.Abbrev.BP'}}{{money.ss}}{{localize 'MARKET.Abbrev.SS'}}{{money.gc}}{{localize 'MARKET.Abbrev.GC'}}" data-action="clickCredit"><i class="fas fa-coins"></i>{{#unless (eq money.bp 0)}}<b style="margin: 0 1px;">{{money.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq money.ss 0)}}<b style="margin: 0 1px;">{{money.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq money.gc 0)}}<b style="margin: 0 1px;">{{money.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}</a></p>
+	{{/if}}
+
+	{{#if params.status.items}}
+	<p data-type="items" style="grid-area: p;"><b>{{localize 'WFRP4E.Looting.Chat.Prey'}}</b><br><a class="action-link" data-args="reason={{params.flavor}}. {{localize 'WFRP4E.Looting.Chat.Prey'}} amount={{params.price.bp}}{{localize 'MARKET.Abbrev.BP'}}{{params.price.ss}}{{localize 'MARKET.Abbrev.SS'}}{{params.price.gc}}{{localize 'MARKET.Abbrev.GC'}}" data-action="clickCredit"><i class="fas fa-coins"></i> {{#unless (eq params.price.bp 0)}}<b style="margin: 0 1px;">{{params.price.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq params.price.ss 0)}}<b style="margin: 0 1px;">{{params.price.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq params.price.gc 0)}}<b style="margin: 0 1px;">{{params.price.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}</a></p>
+	<ul style="grid-area: i;">
+		{{#each items}}
+		<li data-type="item" data-tooltip="{{this.table}}"><i>{{this.item}}: <a class="action-link" data-args="reason={{../params.flavor}}. {{this.item}} amount={{this.price.bp}}{{localize 'MARKET.Abbrev.BP'}}{{this.price.ss}}{{localize 'MARKET.Abbrev.SS'}}{{this.price.gc}}{{localize 'MARKET.Abbrev.GC'}}" data-action="clickCredit"><i class="fas fa-coins"></i>{{#unless (eq this.price.bp 0)}}<b style="margin: 0 1px;">{{this.price.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq this.price.ss 0)}}<b style="margin: 0 1px;">{{this.price.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq this.price.gc 0)}}<b style="margin: 0 1px;">{{this.price.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}</a>.</i></li>
+		{{/each}}
+	</ul>
+	{{/if}}
+
+	{{/if}}
+	<p data-type="nothing" style="font-weight: bold;"><i class="fas fa-face-sad-tear"></i> {{localize "WFRP4E.Looting.Chat.Empty"}}</p>
+</div>

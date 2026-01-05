@@ -1,0 +1,31 @@
+<div class="items">
+    <div class="table">
+        <input type="text" class="table_key" placeholder="Key" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.TableKey'}}" value="{{item.table.key}}" required {{#if disabled}}disabled{{/if}}>
+        <input type="text" class="table_column" placeholder="Column" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.TableColumn'}}" value="{{item.table.column}}" {{#if disabled}}disabled{{/if}}>
+    </div>
+    <div class="item">
+        <input type="number" min="0" max="100" step="1" class="item_chance" value="{{item.chance}}" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Chance'}}" {{#if disabled}}disabled{{/if}}>
+        %:&nbsp;
+        <input type="number" min="1" step="1" class="item_dices" value="{{item.dices}}" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Dices.Quantity'}}" {{#if disabled}}disabled{{/if}}>
+        &nbsp;d&nbsp;
+        <select class="item_sides" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Sides.Quantity'}}" {{#if disabled}}disabled{{/if}}>
+            <option {{#if (eq item.sides "1")}}selected{{/if}} value="1">1</option>
+            <option {{#if (eq item.sides "5")}}selected{{/if}} value="5">5</option>
+            <option {{#if (eq item.sides "10")}}selected{{/if}} value="10">10</option>
+            <option {{#if (eq item.sides "100")}}selected{{/if}} value="100">100</option>
+        </select>
+    </div>
+    <div class="price">
+        <input type="number" min="1" step="1" class="price_dices" value="{{item.price.dices}}" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Dices.Price'}}" {{#if disabled}}disabled{{/if}}>
+        &nbsp;d&nbsp;
+        <select class="price_sides" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Sides.Price'}}" {{#if disabled}}disabled{{/if}}>
+            <option {{#if (eq item.price.sides "1")}}selected{{/if}} value="1">1</option>
+            <option {{#if (eq item.price.sides "5")}}selected{{/if}} value="5">5</option>
+            <option {{#if (eq item.price.sides "10")}}selected{{/if}} value="10">10</option>
+            <option {{#if (eq item.price.sides "100")}}selected{{/if}} value="100">100</option>
+        </select>
+        &nbsp;
+        <input type="text" oninput="this.value = this.value.replace(/[^0-9\*\/+-]+/g, '')" class="price_modifier" value="{{item.price.modifier}}" style="text-align: center;" data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Items.Modifier'}}" {{#if disabled}}disabled{{/if}}>
+    </div>
+    <a data-tooltip="{{localize 'WFRP4E.Looting.Dialog.Presets.Remove'}}" {{#if disabled}}style="display: none;"{{/if}} onclick="this.parentElement.remove()"><i class="fas fa-trash"></i></a>
+</div>

@@ -1,0 +1,137 @@
+<div class="header">
+	<div class="body">
+		<input id="name" type="string" value="{{preset.name}}" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Name'}}" {{#if (eq type "default")}}disabled{{/if}}>
+		<select id="type" class="{{#if (eq preset.type "brass")}}brass{{else if (eq preset.type "silver")}}silver{{else if (eq preset.type "gold")}}gold{{/if}}" {{#if (eq type "default")}}disabled{{/if}}>
+			<option {{#if (eq preset.type "brass")}}selected{{/if}} value="brass" class="brass">{{localize 'TIER.Brass'}}</option>
+			<option {{#if (eq preset.type "silver")}}selected{{/if}} value="silver" class="silver">{{localize 'TIER.Silver'}}</option>
+			<option {{#if (eq preset.type "gold")}}selected{{/if}} value="gold" class="gold">{{localize 'TIER.Gold'}}</option>
+		</select>
+	</div>
+	<textarea id="hint" {{#if (eq type "default")}}disabled{{/if}}>{{preset.hint}}</textarea>
+</div>
+<div class="money">
+	<div class="body">
+		<img src="modules/wfrp4e-core/icons/currency/brasspenny.png"></img>
+		<div>
+			<span style="flex: 2;">{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Chance'}}</span>
+			<span style="flex: 3;">{{localize 'Quantity'}}</span>
+		</div>
+		<div>
+			<div style="flex: 2;">
+				<input id="BP-chance" type="range" value="{{preset.money.bp.chance}}" min="0" max="100" {{#if (eq type "default")}}disabled{{/if}}>
+				<output>{{preset.money.bp.chance}}%</output>
+			</div>
+			<div style="flex: 3;">
+				<input id="BP-diceCount" style="flex: 2;" type="number" value="{{preset.money.bp.dice.count}}" min="1" step="1" {{#if (eq type "default")}}disabled{{/if}}>
+				<span style="flex: 1;">d</span>
+				<select id="BP-diceType" style="flex: 3;" {{#if (eq type "default")}}disabled{{/if}}>
+					<option {{#if (eq preset.money.bp.dice.type 1)}}selected{{/if}}>1</option>
+					<option {{#if (eq preset.money.bp.dice.type 2)}}selected{{/if}}>2</option>
+					<option {{#if (eq preset.money.bp.dice.type 5)}}selected{{/if}}>5</option>
+					<option {{#if (eq preset.money.bp.dice.type 10)}}selected{{/if}}>10</option>
+					<option {{#if (eq preset.money.bp.dice.type 20)}}selected{{/if}}>20</option>
+					<option {{#if (eq preset.money.bp.dice.type 100)}}selected{{/if}}>100</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<img src="modules/wfrp4e-core/icons/currency/silvershilling.png"></img>
+		<div>
+			<span style="flex: 2;">{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Chance'}}</span>
+			<span style="flex: 3;">{{localize 'Quantity'}}</span>
+		</div>
+		<div>
+			<div style="flex: 2;">
+				<input id="SS-chance" type="range" value="{{preset.money.ss.chance}}" min="0" max="100" {{#if (eq type "default")}}disabled{{/if}}>
+				<output>{{preset.money.ss.chance}}%</output>
+			</div>
+			<div style="flex: 3;">
+				<input id="SS-diceCount" style="flex: 2;" type="number" value="{{preset.money.ss.dice.count}}" min="1" step="1" {{#if (eq type "default")}}disabled{{/if}}>
+				<span style="flex: 1;">d</span>
+				<select id="SS-diceType" style="flex: 3;" {{#if (eq type "default")}}disabled{{/if}}>
+					<option {{#if (eq preset.money.ss.dice.type 1)}}selected{{/if}}>1</option>
+					<option {{#if (eq preset.money.ss.dice.type 2)}}selected{{/if}}>2</option>
+					<option {{#if (eq preset.money.ss.dice.type 5)}}selected{{/if}}>5</option>
+					<option {{#if (eq preset.money.ss.dice.type 10)}}selected{{/if}}>10</option>
+					<option {{#if (eq preset.money.ss.dice.type 20)}}selected{{/if}}>20</option>
+					<option {{#if (eq preset.money.ss.dice.type 100)}}selected{{/if}}>100</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="body">
+		<img src="modules/wfrp4e-core/icons/currency/goldcrown.png"></img>
+		<div>
+			<span style="flex: 2;">{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Chance'}}</span>
+			<span style="flex: 3;">{{localize 'Quantity'}}</span>
+		</div>
+		<div>
+			<div style="flex: 2;">
+				<input id="GC-chance" type="range" value="{{preset.money.gc.chance}}" min="0" max="100" {{#if (eq type "default")}}disabled{{/if}}>
+				<output>{{preset.money.gc.chance}}%</output>
+			</div>
+			<div style="flex: 3;">
+				<input id="GC-diceCount" style="flex: 2;" type="number" value="{{preset.money.gc.dice.count}}" min="1" step="1" {{#if (eq type "default")}}disabled{{/if}}>
+				<span style="flex: 1;">d</span>
+				<select id="GC-diceType" style="flex: 3;" {{#if (eq type "default")}}disabled{{/if}}>
+					<option {{#if (eq preset.money.gc.dice.type 1)}}selected{{/if}}>1</option>
+					<option {{#if (eq preset.money.gc.dice.type 2)}}selected{{/if}}>2</option>
+					<option {{#if (eq preset.money.gc.dice.type 5)}}selected{{/if}}>5</option>
+					<option {{#if (eq preset.money.gc.dice.type 10)}}selected{{/if}}>10</option>
+					<option {{#if (eq preset.money.gc.dice.type 20)}}selected{{/if}}>20</option>
+					<option {{#if (eq preset.money.gc.dice.type 100)}}selected{{/if}}>100</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="tables">
+	<div class="body">
+		<span style="width: 48%;">{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Table'}}</span>
+		<span style="width: 32%;">{{localize 'WFRP4E.Looting.Menu.Loot.Preset.Chance'}}</span>
+		<span style="width: 20%;">{{localize 'Quantity'}}</span>
+	</div>
+	<ul id="tables">
+		{{#each preset.tables}}
+		<li>
+			<div class="body">
+				{{#if this.table.key}}
+				<div class="table" style="width: 48%;">
+					<input id="tableKey" style="flex: 1;" type="string" value="{{this.table.key}}" placeholder="{{localize 'TABLE.Key'}}" {{#if (eq ../type "default")}}disabled{{/if}}>
+					<input id="tableColumn" style="flex: 1;" type="string" value="{{this.table.column}}" placeholder="{{localize 'TABLE.Column'}}" {{#if (eq ../type "default")}}disabled{{/if}}>
+				</div>
+				{{else}}
+				<select id="table" style="width: 48%; padding: 0;" {{#if (eq ../type "default")}}disabled{{/if}}>
+					<option hidden disabled selected value="false">{{localize 'WFRP4E.Looting.Menu.Loot.Table.Select'}}</option>
+					{{#each ../tables}}
+					<option data-tooltip="{{localize 'Cost'}}: <span style='color: var(--presetType);'>{{this.price}} <i class='fas fa-coins'></i></span><br>{{localize 'WFRP4E.Looting.Menu.Loot.Table.Values'}} ({{this.weights}}):<ul>{{#each this.values}}<li>{{this.name}} ({{this.weight}})</li>{{/each}}</ul>" value="{{this.table}}"{{#if (eq this.table ../this.table)}} selected{{/if}}{{#if this.type}} data-type="{{this.type}}"{{/if}}>{{this.title}}</option>
+					{{/each}}
+				</select>
+				{{/if}}
+				<div style="width: 32%;">
+					<input id="chance" type="range" value="{{this.chance}}" min="0" max="100" {{#if (eq ../type "default")}}disabled{{/if}}>
+					<output>{{this.chance}}%</output>
+				</div>
+				<div style="width: {{#if (eq ../type "default")}}20{{else}}16{{/if}}%;">
+					<input id="diceCount" style="flex: 2;" type="number" value="{{this.dice.count}}" min="1" step="1" {{#if (eq ../type "default")}}disabled{{/if}}>
+					<span style="flex: 1;">d</span>
+					<select id="diceType" style="flex: 3;" {{#if (eq ../type "default")}}disabled{{/if}}>
+						<option {{#if (eq this.dice.type 1)}}selected{{/if}}>1</option>
+						<option {{#if (eq this.dice.type 2)}}selected{{/if}}>2</option>
+						<option {{#if (eq this.dice.type 5)}}selected{{/if}}>5</option>
+						<option {{#if (eq this.dice.type 10)}}selected{{/if}}>10</option>
+						<option {{#if (eq this.dice.type 20)}}selected{{/if}}>20</option>
+						<option {{#if (eq this.dice.type 100)}}selected{{/if}}>100</option>
+					</select>
+				</div>
+				<button type="button" data-action="removeTable" style="width: 4%;" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Loot.Table.Remove'}}" {{#if (eq ../type "default")}}hidden{{/if}}><i class="fas fa-trash"></i></button>
+			</div>
+		</li>
+		{{/each}}
+	</ul>
+	<div class="buttons">
+		<button type="button" data-action="addTable" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Loot.Table.Add'}}" {{#if (eq type "default")}}hidden{{/if}}><i class='fas fa-plus'></i></button>
+		<button type="button" data-action="addCustomTable" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Loot.Table.AddCustom'}}" {{#if (eq type "default")}}hidden{{/if}}><i class='fas fa-plus' style="color: var(--gold);"></i></button>
+	</div>
+</div>

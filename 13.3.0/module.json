@@ -1,0 +1,41 @@
+{
+	"id": "wfrp4e-looting",
+	"title": "WFRP4e - Looting",
+	"description": "<p>Этот модуль поможет Вам оптимизировать процесс создания лута в различных контейнерах.</p>",
+	"version": "13.3.0",
+	"compatibility": {
+		"minimum": "13",
+		"verified": "13"
+	},
+	"relationships": {
+		"systems": [
+			{
+				"id": "wfrp4e",
+				"type": "system",
+				"manifest": "https://github.com/moo-man/WFRP4e-FoundryVTT/releases/latest/download/system.json"
+			}
+		]
+	},
+	"authors": [
+		{
+			"name": "nPocTo_4eJI",
+			"url": "https://www.youtube.com/@nPocTo_4eJI",
+			"discord": "npocto_4eji"
+		}
+	],
+	"languages": [
+		{"lang": "en", "name": "English", "path": "lang/en.json"},
+		{"lang": "en", "name": "English", "path": "lang/enTables.json"},
+		{"lang": "ru", "name": "Russian", "path": "lang/ru.json"},
+		{"lang": "ru", "name": "Russian", "path": "lang/ruTables.json"}
+	],
+	"esmodules": [
+		"/looting.js"
+	],
+	"styles": [
+		"styles/looting.css"
+	],
+	"url": "https://github.com/nPocToI4eJI/wfrp4e-looting",
+	"manifest": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.3.0/module.json",
+	"download": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.3.0/wfrp4e-looting.zip"
+}

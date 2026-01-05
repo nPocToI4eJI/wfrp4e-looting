@@ -1,0 +1,15 @@
+{{#if params.default}}
+<div data-type="default">
+	<h6>{{localize 'WFRP4E.Looting.Menu.Default'}}</h3>
+	{{#each params.default}}
+	<button type="button" class="{{this.type}}" data-action="click" data-type="default" data-id="{{@index}}" data-tooltip="{{this.hint}}<hr>{{localize 'WFRP4E.Looting.Menu.Hint.LMB'}}<br>{{localize 'WFRP4E.Looting.Menu.Hint.Alt'}}<br>{{localize 'WFRP4E.Looting.Menu.Hint.Ctrl'}}">{{this.name}}</button>
+	{{/each}}
+</div>
+{{/if}}
+<div data-type="custom">
+	<h6>{{localize 'WFRP4E.Looting.Menu.Custom'}}</h3>
+	{{#each params.custom}}
+	<button type="button" class="{{this.type}}" data-action="click" data-type="custom" data-id="{{@index}}" data-tooltip="{{this.hint}}<hr>{{localize 'WFRP4E.Looting.Menu.Hint.LMB'}}<br>{{localize 'WFRP4E.Looting.Menu.Hint.Alt'}}<br>{{localize 'WFRP4E.Looting.Menu.Hint.Ctrl'}}">{{this.name}}</button>
+	{{/each}}
+	<button type="button" class="add" data-action="click" data-type="custom" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Add'}}"><i class='fas fa-plus'></i></button>
+</div>
