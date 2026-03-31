@@ -1,4 +1,4 @@
-ааааааааааааа# <p align="center">WFRP4e - Looting</p>
+<p align="center">WFRP4e - Looting</p>
 <p align="center">
   <a href="https://foundryvtt.com/packages/wfrp4e-looting" rel="nofollow"><img src="https://img.shields.io/badge/WFRP4e%20--%20Looting-FoundryVTT-orange?labelColor=darkred" alt="FoundryVTT"></a>
   <a href="https://foundryvtt.com/" rel="nofollow"><img src="https://img.shields.io/badge/V13-Совместимо-darkgreen?labelColor=orange" alt="Совместимость"></a>
