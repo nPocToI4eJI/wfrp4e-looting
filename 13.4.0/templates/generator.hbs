@@ -1,0 +1,183 @@
+<div class="header">
+	<select id="type">
+		<option hidden disabled selected value="false">{{localize 'WFRP4E.Looting.Menu.Generator.Types.Title'}}</option>
+		{{#each params.types}}
+		<option value="{{this.value}}" data-type="{{this.type}}">{{this.name}}</option>
+		{{/each}}
+	</select>
+	<select id="item">
+		<option hidden disabled selected value="false">{{localize 'WFRP4E.Looting.Menu.Generator.Types.Item'}}</option>
+		{{#each params.items}}
+		<option hidden value="{{this.uuid}}" title="{{#if this.pack}}{{this.pack}}{{else}}{{localize 'DOCUMENT.Items'}}{{/if}}" data-type="{{#if (eq this.type "weapon")}}{{this.group}}{{else}}{{this.type}}{{/if}}">{{this.name}}</option>
+		{{/each}}
+	</select>
+</div>
+<div hidden class="base_item trapping">
+	<div>
+		<div class="enc" style="width: 20%;">
+			<span>{{localize 'Encumbrance'}}</span>
+			<input id="base.encumbrance" disabled type="number">
+		</div>
+		<div class="money" style="width: 40%;">
+			<input id="base.money.gc" class="gold" disabled type="number" data-tooltip="{{localize 'NAME.GCPlural'}}" placeholder="{{localize 'MARKET.Abbrev.GC'}}">
+			<input id="base.money.ss" class="silver" disabled type="number" data-tooltip="{{localize 'NAME.SSPlural'}}" placeholder="{{localize 'MARKET.Abbrev.SS'}}">
+			<input id="base.money.bp" class="brass" disabled type="number" data-tooltip="{{localize 'NAME.BPPlural'}}" placeholder="{{localize 'MARKET.Abbrev.BP'}}">
+		</div>
+		<div class="availability" style="width: 40%;">
+			<span>{{localize 'Availability'}}</span>
+			<input id="base.availability" disabled type="text">
+		</div>
+	</div>
+	<div>
+		<div class="item_type" style="width: 30%;">
+			<span>{{localize 'Type'}}</span>
+			<input id="base.type" disabled type="text">
+		</div>
+		<div class="properties" style="width: 80%;">
+			<input id="base.properties" disabled type="text" data-tooltip="{{localize 'Item Properties'}}">
+		</div>
+	</div>
+</div>
+<div hidden class="base_item melee">
+	<div>
+		<div class="enc" style="width: 20%;">
+			<span>{{localize 'Encumbrance'}}</span>
+			<input id="base.encumbrance" disabled type="number">
+		</div>
+		<div class="money" style="width: 40%;">
+			<input id="base.money.gc" class="gold" disabled type="number" data-tooltip="{{localize 'NAME.GCPlural'}}" placeholder="{{localize 'MARKET.Abbrev.GC'}}">
+			<input id="base.money.ss" class="silver" disabled type="number" data-tooltip="{{localize 'NAME.SSPlural'}}" placeholder="{{localize 'MARKET.Abbrev.SS'}}">
+			<input id="base.money.bp" class="brass" disabled type="number" data-tooltip="{{localize 'NAME.BPPlural'}}" placeholder="{{localize 'MARKET.Abbrev.BP'}}">
+		</div>
+		<div class="availability" style="width: 40%;">
+			<span>{{localize 'Availability'}}</span>
+			<input id="base.availability" disabled type="text">
+		</div>
+	</div>
+	<div>
+		<div class="reach" style="width: 25%;">
+			<span>{{localize 'Reach'}}</span>
+			<input id="base.reach" disabled type="text">
+		</div>
+		<div class="damage" style="width: 20%;">
+			<span>{{localize 'Damage'}}</span>
+			<input id="base.damage" disabled type="text">
+		</div>
+		<div class="properties" style="width: 50%;">
+			<input id="base.properties" disabled type="text" data-tooltip="{{localize 'Item Properties'}}">
+		</div>
+		<div class="twohanded" style="width: 5%; justify-content: center;">
+			<input id="base.twohanded" disabled type="checkbox" data-tooltip="{{localize 'ITEM.TwoHanded'}}">
+		</div>
+	</div>
+</div>
+<div hidden class="base_item range">
+	<div>
+		<div class="enc" style="width: 20%;">
+			<span>{{localize 'Encumbrance'}}</span>
+			<input id="base.encumbrance" disabled type="number">
+		</div>
+		<div class="money" style="width: 40%;">
+			<input id="base.money.gc" class="gold" disabled type="number" data-tooltip="{{localize 'NAME.GCPlural'}}" placeholder="{{localize 'MARKET.Abbrev.GC'}}">
+			<input id="base.money.ss" class="silver" disabled type="number" data-tooltip="{{localize 'NAME.SSPlural'}}" placeholder="{{localize 'MARKET.Abbrev.SS'}}">
+			<input id="base.money.bp" class="brass" disabled type="number" data-tooltip="{{localize 'NAME.BPPlural'}}" placeholder="{{localize 'MARKET.Abbrev.BP'}}">
+		</div>
+		<div class="availability" style="width: 40%;">
+			<span>{{localize 'Availability'}}</span>
+			<input id="base.availability" disabled type="text">
+		</div>
+	</div>
+	<div>
+		<div class="range" style="width: 25%;">
+			<span>{{localize 'Range'}}</span>
+			<input id="base.range" disabled type="text">
+		</div>
+		<div class="damage" style="width: 20%;">
+			<span>{{localize 'Damage'}}</span>
+			<input id="base.damage" disabled type="text">
+		</div>
+		<div class="properties" style="width: 50%;">
+			<input id="base.properties" disabled type="text" data-tooltip="{{localize 'Item Properties'}}">
+		</div>
+		<div class="twohanded" style="width: 5%; justify-content: center;">
+			<input id="base.twohanded" disabled type="checkbox" data-tooltip="{{localize 'ITEM.TwoHanded'}}">
+		</div>
+	</div>
+</div>
+<div hidden class="base_item armour">
+	<div>
+		<div class="enc" style="width: 20%;">
+			<span>{{localize 'Encumbrance'}}</span>
+			<input id="base.encumbrance" disabled type="number">
+		</div>
+		<div class="money" style="width: 40%;">
+			<input id="base.money.gc" class="gold" disabled type="number" data-tooltip="{{localize 'NAME.GCPlural'}}" placeholder="{{localize 'MARKET.Abbrev.GC'}}">
+			<input id="base.money.ss" class="silver" disabled type="number" data-tooltip="{{localize 'NAME.SSPlural'}}" placeholder="{{localize 'MARKET.Abbrev.SS'}}">
+			<input id="base.money.bp" class="brass" disabled type="number" data-tooltip="{{localize 'NAME.BPPlural'}}" placeholder="{{localize 'MARKET.Abbrev.BP'}}">
+		</div>
+		<div class="availability" style="width: 40%;">
+			<span>{{localize 'Availability'}}</span>
+			<input id="base.availability" disabled type="text">
+		</div>
+	</div>
+	<div>
+		<div class="ap" style="width: 40%;">
+			<span>{{localize 'AP'}}</span>
+			<input id="base.apHead" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.head'}}">
+			<input id="base.apLArm" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.lArm'}}">
+			<input id="base.apRArm" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.rArm'}}">
+			<input id="base.apBody" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.body'}}">
+			<input id="base.apLLeg" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.lLeg'}}">
+			<input id="base.apRLeg" disabled type="number" data-tooltip="{{localize 'WFRP4E.Locations.rLeg'}}">
+		</div>
+		<div class="type" style="width: 20%;">
+			<span>{{localize 'Type'}}</span>
+			<input id="base.type" disabled type="text">
+		</div>
+		<div class="properties" style="width: 40%;">
+			<input id="base.properties" disabled type="text" data-tooltip="{{localize 'Item Properties'}}">
+		</div>
+	</div>
+</div>
+<div hidden class="presets">
+	{{#each params.presets}}
+	<label data-id="{{this.id}}" data-types="{{this.types}}"{{#if this.hasValue}} data-value="1"{{/if}} style="--qualities_border: var(--qualities-{{this.color}}_border); --qualities: var(--qualities-{{this.color}});" data-tooltip="
+		<span style='font-style: italic;'>{{this.hint}}</span>
+		<hr>
+		{{#if this.value}}
+		<span style='font-style: italic;'>{{localize 'WFRP4E.Looting.Menu.Generator.RatioOfProperties.Title'}}: <b>{{this.value}}</b></span>
+		<hr>
+		{{/if}}
+		{{#if this.qualities}}
+		<div class='WFRP4eLooting-tooltip'>
+			<span>{{localize 'Qualities'}}: </span>
+			<ul>
+				{{#each this.qualities}}
+				{{#if (gt this.chance 0)}}
+				{{#if (gt this.quantity 0)}}
+				<li class='qualities'>{{#if (gt this.quantity 1)}}{{this.quantity}}x: {{/if}}{{this.label}}{{#unless (eq this.chance 100)}} [{{this.chance}}%]{{/unless}}</li>
+				{{/if}}
+				{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+		{{/if}}
+		{{#if this.flaws}}
+		<div class='WFRP4eLooting-tooltip'>
+			<span>{{localize 'Flaws'}}: </span>
+			<ul>
+				{{#each this.flaws}}
+				{{#if (gt this.chance 0)}}
+				{{#if (gt this.quantity 0)}}
+				<li class='flaws'>{{#if (gt this.quantity 1)}}{{this.quantity}}x: {{/if}}{{this.label}}{{#unless (eq this.chance 100)}} [{{this.chance}}%]{{/unless}}</li>
+				{{/if}}
+				{{/if}}
+				{{/each}}
+			</ul>
+		</div>
+		{{/if}}
+	">{{#if this.hasValue}}1x {{/if}}{{this.label}}<input hidden type="checkbox" name="{{this.name}}"></label>
+	{{/each}}
+</div>
+<div class="props"></div>
+<button hidden type="button" data-action="create">{{localize 'WFRP4E.Looting.Menu.Generator.Create'}}</button>

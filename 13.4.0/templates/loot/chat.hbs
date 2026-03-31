@@ -1,0 +1,19 @@
+<div id="WFRP4eLooting_Message" data-type="{{params.type}}">
+	{{#if params.status.value}}
+
+	{{#if params.status.money}}
+	<p data-type="money" style="grid-area: c;" data-pricevalue="{{money.priceValue}}"><b>{{localize 'WFRP4E.Looting.Chat.Coins'}}</b><br><a>{{#unless (eq money.bp 0)}}<b style="margin: 0 1px;">{{money.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq money.ss 0)}}<b style="margin: 0 1px;">{{money.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq money.gc 0)}}<b style="margin: 0 1px;">{{money.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}<i class="fas fa-coins"></i></a></p>
+	{{/if}}
+
+	{{#if params.status.items}}
+	<p data-type="items" style="grid-area: p;" data-pricevalue="{{params.priceValue}}"><a data-item data-tooltip="{{localize 'WFRP4E.Looting.Chat.TakeAll'}}"><b>{{localize 'WFRP4E.Looting.Chat.Prey'}}</b></a><br><a data-money data-tooltip="{{localize 'WFRP4E.Looting.Chat.SellAll'}}">{{#unless (eq params.price.bp 0)}}<b style="margin: 0 1px;">{{params.price.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq params.price.ss 0)}}<b style="margin: 0 1px;">{{params.price.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq params.price.gc 0)}}<b style="margin: 0 1px;">{{params.price.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}} <i class="fas fa-coins"></i></a></p>
+	<ul style="grid-area: i;">
+		{{#each items}}
+		<li data-type="item" data-tooltip="{{this.table}}" data-item{{#if this.id}}="{{this.id}}"{{/if}} data-pricevalue="{{this.priceValue}}"><i style="display: flex; justify-content: space-between;"><a data-tooltip="{{localize 'WFRP4E.Looting.Chat.Take'}}">{{this.item}}</a><a data-money data-tooltip="{{localize 'WFRP4E.Looting.Chat.Sell'}}">{{#unless (eq this.price.bp 0)}}<b style="margin: 0 1px;">{{this.price.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}{{#unless (eq this.price.ss 0)}}<b style="margin: 0 1px;">{{this.price.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}{{#unless (eq this.price.gc 0)}}<b style="margin: 0 1px;">{{this.price.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}<i class="fas fa-coins"></i></a></i></li>
+		{{/each}}
+	</ul>
+	{{/if}}
+
+	{{/if}}
+	<p data-type="nothing" style="font-weight: bold;"><i class="fas fa-face-sad-tear"></i> {{localize "WFRP4E.Looting.Chat.Empty"}}</p>
+</div>

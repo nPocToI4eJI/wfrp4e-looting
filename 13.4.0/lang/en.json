@@ -1,0 +1,347 @@
+{
+	"WFRP4E.Looting": {
+		"Name": "Looting",
+		"Settings": {
+			"sellItems": {
+				"Name": "Allow a quick sale",
+				"Hint": "Allow players to immediately exchange the found items for coins.",
+				"Error": "The game master forbade the quick sale of items."
+			},
+			"modifier": {
+				"Name": "Loot cost Modifier",
+				"Hint": "An additional modifier that multiplies the final dice rolls for found coins. For example, \"2\" will double the received coins, while \"0.5\" will halve them."
+			},
+			"itemsModifier": {
+				"Name": "Reduce item value by half",
+				"Hint": "If enabled, the monetary reward for found items will be halved after applying the \"Loot cost Modifier\".",
+				"Tooltip": "The cost of the item has been reduced <b>by half</b> for a quick sale."
+			},
+			"editName": {
+				"Name": "Editor for the name of the generated item",
+				"Hint": "If enabled, a window will appear when generating an item in which you can change its name."
+			}
+		},
+		"Menu": {
+			"Default": "Default",
+			"Custom": "Custom",
+			"Add": "Add a custom template.",
+			"Hint": {
+				"LMB": "LMB: roll using the template.",
+				"Alt": "Alt + LMB: open template settings.",
+				"Ctrl": "Ctrl + LMB: copy the template."
+			},
+			"Generator": {
+				"Title": "Генерация",
+				"Types": {
+					"Title": "Укажите тип предмета",
+					"Item": "Выберите предмет"
+				},
+				"Names": {
+					"Any": "Любой",
+					"All": "Любой (общий)",
+					"Type": "Любой (типовой)",
+					"Melee": "Любой (рукопашное)",
+					"Range": "Любой (дистанционное)",
+					"Armour": "Любой (броня)"
+				},
+				"Create": "Создать!",
+				"Name": "Изменить имя",
+				"Complete": "Были получены следующие свойства: ",
+				"RatioOfProperties": {
+					"Title": "Соотношение свойств",
+					">2": "Великолепное (>2)",
+					"2": "Лучшее (2)",
+					"1": "Хорошее (1)",
+					"0": "Обычное (0)",
+					"-1": "Плохое (-1)",
+					"-2": "Отвратительное (-2)",
+					"<-2": "Ужасное (<-2)"
+				}
+			},
+			"Loot": {
+				"Title": "Looting",
+				"Preset": {
+					"custom": "Custom template",
+					"default": "Basic template (view only)",
+					"Name": "Preset name",
+					"Table": "Table",
+					"Chance": "Chance"
+				},
+				"Table": {
+					"Select": "Select a table",
+					"Values": "Items contained in this table",
+					"Remove": "Remove table",
+					"Add": {
+						"Title": "Table",
+						"Hint": "Add one of the pre-prepared tables."
+					},
+					"AddCustom": {
+						"Title": "Own table",
+						"Hint": "Add your own random table.<hr>To specify the cost of items in this table, specify the following anywhere in its Description using \"HTML Code\":<br><br>\"&lt;p hidden id='tablePrice'&gt;Number of rolls|Dice Type|The modifier&lt;/p&gt;\".<br><br>For example: \"&lt;p hidden id='tablePrice'&gt;2|10|*5&lt;/p&gt;\" means that the value of the item will be determined by the roll \"2d10 * 5\".",
+						"Missing": "The specified table was not found."
+					},
+					"AddItem": {
+						"Title": "Subject",
+						"Hint": "Add a specific item.",
+						"Missing": "The item with the specified UUID was not found."
+					}
+				},
+				"Other": {
+					"Choice": "Select one of the tables of Other Items"
+				}
+			},
+			"Tables": {
+				"Title": "Other",
+				"Flaws": {
+					"Weapon": {
+						"Title": "Weapon flaws",
+						"Hint": "Weapon flaws"
+					},
+					"Armour": {
+						"Title": "Armour flaws",
+						"Hint": "Armour flaws"
+					},
+					"Hint": "Specify the UUID of the item",
+					"Complete": "The following flaws were generated: "
+				},
+				"Loot": {
+					"Title": "Random Loot",
+					"Hint": "A quick roll on Looting preset.",
+					"Select": {
+						"Flaws": {
+							"WeaponHint": "Choose a weapon",
+							"ArmourHint": "Choose an armor",
+							"None": "Not selected"
+						},
+						"Preset": {
+							"Hint": "Select the desired preset",
+							"Rand": "A random preset",
+							"Custom": "Custom",
+							"Default": "Default"
+						}
+					}
+				}
+			}
+		},
+		"Chat": {
+			"Empty": "It's empty here",
+			"Coins": "Coins",
+			"Prey": "Loot",
+			"Take": "Take item",
+			"TakeAll": "Take all item",
+			"Sell": "Sell item",
+			"SellAll": "Sell all item",
+			"Action": {
+				"Coins": "find",
+				"Take": "grab",
+				"Sell": "sell <b>\"{item}\"</b> for",
+				"SellAll": "sell all items for"
+			},
+			"Flaws": "took <b>\"{item}\"</b> with flaws:"
+		},
+		"Error": {
+			"NotAttachedCharacter": "Only for users with a assign actor."
+		},
+		"DefaultList": {
+			"Hovel": {
+				"Name": "Hovel",
+				"Title": "The hut, cottage, or hovel of a peasant."
+			},
+			"House": {
+				"Name": "House",
+				"Title": "The home of the burgeoning middle-class such as a small-time merchant, shop-keeper, tradesman, or scholar."
+			},
+			"Estate": {
+				"Name": "Estate",
+				"Title": "The mansion or secondary home of the richest members of society, such as wealthy merchants, gentry, or aristocrats."
+			},
+			"WizardsHouse": {
+				"Name": "Wizard’s Home",
+				"Title": "An established magician’s home or tower is likely to have some individual treasure."
+			},
+			"Workshop": {
+				"Name": "Workshop",
+				"Title": "Any workshop will contain items specific to the trade that goes on there. In addition, some items might be kept on the property for safe-keeping."
+			},
+			"Shrine": {
+				"Name": "Shrine",
+				"Title": "Small buildings or simple shelters dedicated to a minor god or long-dead local hero."
+			},
+			"Temple": {
+				"Name": "Temple",
+				"Title": "Depending on the locale and purpose, this might be a good bet for petty larceny. It might contain anything from golden candlesticks to the collection chest."
+			},
+			"SmallMonster": {
+				"Name": "Small Monster",
+				"Title": "Some humanoid creatures like Goblins or Fimir have an attraction to shinies."
+			},
+			"LargeMonster": {
+				"Name": "Large Monster",
+				"Title": "Many larger monsters are attracted to shiny or valuable objects, and have a propensity to hoard or collect treasure in secretive lairs."
+			},
+			"ChestOpen": {
+				"Name": "Chest: Open",
+				"Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+			},
+			"ChestSecure": {
+				"Name": "Chest: Secure",
+				"Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+			},
+			"ChestVault": {
+				"Name": "Chest: Vault",
+				"Title": "Lairs and strongholds (such as castles or banks) often have small caches of coins or offerings. Secure chests and vaults will be guarded with traps, locks, and soldiers safe-guarding the treasure. And possibly a Daemon or two."
+			},
+			"Peasant": {
+				"Name": "Peasant",
+				"Title": "The beggars, villagers, and hard-working class which constitutes the majority of the Old World."
+			},
+			"Citizen": {
+				"Name": "Citizen",
+				"Title": "A semi-affluent member of the middle-class, such as shop-keepers and small merchants."
+			},
+			"Noble": {
+				"Name": "Noble",
+				"Title": "An aristocrat or wealthy upper-class member of society who enjoys flaunting their wealth."
+			},
+			"Wizard": {
+				"Name": "Wizard",
+				"Title": "An eccentric or powerful spellcaster might have some rare item on them."
+			}
+		},
+		"GeneratorPresets": {
+			"Hereditary": {
+				"Name": "Hereditary",
+				"Title": "This weapon has been passed down from father to son for generations. It is formidable and beautiful, but visibly worn.",
+				"Names": {
+					"a": {
+						"1": "Father's",
+						"2": "Ancestral"
+					},
+					"b": {
+						"1": "of the family"
+					}
+				}
+			},
+			"Desecrated": {
+				"Name": "Desecrated",
+				"Title": "This item was found in a place saturated with corruption. It can be dangerous both to enemies and to the owner themselves.",
+				"Names": {
+					"a": {
+						"1": "Ominous",
+						"2": "Desired",
+						"3": "Vile",
+						"4": "Whispering"
+					},
+					"b": {
+						"1": "of blood",
+						"2": "of lust",
+						"3": "of decay",
+						"4": "of change"
+					}
+				}
+			},
+			"Mysterious": {
+				"Name": "Mysterious",
+				"Title": "The item seems to possess some inner power. Or maybe not.",
+				"Names": {
+					"a": {
+						"1": "Mystical",
+						"2": "Mysterious"
+					}
+				}
+			},
+			"Heroic": {
+				"Name": "Heroic",
+				"Title": "This item belonged to an ancient hero, whose essence is reflected in the properties of the artifact.",
+				"Names": {
+					"a": {
+						"1": "Legendary",
+						"2": "Heroic",
+						"3": "Historical"
+					},
+					"b": {
+						"1": "Sigmar's",
+						"2": "Magnus the Pious's",
+						"3": "the Green Knight's",
+						"4": "Boris Todbringer's"
+					}
+				}
+			},
+			"Ancient": {
+				"Name": "Ancient",
+				"Title": "This item reeks of history. It has been gathering dust for a long time, but it clearly has potential.",
+				"Names": {
+					"a": {
+						"1": "Ancient",
+						"2": "Antique"
+					},
+					"b": {
+						"1": "of a fallen hero",
+						"2": "of an ancient lineage",
+						"3": "of a bygone era"
+					}
+				}
+			},
+			"Magical": {
+				"Name": "Magical",
+				"Title": "Magical winds have been bound into this item. It is skillfully crafted and imbued with power.",
+				"Names": {
+					"a": {
+						"1": "Magical"
+					},
+					"b": {
+						"1": "Ghur",
+						"2": "Shyish",
+						"3": "Aqshy",
+						"4": "Azyr",
+						"5": "Chamon",
+						"6": "Ghyran",
+						"7": "Hysh",
+						"8": "Ulgu",
+						"9": "Dhar"
+					}
+				}
+			},
+			"Damaged": {
+				"Name": "Damaged",
+				"Title": "This item looks damaged. It might not be wise to use it.",
+				"Names": {
+					"a": {
+						"1": "Damaged",
+						"2": "Broken"
+					}
+				}
+			},
+			"Fatal": {
+				"Name": "Fatal",
+				"Title": "This item has caused the death of many heroes, but every time there is someone who decides to acquire it.",
+				"Names": {
+					"a": {
+						"1": "Fatal",
+						"2": "Final"
+					},
+					"b": {
+						"1": "of a fallen hero"
+					}
+				}
+			},
+			"Insignificant": {
+				"Name": "Insignificant",
+				"Title": "This item is either someone's crude mockery or deliberate sabotage. Using it is sheer suicide.",
+				"Names": {
+					"a": {
+						"1": "Fake",
+						"2": "Insignificant",
+						"3": "Useless",
+						"4": "Pitiful",
+						"5": "Shameful"
+					},
+					"b": {
+						"1": "of a charlatan",
+						"2": "of a beggar"
+					}
+				}
+			}
+		}
+	}
+}

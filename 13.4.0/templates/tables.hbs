@@ -1,0 +1,42 @@
+<div>
+	{{#each params.tables}}
+	<div>
+		<button type="button" data-action="{{this.action}}" {{#if this.type}}data-type="{{this.type}}"{{/if}} data-tooltip="{{this.hint}}">{{this.name}}</button>
+		{{#if (eq this.action "flaws")}}
+		{{#if (eq this.type "weapon")}}
+		<select id="weapon" style="text-align: center;" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Flaws.WeaponHint'}}">
+			<option selected value="none">{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Flaws.None'}}</option>
+			{{#each ../params.weapons}}
+			<option value="{{this.uuid}}" title="{{#if this.pack}}{{this.pack}}{{else}}{{localize 'DOCUMENT.Items'}}{{/if}}">{{this.name}}</option>
+			{{/each}}
+		</select>
+		{{/if}}
+		{{#if (eq this.type "armour")}}
+		<select id="armour" style="text-align: center;" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Flaws.ArmourHint'}}">
+			<option selected value="none">{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Flaws.None'}}</option>
+			{{#each ../params.armours}}
+			<option value="{{this.uuid}}" title="{{#if this.pack}}{{this.pack}}{{else}}{{localize 'DOCUMENT.Items'}}{{/if}}">{{this.name}}</option>
+			{{/each}}
+		</select>
+		{{/if}}
+		{{/if}}
+		{{#if (eq this.action "randLoot")}}
+		<select id="loot" style="text-align: center;" data-tooltip="{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Preset.Hint'}}">
+			<option selected value="rand">{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Preset.Rand'}}</option>
+			<optgroup label="{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Preset.Default'}}">
+				{{#each ../params.loot.default}}
+				<option class="{{this.type}}" title="{{this.hint}}" value="{{@index}}|default">{{this.name}}</option>
+				{{/each}}
+			</optgroup>
+			{{#if ../params.loot.custom}}
+			<optgroup label="{{localize 'WFRP4E.Looting.Menu.Tables.Loot.Select.Preset.Custom'}}">
+				{{#each ../params.loot.custom}}
+				<option class="{{this.type}}" title="{{this.hint}}" value="{{@index}}|custom">{{this.name}}</option>
+				{{/each}}
+			</optgroup>
+			{{/if}}
+		</select>
+		{{/if}}
+	</div>
+	{{/each}}
+</div>

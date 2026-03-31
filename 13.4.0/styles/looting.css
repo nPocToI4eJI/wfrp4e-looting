@@ -1,0 +1,406 @@
+body {
+	--brass: #B87333;
+	--silver: #C0C0C0;
+	--gold: #FFD700;
+	--qualities-blue: blue;
+	--qualities-blue_border: darkblue;
+	--qualities-cyan: cyan;
+	--qualities-cyan_border: darkcyan;
+	--qualities-goldenrod: goldenrod;
+	--qualities-goldenrod_border: darkgoldenrod;
+	--qualities-gray: gray;
+	--qualities-gray_border: darkgray;
+	--qualities-green: green;
+	--qualities-green_border: darkgreen;
+	--qualities-khaki: khaki;
+	--qualities-khaki_border: darkkhaki;
+	--qualities-olivedrab: olivedrab;
+	--qualities-olivedrab_border: darkolivegreen;
+	--qualities-orange: orange;
+	--qualities-orange_border: darkorange;
+	--qualities-orchid: orchid;
+	--qualities-orchid_border: darkorchid;
+	--qualities-red: red;
+	--qualities-red_border: darkred;
+	--qualities-salmon: salmon;
+	--qualities-salmon_border: darksalmon;
+	--qualities-slateblue: slateblue;
+	--qualities-slateblue_border: darkslateblue;
+	--qualities-turquoise: turquoise;
+	--qualities-turquoise_border: darkturquoise;
+	--qualities-violet: violet;
+	--qualities-violet_border: darkviolet;
+}
+
+
+
+.WFRP4eLooting-loot .dialog-content > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+	border: 2px dashed var(--color-cream);
+    border-radius: 4px;
+	padding: 3px;
+	position: relative;
+	margin-top: 10px;
+}
+.WFRP4eLooting-loot .dialog-content > div > h6 {
+    background: var(--color-warm);
+    border: 1px solid var(--color-cream);
+    border-radius: 4px;
+    padding: 1px;
+	position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -50%);
+}
+.WFRP4eLooting-loot .dialog-content > div > button {
+    padding: 3px;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow:
+		1px 1px black,
+		-1px 1px black,
+		1px -1px black,
+		-1px -1px black;
+}
+.WFRP4eLooting-loot .dialog-content > div > button.add {
+	background: var(--color-level-info-bg);
+}
+.WFRP4eLooting-loot .dialog-content .brass,
+.WFRP4eLooting_editPreset .brass,
+.WFRP4eLooting-tables .dialog-content .brass,
+.WFRP4eLooting-generator .dialog-content .brass {
+	color: var(--brass);
+}
+.WFRP4eLooting-loot .dialog-content .silver,
+.WFRP4eLooting_editPreset .silver,
+.WFRP4eLooting-tables .dialog-content .silver,
+.WFRP4eLooting-generator .dialog-content .silver {
+	color: var(--silver);
+}
+.WFRP4eLooting-loot .dialog-content .gold,
+.WFRP4eLooting_editPreset .gold,
+.WFRP4eLooting-tables .dialog-content .gold,
+.WFRP4eLooting-generator .dialog-content .gold {
+	color: var(--gold);
+}
+
+
+
+.WFRP4eLooting_editPreset {
+	min-width: 850px;
+	max-width: 1000px;
+	resize: both;
+}
+.WFRP4eLooting_editPreset div.header {
+	display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 50px;
+}
+.WFRP4eLooting_editPreset div.header > .body {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    height: 100%;
+}
+.WFRP4eLooting_editPreset div.header > .body > *,
+.WFRP4eLooting_editPreset div.money > .body * {
+	text-align: center;
+}
+.WFRP4eLooting_editPreset div.header > .body > input {
+	width: 100%;
+}
+.WFRP4eLooting_editPreset div.header > textarea {
+	flex: 3;
+	resize: none;
+	min-height: 100%;
+}
+.WFRP4eLooting_editPreset div.money {
+    display: flex;
+    gap: 5px;
+    border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting_editPreset div.money > .body {
+	display: grid;
+    height: 70px;
+	grid-template:
+        'a h' 20px
+        'a v' 50px;
+}
+.WFRP4eLooting_editPreset div.money > .body > img {
+	max-height: 100%;
+    grid-area: a;
+	border-right: 2px solid var(--table-header-border-color);
+}
+.WFRP4eLooting_editPreset div.money > .body > div:first-of-type {
+	grid-area: h;
+    display: flex;
+	align-items: center;
+	gap: 5px;
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding: 0 3px;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type {
+	grid-area: v;
+    display: flex;
+	gap: 5px;
+	padding: 0 3px;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type div:has(> select) {
+    display: flex;
+    align-items: center;
+}
+.WFRP4eLooting_editPreset div.money > .body > div:last-of-type div:has(> select) > input {
+	text-align: right;
+}
+.WFRP4eLooting_editPreset div.tables {
+	border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting_editPreset div.tables .body {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	gap: 5px;
+	padding: 2px;
+}
+.WFRP4eLooting_editPreset div.tables > .body {
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding-left: 19.5px;
+}
+.WFRP4eLooting_editPreset ul:has(> li > div.body) {
+	margin: unset;
+}
+.WFRP4eLooting_editPreset div.tables > ul .body {
+	height: 50px;
+}
+.WFRP4eLooting_editPreset div.tables .body > .table {
+    display: flex;
+    gap: 5px;
+}
+.WFRP4eLooting_editPreset div.tables .body > .table > input {
+	text-align: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#chance) {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div > output {
+	display: block;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#diceCount) {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting_editPreset div.tables .body > div > input#diceCount {
+	text-align: right;
+}
+.WFRP4eLooting_editPreset div.tables .body > div:has(> input#diceCount) > span {
+	font-size: 14px;
+}
+.WFRP4eLooting_editPreset div.tables > .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding: 2px;
+}
+.WFRP4eLooting_editPreset div.tables > .buttons > button {
+	min-width: 15%;
+}
+.WFRP4eLooting_editPreset div.header:has(select#type > option.brass:checked) ~ div.tables select#table > option[data-type]:not([data-type="brass"]),
+.WFRP4eLooting_editPreset div.header:has(select#type > option.silver:checked) ~ div.tables select#table > option[data-type]:not([data-type="silver"]),
+.WFRP4eLooting_editPreset div.header:has(select#type > option.gold:checked) ~ div.tables select#table > option[data-type]:not([data-type="gold"]) {
+	display: none;
+}
+
+
+
+#WFRP4eLooting_Message:has(p[data-type="money"]):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'c p'
+        'i i';
+}
+#WFRP4eLooting_Message:not(:has(p[data-type="money"])):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'p p'
+        'i i';
+}
+#WFRP4eLooting_Message:has(p[data-type="money"]):not(:has(p[data-type="items"])) {
+    display: grid;
+    grid-template:
+        'c c'
+        'i i';
+}
+#WFRP4eLooting_Message p[data-type="nothing"] {
+	display: none;
+}
+#WFRP4eLooting_Message:not(:has(p[data-type="money"])):not(:has(p[data-type="items"])) p[data-type="nothing"] {
+	display: block;
+}
+#WFRP4eLooting_Message p {
+	text-align: center;
+}
+#WFRP4eLooting_Message a[data-action="clickCredit"] {
+    border: unset;
+    box-shadow: unset;
+    background: unset;
+    padding: unset;
+    font-weight: bold;
+}
+#WFRP4eLooting_Message ul {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-bottom: 5px;
+    border: 2px dashed var(--color-warm);
+    border-radius: 5px;
+	font-weight: bold;
+}
+
+
+
+.WFRP4eLooting-tables .dialog-content > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+	border: 2px dashed var(--color-cream);
+    border-radius: 4px;
+	padding: 3px;
+}
+.WFRP4eLooting-tables .dialog-content > div > button {
+    padding: 3px;
+    font-size: 10px;
+    font-weight: bold;
+	text-shadow:
+		1px 1px black,
+		-1px 1px black,
+		1px -1px black,
+		-1px -1px black;
+}
+.WFRP4eLooting-tables .dialog-content > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+
+.WFRP4eLooting-generator {
+    max-width: 750px;
+}
+.WFRP4eLooting-generator .dialog-content input {
+    text-align: center;
+}
+.WFRP4eLooting-generator .dialog-content > div.header {
+	display: flex;
+    gap: 5px;
+    height: 30px;
+	border: 2px var(--color-cream) dotted;
+    border-radius: 5px;
+    padding: 3px;
+}
+.WFRP4eLooting-generator .dialog-content > div.header > select {
+	height: 100%;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item {
+	display: flex;
+    flex-direction: column;
+    gap: 5px;
+	border: 2px var(--color-cream) dotted;
+    border-radius: 5px;
+    padding: 3px;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item > div,
+.WFRP4eLooting-generator .dialog-content > div.base_item > div > div {
+	display: flex;
+    gap: 5px;
+	align-items: center;
+    justify-content: space-between;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item span {
+	text-align: center;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item .money {
+    border: 1px dashed gold;
+    border-radius: 5px;
+	padding: 1px;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets {
+	display: flex;
+	gap: 10px;
+	border: 2px var(--color-cream) dotted;
+	border-radius: 5px;
+	padding: 5px;
+	flex-wrap: wrap;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label {
+	padding: 3px 5px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 3px var(--qualities_border), 0px 0px 10px inset var(--qualities);
+	transition: box-shadow 0.5s, color 0.5s;
+	font-style: italic;
+	cursor: var(--cursor-pointer);
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label:has(input:checked) {
+	box-shadow: 0px 0px 5px 3px var(--qualities_border), 0px 0px 10px 5px inset var(--qualities);
+	color: var(--gold);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label:hover,
+.WFRP4eLooting-generator .dialog-content > div.presets > label:has(input:checked):hover {
+	box-shadow: 0px 0px 10px 5px var(--qualities_border), 0px 0px 5px inset var(--qualities);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-tooltip li {
+	white-space: nowrap;
+}
+.WFRP4eLooting-tooltip li.qualities {
+	color: var(--qualities-green);
+}
+.WFRP4eLooting-tooltip li.flaws {
+	color: var(--qualities-red);
+}
+.WFRP4eLooting-generator .dialog-content > div.props {
+	display: none;
+	border: 2px var(--color-cream) dotted;
+	border-radius: 5px;
+	padding: 3px;
+	gap: 3px;
+	flex-wrap: wrap;
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span {
+	border-radius: 5px;
+	padding: 2px;
+	color: white;
+	font-style: italic;
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span.qualities {
+	box-shadow: 0px 0px 10px inset var(--qualities-green);
+	border: 1px dashed var(--qualities-green_border);
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span.flaws {
+	box-shadow: 0px 0px 10px inset var(--qualities-red);
+	border: 1px dashed var(--qualities-red_border);
+}
+.WFRP4eLooting-generator .dialog-content:has(> div.presets > label > input:checked) > div.props {
+	display: flex;
+}
+.WFRP4eLooting-generator .dialog-content > button {
+	display: none;
+}
+.WFRP4eLooting-generator .dialog-content:has(> div.presets > label > input:checked) > button {
+	display: block;
+}
