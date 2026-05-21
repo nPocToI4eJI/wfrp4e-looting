@@ -390,7 +390,7 @@ This module will help you optimize the process of creating unique loot.
   - [Custom Templates](#Custom-Looting-Templates)
 - [Item Generator](#Item-Generator)
   - [Custom Templates](#Custom-Generator-Templates)
-  - [Item Generator Scripts](#Item-Generator-Scripts-en)
+  - [Item Generator Scripts](#Item-Generator-Scripts)
 - [Settings](#Settings)
   - [Debug Mode](#Debug-Mode)
 - [Plans](#Plans)
