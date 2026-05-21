@@ -1,3 +1,17 @@
+# <p align="center">WFRP4e - Looting</p>
+<p align="center">
+  <a href="https://foundryvtt.com/packages/wfrp4e-looting" rel="nofollow"><img src="https://img.shields.io/badge/WFRP4e%20--%20Looting-FoundryVTT-orange?labelColor=darkred" alt="FoundryVTT"></a>
+  <a href="https://foundryvtt.com/" rel="nofollow"><img src="https://img.shields.io/badge/V13-Совместимо-darkgreen?labelColor=orange" alt="Совместимость"></a>
+  <a href="https://github.com/nPocToI4eJI/wfrp4e-looting/releases" rel="nofollow"><img src="https://img.shields.io/github/v/release/nPocToI4eJI/wfrp4e-looting?display_name=release&label=%D0%92%D0%B5%D1%80%D1%81%D0%B8%D1%8F&labelColor=darkgreen" alt="Последняя версия"></a>
+  <a href="https://github.com/nPocToI4eJI/wfrp4e-looting/releases/latest" rel="nofollow"><img src="https://img.shields.io/github/downloads/nPocToI4eJI/wfrp4e-looting/latest/wfrp4e-looting.zip?displayAssetName=false&label=%D0%A1%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9&labelColor=blue&color=darkgreen" alt="Скачивания"></a>
+  <a href="https://github.com/nPocToI4eJI/wfrp4e-looting/releases" rel="nofollow"><img src="https://img.shields.io/github/downloads/nPocToI4eJI/wfrp4e-looting/wfrp4e-looting.zip?displayAssetName=false&label=%D0%92%D1%81%D0%B5%D0%B3%D0%BE&labelColor=darkgreen&color=darkred" alt="Скачиваний всего"></a>
+</p>
+<p align="center">
+  <a href="https://discord.gg/tPrYvW7" rel="nofollow"><img src="https://img.shields.io/badge/Discord-black?logo=discord&logoColor=%235865F2" alt="Discord"></a>
+  <a href="https://www.youtube.com/@nPocTo_4eJI" rel="nofollow"><img src="https://img.shields.io/badge/Youtube-black?logo=youtube&logoColor=%23FF0000" alt="Youtube"></a>
+  <a href="https://boosty.to/npocto_4eji" rel="nofollow"><img src="https://img.shields.io/badge/Boosty-black?logo=boosty&logoColor=%23F15F2C" alt="Boosty"></a>
+</p>
+
 Этот модуль поможет Вам оптимизировать процесс создания уникального лута.
 <br>
 <details>
@@ -12,6 +26,7 @@
   - [Скрипты Генератора Предметов](#Скрипты-Генератора-Предметов)
 - [Настройки](#Настройки)
   - [Режим Отладки](#Режим-Отладки)
+- [Планы](#Планы)
 
 ## Мародёрство
 _Эта опция поможет Вам в создании лута по заранее заготовленным шаблонам._
@@ -326,7 +341,7 @@ _Этот предмет был снят с тела убитого, и толь
 #### Редактор Скриптов
 _Модуль поддерживает создание собственных скриптов._
 
-Доступ к Редактор Скриптов Генератора предметов можно получить через вкладку **Предметы** (в правой части экрана), кнопкой **Скрипты Генератора предметов**:
+Доступ к Редактору Скриптов Генератора предметов можно получить через вкладку **Предметы** (в правой части экрана), кнопкой **Скрипты Генератора предметов**:
 <p align="center"><img width="325" height="500" alt="Доступ к Скриптам Генератора предметов" src="https://github.com/user-attachments/assets/f10657b4-3580-4fea-b3c3-e67a19875411"/></p>
 
 Добавить собственные скрипты можно, используя кнопку "Добавить скрипт" в шапке окна:
@@ -355,5 +370,12 @@ _Модуль оборудован режимом отладки, использ
 
 <p align="center"><img width="575" height="400" alt="Интерфейс Меню Отладки" src="https://github.com/user-attachments/assets/260d56ce-cbf7-414f-9788-793336e7c670"/></p>
 
+## Планы
+_Дальнейшие планы по обновлению модуля._
+
+- [ ] Исправление ошибок.
+- [ ] Адаптация модуля под новые обновления Foundry VTT и системы WFRP4e.
+- [ ] Добавление новых шаблонов сообщества.
+- [ ] Свои предложения по улучшению модуля, шаблоны Мародёрства, Генератора предметов и пользовательские Скрипты можете присылать в <a href="https://discord.gg/tPrYvW7" rel="nofollow"><img src="https://img.shields.io/badge/Discord-black?logo=discord&logoColor=%235865F2" alt="Discord"></a>.
 
 </details>
