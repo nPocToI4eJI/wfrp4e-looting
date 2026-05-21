@@ -62,7 +62,7 @@
 			},
 			"itemsModifier": {
 				"Name": "Looting. Reduce item value by half",
-				"Hint": "If enabled, the monetary reward for found items will be halved after applying the \"Loot cost Modifier\".",
+				"Hint": "If enabled, the monetary reward for found items will be halved after applying the \"Looting. Loot cost Modifier\".",
 				"Tooltip": "The cost of the item has been reduced <b>by half</b> for a quick sale."
 			},
 			"editName": {
@@ -71,7 +71,7 @@
 			},
 			"hideQualities": {
 				"Name": "Generator. Hide qualities",
-				"Hint": "Hides the basic generator templates that contain only one quality.."
+				"Hint": "Hides the basic generator templates that contain only one quality."
 			},
 			"effectsItem": {
 				"Item": {

@@ -1128,7 +1128,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
 						console.debug(...debugMessage, "WFRP4eLootingLoot chatMessage item sell \"item\"");
 						console.debug(item);
 					};
-					if (takeMoney(item.price, actor, e.altKey)) {return};
+					if (takeMoney(item.price, actor, element.altKey)) {return};
 				} else if (elements.li.hasAttribute("data-item")) {
 					if (elements.li.dataset.item == "other") {
 						let choice = await ItemDialog.create(game.wfrp4e.looting.data.lootTables.filter(t => t.table.includes("Other-")).map((t, index) => (Object.assign(t, {name: t.title, value: t.table, id: index}))), 1, {text: game.i18n.localize("WFRP4E.Looting.Loot.Chat.Other"), title: game.i18n.localize("CONTROLS.CommonSelect"), defaultValue: "0"});
@@ -1150,7 +1150,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
 						console.debug(...debugMessage, "WFRP4eLootingLoot chatMessage item get \"item\"");
 						console.debug(item);
 					};
-					takeItem(item, actor, e.altKey);
+					takeItem(item, actor, element.altKey);
 				};
 				//Изменение самого сообщения
 				if (elements.ul.children.length == 1) {
@@ -1206,7 +1206,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
 						console.debug(...debugMessage, "WFRP4eLootingLoot chatMessage allItems sell \"item\"");
 						console.debug(item);
 					};
-					if(takeMoney(item.price, actor, e.altKey)) {return};
+					if(takeMoney(item.price, actor, element.altKey)) {return};
 				//При забирании
 				} else if (elements.a.hasAttribute("data-item")) {
 					for (let e of elements.ul.children) {
@@ -1240,7 +1240,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
 							console.debug(...debugMessage, "WFRP4eLootingLoot chatMessage allItems get \"item\"");
 							console.debug(item);
 						};
-						takeItem(item, actor, e.altKey);
+						takeItem(item, actor, element.altKey);
 					};
 				};
 				elements.ul.remove();
@@ -1271,7 +1271,7 @@ Hooks.on("renderChatMessage", (message, html, data) => {
 					console.debug(...debugMessage, "WFRP4eLootingLoot chatMessage allMoney \"item\"");
 					console.debug(item);
 				};
-				if (takeMoney(item.price, actor, e.altKey)) {return};
+				if (takeMoney(item.price, actor, element.altKey)) {return};
 				elements.p.remove();
 				complete();
 			});
@@ -6123,6 +6123,8 @@ Hooks.once("ready", async () => {
 	game.wfrp4e.looting.data.generator.presets.all = game.wfrp4e.looting.data.generator.presets.concat(game.settings.get("wfrp4e-looting", "customGenerator"));
 	game.wfrp4e.looting.data.generator.presets.all.forEach(p => {
 		p.types.value = [(p.types.trapping ? "trapping" : ""), (p.types.melee ? "melee" : ""), (p.types.range ? "range" : ""), (p.types.armour ? "armour" : "")].filter(Boolean).join(",");
+		p.qualities = p.qualities.filter(q => game.wfrp4e.utility.qualityList()[q.name]);
+		p.flaws = p.flaws.filter(f => game.wfrp4e.utility.flawList()[f.name]);
 		p.value = calcGeneratorPresetValue(p);
 		p.scripts.forEach(s => {
 			let script = game.wfrp4e.looting.data.generator.effects.all.find(e => e.id == s.id);
