@@ -1,0 +1,114 @@
+<div class="dialog-content standard-form">
+	<div class="header" data-id="{{preset.id}}">
+		<div class="body">
+			<input id="label" type="string" value="{{preset.label}}" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Dialog.Name'}}"{{#if (eq type "default")}} disabled{{/if}}>
+			<select id="color"{{#if (eq type "default")}} disabled{{/if}}>
+				<option {{#if (eq preset.color "blue")}}selected{{/if}} value="blue" class="blue">Blue</option>
+				<option {{#if (eq preset.color "cyan")}}selected{{/if}} value="cyan" class="cyan">Cyan</option>
+				<option {{#if (eq preset.color "goldenrod")}}selected{{/if}} value="goldenrod" class="goldenrod">Goldenrod</option>
+				<option {{#if (eq preset.color "gray")}}selected{{/if}} value="gray" class="gray">Gray</option>
+				<option {{#if (eq preset.color "green")}}selected{{/if}} value="green" class="green">Green</option>
+				<option {{#if (eq preset.color "khaki")}}selected{{/if}} value="khaki" class="khaki">Khaki</option>
+				<option {{#if (eq preset.color "olivedrab")}}selected{{/if}} value="olivedrab" class="olivedrab">Olivedrab</option>
+				<option {{#if (eq preset.color "orange")}}selected{{/if}} value="orange" class="orange">Orange</option>
+				<option {{#if (eq preset.color "orchid")}}selected{{/if}} value="orchid" class="orchid">Orchid</option>
+				<option {{#if (eq preset.color "red")}}selected{{/if}} value="red" class="red">Red</option>
+				<option {{#if (eq preset.color "salmon")}}selected{{/if}} value="salmon" class="salmon">Salmon</option>
+				<option {{#if (eq preset.color "slateblue")}}selected{{/if}} value="slateblue" class="slateblue">Slateblue</option>
+				<option {{#if (eq preset.color "turquoise")}}selected{{/if}} value="turquoise" class="turquoise">Turquoise</option>
+				<option {{#if (eq preset.color "violet")}}selected{{/if}} value="violet" class="violet">Violet</option>
+			</select>
+		</div>
+		<textarea id="hint"{{#if (eq type "default")}} disabled{{/if}}>{{preset.hint}}</textarea>
+	</div>
+	<div class="types" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Dialog.Types'}}">
+		<label data-id="trapping">{{localize 'Trapping'}}<input hidden type="checkbox" id="trapping" name="trapping"{{#if preset.types.trapping}} checked{{/if}}{{#if (eq type "default")}} disabled{{/if}}></label>
+		<label data-id="melee">{{localize 'Melee'}}<input hidden type="checkbox" id="melee" name="melee"{{#if preset.types.melee}} checked{{/if}}{{#if (eq type "default")}} disabled{{/if}}></label>
+		<label data-id="range">{{localize 'Ranged'}}<input hidden type="checkbox" id="range" name="range"{{#if preset.types.range}} checked{{/if}}{{#if (eq type "default")}} disabled{{/if}}></label>
+		<label data-id="armour">{{localize 'Armour'}}<input hidden type="checkbox" id="armour" name="armour"{{#if preset.types.armour}} checked{{/if}}{{#if (eq type "default")}} disabled{{/if}}></label>
+	</div>
+	<h5 id="value">{{localize 'WFRP4E.Looting.Generator.Preset.RatioOfProperties.Title'}}: <i>{{preset.value}}</i></h5>
+	<div class="props">
+		<div class="body">
+			<h5 style="position: sticky; top: 0;">{{localize 'Qualities'}}</h5>
+			{{#each preset.qualities}}
+			<div class="qualities">
+				<input id="chance" type="number" min="0" max="100" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Props.Chance'}}" value="{{this.chance}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<select id="prop" style="flex: 5;"{{#if (eq ../type "default")}} disabled{{/if}}>
+					{{#each ../params.qualities}}
+					<option {{#if (eq ../this.name @key)}}selected{{/if}} value="{{@key}}">{{this}}{{#if ../../debug}} [{{@key}}]{{/if}}</option>
+					{{/each}}
+				</select>
+				<input id="quantity" type="number" style="flex: 1;" data-tooltip="{{localize 'Quantity'}}" value="{{this.quantity}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<a class="button" data-action="removeProp" data-type="qualities" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Props.Remove' type=../params.props.qualities}}"{{#if (eq ../type "default")}} hidden{{/if}}><i class="fas fa-trash"></i></a>
+			</div>
+			{{/each}}
+			<a class="button" data-action="addProp" data-type="qualities"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus' style="color: var(--qualities-green);"></i> {{localize 'WFRP4E.Looting.Generator.Preset.Props.Add' type=params.props.qualities}}</a>
+		</div>
+		<div class="body">
+			<h5 style="position: sticky; top: 0;">{{localize 'Flaws'}}</h5>
+			{{#each preset.flaws}}
+			<div class="flaws">
+				<input id="chance" type="number" min="0" max="100" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Props.Chance'}}" value="{{this.chance}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<select id="prop" style="flex: 5;"{{#if (eq ../type "default")}} disabled{{/if}}>
+					{{#each ../params.flaws}}
+					<option {{#if (eq ../this.name @key)}}selected{{/if}} value="{{@key}}">{{this}}{{#if ../../debug}} [{{@key}}]{{/if}}</option>
+					{{/each}}
+				</select>
+				<input id="quantity" type="number" style="flex: 1;" data-tooltip="{{localize 'Quantity'}}" value="{{this.quantity}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<a class="button" data-action="removeProp" data-type="flaws" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Props.Remove' type=../params.props.flaws}}"{{#if (eq ../type "default")}} hidden{{/if}}><i class="fas fa-trash"></i></a>
+			</div>
+			{{/each}}
+			<a class="button" data-action="addProp" data-type="flaws"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus' style="color: var(--qualities-red);"></i> {{localize 'WFRP4E.Looting.Generator.Preset.Props.Add' type=params.props.flaws}}</a>
+		</div>
+	</div>
+	<h5>{{localize 'WFRP4E.Looting.Generator.Preset.Names.Label'}}</h5>
+	<div class="names" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Names.Info'}}">
+		<div class="body">
+			<h5 style="position: sticky; top: 0;">A</h5>
+			{{#each preset.names.a}}
+			<div class="a">
+				<input id="name.a" type="text" style="flex: 9;" value="{{this}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<a class="button" data-action="removeName" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Names.Remove'}}"{{#if (eq ../type "default")}} hidden{{/if}}><i class="fas fa-trash"></i></a>
+			</div>
+			{{/each}}
+			<a class="button" data-action="addName" data-type="a"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus'></i> {{localize 'WFRP4E.Looting.Generator.Preset.Names.Add'}}</a>
+		</div>
+		<div class="body">
+			<h5 style="position: sticky; top: 0;">B</h5>
+			{{#each preset.names.b}}
+			<div class="b">
+				<input id="name.b" type="text" style="flex: 9;" value="{{this}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<a class="button" data-action="removeName" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Names.Remove'}}"{{#if (eq ../type "default")}} hidden{{/if}}><i class="fas fa-trash"></i></a>
+			</div>
+			{{/each}}
+			<a class="button" data-action="addName" data-type="b"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus'></i> {{localize 'WFRP4E.Looting.Generator.Preset.Names.Add'}}</a>
+		</div>
+		<div class="body" style="width: 100%;">
+			<h5 style="position: sticky; top: 0;">C</h5>
+			{{#each preset.names.c}}
+			<div class="c">
+				<input id="name.c" type="text" style="flex: 9;" value="{{this}}"{{#if (eq ../type "default")}} disabled{{/if}}>
+				<a class="button" data-action="removeName" style="flex: 1;" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Preset.Names.Remove'}}"{{#if (eq ../type "default")}} hidden{{/if}}><i class="fas fa-trash"></i></a>
+			</div>
+			{{/each}}
+			<a class="button" data-action="addName" data-type="c"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus'></i> {{localize 'WFRP4E.Looting.Generator.Preset.Names.Add'}}</a>
+		</div>
+	</div>
+	<h5>{{localize 'WFRP4E.Looting.Generator.Scripts.Title'}}</h5>
+	<div class="scripts" data-tooltip="{{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Info'}}">
+		<div class="body">
+			{{#each preset.scripts}}
+			<a class="button" data-action="script" data-id="{{this.id}}"{{#if this.default}} data-type="default"{{/if}} data-chance="{{this.chance}}" data-tooltip="{{#if this.default}}{{this.hint}}<hr>{{/if}}{{#unless (eq ../type "default")}}{{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Hint.LMB'}}<br>{{/unless}}{{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Hint.Alt'}}{{#unless (eq ../type "default")}}<br>{{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Hint.RMB'}}{{/unless}}">{{this.name}}{{#unless (eq this.chance 100)}} [{{this.chance}}%]{{/unless}}{{#if ../debug}} [{{this.id}}]{{/if}}</a>
+			{{/each}}
+		</div>
+		<select id="script" style="flex: 1; text-align: center;"{{#if (eq type "default")}} hidden{{/if}}>
+			<option hidden disabled selected value="false">{{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Option'}}</option>
+			{{#each params.scripts}}
+			<option value="{{this.id}}"{{#if this.default}} title="{{this.hint}}"{{/if}}>{{this.name}}{{#if ../debug}} [{{this.id}}]{{/if}}</option>
+			{{/each}}
+		</select>
+		<a class="button" data-action="addScript" style="flex: 1;"{{#if (eq type "default")}} hidden{{/if}}><i class='fas fa-plus'></i> {{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Add'}}</a>
+		<a class="button" data-action="scriptsEditor" style="flex: 1;"><i class='fas fa-gear'></i> {{localize 'WFRP4E.Looting.Generator.Scripts.Dialog.Editor'}}</a>
+	</div>
+</div>
