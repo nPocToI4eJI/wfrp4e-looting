@@ -1,0 +1,92 @@
+{
+	"WFRP4E.Looting": {
+		"Name": "Looting",
+		"Settings": {
+			"importExport": {
+				"Name": "User Settings",
+				"Label": "Import / Export",
+				"Hint": "Allows you to import and export custom templates and scripts.",
+				"Action": {
+					"Title": "Select an action",
+					"Import": "Import",
+					"Export": "Export"
+				},
+				"Replace": {
+					"Title": "Replacement",
+					"Content": "Overwrite existing \"{type}\"?",
+					"customPresets": "Custom Looting Templates",
+					"customGenerator": "Custom Generator Templates",
+					"customEffects": "Custom Scripts",
+					"Hint": "<b>Да</b>: existing templates will be deleted.<br><b>No</b>: new templates will be added to existing ones."
+				},
+				"File": "Select the file with the user settings"
+			},
+			"debugMenu": {
+				"Name": "Debug menu",
+				"Label": "Open",
+				"Hint": "A tool for correcting module errors.",
+				"Dialog": {
+					"DebugMode": {
+						"Label": "Debugging mode",
+						"Content": "Debugging mode status:",
+						"Button": "Switch it",
+						"On": "On",
+						"Off": "Off"
+					},
+					"Reset": {
+						"Label": "Resetting user parameters",
+						"Content": "Delete custom templates if they cause errors..",
+						"Hint": "Before deleting, it is recommended to save the templates by exporting them to a file.",
+						"Looting": "Custom Looting Templates",
+						"Generator": "Custom Generator Templates",
+						"Scripts": "Custom Scripts",
+						"Notify": "{type} removed."
+					},
+					"Update": {
+						"Label": "Update Scripts",
+						"Content": "Update the item containing the Generator Scripts.",
+						"Hint": "Use it if you encounter errors when working with them.",
+						"Button": "Update",
+						"Notify": "The Generator Scripts have been updated. This does not apply to scripts in already created items."
+					}
+				}
+			},
+			"sellItems": {
+				"Name": "Looting. Allow a quick sale",
+				"Hint": "Allow players to immediately exchange the found items for coins.",
+				"Error": "The game master forbade the quick sale of items."
+			},
+			"modifier": {
+				"Name": "Looting. Loot cost Modifier",
+				"Hint": "An additional modifier that multiplies the final dice rolls for found coins and the cost of the items. For example, \"2\" will double the received coins, while \"0.5\" will halve them."
+			},
+			"itemsModifier": {
+				"Name": "Looting. Reduce item value by half",
+				"Hint": "If enabled, the monetary reward for found items will be halved after applying the \"Looting. Loot cost Modifier\".",
+				"Tooltip": "The cost of the item has been reduced <b>by half</b> for a quick sale."
+			},
+			"editName": {
+				"Name": "Generator. Editor for the name of the generated item",
+				"Hint": "If enabled, a window will appear when generating an item in which you can change its name."
+			},
+			"hideQualities": {
+				"Name": "Generator. Hide qualities",
+				"Hint": "Hides the basic generator templates that contain only one quality."
+			},
+			"hideEffects": {
+				"Name": "Generator. Hide Generator Scripts",
+				"Hint": "If enabled, the Item Generator Scripts in the finished items will not be visible to the players."
+			},
+			"effectsItem": {
+				"Item": {
+					"Name": "Looting Effects",
+					"Description": "This item is needed to store the effects of basic and custom templates.<br>You can move this item to any folder, rename or modify it, but it will be recreated when deleted."
+				}
+			},
+			"propsCompatibility": {
+				"Name": "Generator. Compatibility of props",
+				"Hint": "If enabled, when generating an item, the opposite qualities will be mutually exclusive. For example: if you simultaneously receive the qualities \"Fine\" and \"Ugly\", they will be excluded."
+			}
+		}
+	}
+}

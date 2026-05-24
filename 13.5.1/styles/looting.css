@@ -1,0 +1,592 @@
+.WFRP4eLooting,
+.WFRP4eLooting-tooltip {
+	--brass: #B87333;
+	--silver: #C0C0C0;
+	--gold: #FFD700;
+	--qualities-blue: blue;
+	--qualities-blue_border: darkblue;
+	--qualities-cyan: cyan;
+	--qualities-cyan_border: darkcyan;
+	--qualities-goldenrod: goldenrod;
+	--qualities-goldenrod_border: darkgoldenrod;
+	--qualities-gray: gray;
+	--qualities-gray_border: darkgray;
+	--qualities-green: green;
+	--qualities-green_border: darkgreen;
+	--qualities-khaki: khaki;
+	--qualities-khaki_border: darkkhaki;
+	--qualities-olivedrab: olivedrab;
+	--qualities-olivedrab_border: darkolivegreen;
+	--qualities-orange: orange;
+	--qualities-orange_border: darkorange;
+	--qualities-orchid: orchid;
+	--qualities-orchid_border: darkorchid;
+	--qualities-red: red;
+	--qualities-red_border: darkred;
+	--qualities-salmon: salmon;
+	--qualities-salmon_border: darksalmon;
+	--qualities-slateblue: slateblue;
+	--qualities-slateblue_border: darkslateblue;
+	--qualities-turquoise: turquoise;
+	--qualities-turquoise_border: darkturquoise;
+	--qualities-violet: violet;
+	--qualities-violet_border: darkviolet;
+}
+
+.WFRP4eLooting a.button {
+	--button-size: var(--input-height);
+	text-align: center;
+}
+
+
+
+.WFRP4eLooting-loot .dialog-content > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+	border: 2px dashed var(--color-cream);
+    border-radius: 4px;
+	padding: 3px;
+	position: relative;
+	margin-top: 10px;
+}
+.WFRP4eLooting-loot .dialog-content > div > h6 {
+    background: var(--color-warm);
+    border: 1px solid var(--color-cream);
+    border-radius: 4px;
+    padding: 1px;
+	position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -50%);
+}
+.WFRP4eLooting-loot .dialog-content > div > button {
+    padding: 3px;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow:
+		1px 1px black,
+		-1px 1px black,
+		1px -1px black,
+		-1px -1px black;
+}
+.WFRP4eLooting-loot .dialog-content > div > button.add {
+	background: var(--color-level-info-bg);
+}
+.WFRP4eLooting-loot .dialog-content .brass,
+.WFRP4eLooting-editPreset select#type:has(option.brass:checked),
+.WFRP4eLooting-editPreset option.brass,
+.WFRP4eLooting-tables .dialog-content .brass,
+.WFRP4eLooting-generator .dialog-content .brass {
+	color: var(--brass);
+}
+.WFRP4eLooting-loot .dialog-content .silver,
+.WFRP4eLooting-editPreset select#type:has(option.silver:checked),
+.WFRP4eLooting-editPreset option.silver,
+.WFRP4eLooting-tables .dialog-content .silver,
+.WFRP4eLooting-generator .dialog-content .silver {
+	color: var(--silver);
+}
+.WFRP4eLooting-loot .dialog-content .gold,
+.WFRP4eLooting-editPreset select#type:has(option.gold:checked),
+.WFRP4eLooting-editPreset option.gold,
+.WFRP4eLooting-tables .dialog-content .gold,
+.WFRP4eLooting-generator .dialog-content .gold {
+	color: var(--gold);
+}
+.WFRP4eLooting-editPreset select#color:has(option.blue:checked) {box-shadow: 0px 0px 10px 3px darkblue, 0px 0px 10px inset blue;}
+.WFRP4eLooting-editPreset select#color > option.blue {color: blue;}
+.WFRP4eLooting-editPreset select#color:has(option.cyan:checked) {box-shadow: 0px 0px 10px 3px darkcyan, 0px 0px 10px inset cyan;}
+.WFRP4eLooting-editPreset select#color > option.cyan {color: cyan;}
+.WFRP4eLooting-editPreset select#color:has(option.goldenrod:checked) {box-shadow: 0px 0px 10px 3px darkgoldenrod, 0px 0px 10px inset goldenrod;}
+.WFRP4eLooting-editPreset select#color > option.goldenrod {color: goldenrod;}
+.WFRP4eLooting-editPreset select#color:has(option.gray:checked) {box-shadow: 0px 0px 10px 3px darkgray, 0px 0px 10px inset gray;}
+.WFRP4eLooting-editPreset select#color > option.gray {color: gray;}
+.WFRP4eLooting-editPreset select#color:has(option.green:checked) {box-shadow: 0px 0px 10px 3px darkgreen, 0px 0px 10px inset green;}
+.WFRP4eLooting-editPreset select#color > option.green {color: green;}
+.WFRP4eLooting-editPreset select#color:has(option.khaki:checked) {box-shadow: 0px 0px 10px 3px darkkhaki, 0px 0px 10px inset khaki;}
+.WFRP4eLooting-editPreset select#color > option.khaki {color: khaki;}
+.WFRP4eLooting-editPreset select#color:has(option.olivedrab:checked) {box-shadow: 0px 0px 10px 3px darkolivegreen, 0px 0px 10px inset olivedrab;}
+.WFRP4eLooting-editPreset select#color > option.olivedrab {color: olivedrab;}
+.WFRP4eLooting-editPreset select#color:has(option.orange:checked) {box-shadow: 0px 0px 10px 3px darkorange, 0px 0px 10px inset orange;}
+.WFRP4eLooting-editPreset select#color > option.orange {color: orange;}
+.WFRP4eLooting-editPreset select#color:has(option.orchid:checked) {box-shadow: 0px 0px 10px 3px darkorchid, 0px 0px 10px inset orchid;}
+.WFRP4eLooting-editPreset select#color > option.orchid {color: orchid;}
+.WFRP4eLooting-editPreset select#color:has(option.red:checked) {box-shadow: 0px 0px 10px 3px darkred, 0px 0px 10px inset red;}
+.WFRP4eLooting-editPreset select#color > option.red {color: red;}
+.WFRP4eLooting-editPreset select#color:has(option.salmon:checked) {box-shadow: 0px 0px 10px 3px darksalmon, 0px 0px 10px inset salmon;}
+.WFRP4eLooting-editPreset select#color > option.salmon {color: salmon;}
+.WFRP4eLooting-editPreset select#color:has(option.slateblue:checked) {box-shadow: 0px 0px 10px 3px darkslateblue, 0px 0px 10px inset slateblue;}
+.WFRP4eLooting-editPreset select#color > option.slateblue {color: slateblue;}
+.WFRP4eLooting-editPreset select#color:has(option.turquoise:checked) {box-shadow: 0px 0px 10px 3px darkturquoise, 0px 0px 10px inset turquoise;}
+.WFRP4eLooting-editPreset select#color > option.turquoise {color: turquoise;}
+.WFRP4eLooting-editPreset select#color:has(option.violet:checked) {box-shadow: 0px 0px 10px 3px darkviolet, 0px 0px 10px inset violet;}
+.WFRP4eLooting-editPreset select#color > option.violet {color: violet;}
+
+
+.WFRP4eLooting-editPreset {
+	min-width: 850px;
+	max-width: 1000px;
+	resize: both;
+}
+.WFRP4eLooting-editPreset .window-content {
+	overflow-y: auto;
+}
+.WFRP4eLooting-editPreset h5 {
+	text-align: center;
+	text-shadow: 
+		-2px -2px 0 black,
+		2px -2px 0 black,
+		-2px  2px 0 black,
+		2px  2px 0 black;
+}
+.WFRP4eLooting-editPreset div.header {
+	display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 50px;
+}
+.WFRP4eLooting-editPreset div.header > .body {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+    height: 100%;
+}
+.WFRP4eLooting-editPreset div.header > .body select {
+	color: var(--color-text-primary);
+}
+.WFRP4eLooting-editPreset div.header > .body > *,
+.WFRP4eLooting-editPreset div.money > .body * {
+	text-align: center;
+}
+.WFRP4eLooting-editPreset div.header > .body > input {
+	width: 100%;
+}
+.WFRP4eLooting-editPreset div.header > textarea {
+	flex: 3;
+	resize: none;
+	min-height: 100%;
+}
+.WFRP4eLooting-editPreset div.types {
+	display: flex;
+	gap: 5px;
+	border: 2px dotted var(--content-link-border-color);
+	border-radius: 5px;
+	justify-content: space-evenly;
+	padding: 5px;
+}
+.WFRP4eLooting-editPreset div.types > label {
+	padding: 3px 5px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 3px var(--color-form-border), 0px 0px 10px inset var(--color-form-label);
+	transition: box-shadow 0.5s, color 0.5s;
+	font-style: italic;
+	cursor: var(--cursor-pointer);
+}
+.WFRP4eLooting-editPreset div.types > label:has(input:checked) {
+	box-shadow: 0px 0px 5px 3px var(--color-form-border), 0px 0px 10px 5px inset var(--color-form-label);
+	color: var(--gold);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-editPreset div.types > label:not(:has(input:disabled)):hover,
+.WFRP4eLooting-editPreset div.types > label:has(input:checked):not(:has(input:disabled)):hover {
+	box-shadow: 0px 0px 10px 5px var(--color-form-border), 0px 0px 5px inset var(--color-form-label);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-editPreset div.money {
+    display: flex;
+    gap: 5px;
+    border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting-editPreset div.money > .body {
+	display: grid;
+    height: 70px;
+	flex: 1;
+	grid-template:
+        'a h' 20px
+        'a v' 50px;
+}
+.WFRP4eLooting-editPreset div.money > .body > img {
+	max-height: 100%;
+    grid-area: a;
+	border-right: 2px solid var(--table-header-border-color);
+}
+.WFRP4eLooting-editPreset div.money > .body > div:first-of-type {
+	grid-area: h;
+    display: flex;
+	align-items: center;
+	gap: 5px;
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding: 0 3px;
+}
+.WFRP4eLooting-editPreset div.money > .body > div:last-of-type {
+	grid-area: v;
+    display: flex;
+	gap: 5px;
+	padding: 0 3px;
+}
+.WFRP4eLooting-editPreset div.money > .body > div:last-of-type div:has(> select) {
+    display: flex;
+    align-items: center;
+}
+.WFRP4eLooting-editPreset div.money > .body > div:last-of-type div:has(> select) > input {
+	text-align: right;
+}
+.WFRP4eLooting-editPreset div.tables {
+	border: 2px dotted var(--content-link-border-color);
+    border-radius: 5px;
+}
+.WFRP4eLooting-editPreset div.tables .body {
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	text-align: center;
+	gap: 5px;
+	padding: 2px;
+}
+.WFRP4eLooting-editPreset div.tables > .body {
+	border-bottom: 2px solid var(--table-header-border-color);
+    font-size: 14px;
+	padding-left: 19.5px;
+}
+.WFRP4eLooting-editPreset ul:has(> li > div.body) {
+	margin: unset;
+}
+.WFRP4eLooting-editPreset div.tables > ul .body {
+	height: 50px;
+}
+.WFRP4eLooting-editPreset div.tables .body > .table {
+    display: flex;
+    gap: 5px;
+}
+.WFRP4eLooting-editPreset div.tables .body > .table > input {
+	text-align: center;
+}
+.WFRP4eLooting-editPreset div.tables .body > div:has(> input#chance) {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting-editPreset div.tables .body > div > output {
+	display: block;
+}
+.WFRP4eLooting-editPreset div.tables .body > div:has(> input#diceCount) {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.WFRP4eLooting-editPreset div.tables .body > div > input#diceCount {
+	text-align: right;
+}
+.WFRP4eLooting-editPreset div.tables .body > div:has(> input#diceCount) > span {
+	font-size: 14px;
+}
+.WFRP4eLooting-editPreset div.tables > .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding: 2px;
+}
+.WFRP4eLooting-editPreset div.tables > .buttons > button {
+	min-width: 15%;
+}
+.WFRP4eLooting-editPreset div.header:has(select#type > option.brass:checked) ~ div.tables select#table > option[data-type]:not([data-type="brass"]),
+.WFRP4eLooting-editPreset div.header:has(select#type > option.silver:checked) ~ div.tables select#table > option[data-type]:not([data-type="silver"]),
+.WFRP4eLooting-editPreset div.header:has(select#type > option.gold:checked) ~ div.tables select#table > option[data-type]:not([data-type="gold"]) {
+	display: none;
+}
+.WFRP4eLooting-editPreset div.props {
+	display: flex;
+	gap: 5px;
+}
+.WFRP4eLooting-editPreset div.props > .body {
+	display: flex;
+	gap: 5px;
+	border: 2px dotted var(--content-link-border-color);
+	border-radius: 5px;
+	flex-direction: column;
+	flex: 1;
+	padding: 5px;
+	max-height: 250px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.WFRP4eLooting-editPreset div.props > .body > div {
+	display: flex;
+	gap: 5px;
+	border-radius: 5px;
+	padding: 3px;
+}
+.WFRP4eLooting-editPreset div.props > .body > div > *,
+.WFRP4eLooting-editPreset div.names > .body > div > * {
+	text-align: center;
+}
+.WFRP4eLooting-editPreset div.props > .body > .qualities {
+	border: 2px dashed var(--qualities-green_border);
+}
+.WFRP4eLooting-editPreset div.props > .body > .flaws {
+	border: 2px dashed var(--qualities-red_border);
+}
+.WFRP4eLooting-editPreset div.props > .body > .scripts {
+	border: 2px dashed var(--qualities-cyan_border);
+}
+.WFRP4eLooting-editPreset div.names {
+	display: flex;
+	gap: 5px;
+	border: 2px dotted var(--content-link-border-color);
+	border-radius: 5px;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+.WFRP4eLooting-editPreset div.names > .body {
+	display: flex;
+	gap: 5px;
+	border: 2px dashed var(--content-link-border-color);
+	border-radius: 5px;
+	flex-direction: column;
+	width: calc(50% - 5px / 2);
+	padding: 5px;
+	max-height: 250px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.WFRP4eLooting-editPreset div.names > .body > div {
+	display: flex;
+	gap: 5px;
+	border-radius: 5px;
+	padding: 3px;
+}
+.WFRP4eLooting-editPreset div.scripts {
+	display: flex;
+	gap: 5px;
+	border: 2px dotted var(--content-link-border-color);
+	border-radius: 5px;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+.WFRP4eLooting-editPreset div.scripts > .body {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	border: 2px dashed var(--content-link-border-color);
+	border-radius: 5px;
+	padding: 5px;
+}
+.WFRP4eLooting-editPreset div.scripts > .body:not(:has(> *)) {
+	display: none;
+}
+
+
+
+#WFRP4eLooting-chat:has(p[data-type="money"]):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'c p'
+        'i i';
+}
+#WFRP4eLooting-chat:not(:has(p[data-type="money"])):has(p[data-type="items"]) {
+    display: grid;
+    grid-template:
+        'p p'
+        'i i';
+}
+#WFRP4eLooting-chat:has(p[data-type="money"]):not(:has(p[data-type="items"])) {
+    display: grid;
+    grid-template:
+        'c c'
+        'i i';
+}
+#WFRP4eLooting-chat p[data-type="nothing"] {
+	display: none;
+}
+#WFRP4eLooting-chat:not(:has(p[data-type="money"])):not(:has(p[data-type="items"])) p[data-type="nothing"] {
+	display: block;
+}
+#WFRP4eLooting-chat p {
+	text-align: center;
+}
+#WFRP4eLooting-chat a[data-action="clickCredit"] {
+    border: unset;
+    box-shadow: unset;
+    background: unset;
+    padding: unset;
+    font-weight: bold;
+}
+#WFRP4eLooting-chat ul {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-bottom: 5px;
+    border: 2px dashed var(--color-warm);
+    border-radius: 5px;
+	font-weight: bold;
+}
+
+
+
+.WFRP4eLooting-tables .dialog-content > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+	border: 2px dashed var(--color-cream);
+    border-radius: 4px;
+	padding: 3px;
+}
+.WFRP4eLooting-tables .dialog-content > div > button {
+    padding: 3px;
+    font-size: 10px;
+    font-weight: bold;
+	text-shadow:
+		1px 1px black,
+		-1px 1px black,
+		1px -1px black,
+		-1px -1px black;
+}
+.WFRP4eLooting-tables .dialog-content > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+
+.WFRP4eLooting-generator {
+    max-width: 750px;
+}
+.WFRP4eLooting-generator .dialog-content input {
+    text-align: center;
+}
+.WFRP4eLooting-generator .dialog-content > div.header {
+	display: flex;
+    gap: 5px;
+    height: 30px;
+	border: 2px var(--color-cream) dotted;
+    border-radius: 5px;
+    padding: 3px;
+}
+.WFRP4eLooting-generator .dialog-content > div.header > select {
+	height: 100%;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item {
+	display: flex;
+    flex-direction: column;
+    gap: 5px;
+	border: 2px var(--color-cream) dotted;
+    border-radius: 5px;
+    padding: 3px;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item > div,
+.WFRP4eLooting-generator .dialog-content > div.base_item > div > div {
+	display: flex;
+    gap: 5px;
+	align-items: center;
+    justify-content: space-between;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item span {
+	text-align: center;
+}
+.WFRP4eLooting-generator .dialog-content > div.base_item .money {
+    border: 1px dashed gold;
+    border-radius: 5px;
+	padding: 1px;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets {
+	display: flex;
+	gap: 10px;
+	border: 2px var(--color-cream) dotted;
+	border-radius: 5px;
+	padding: 5px;
+	flex-wrap: wrap;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label {
+	padding: 3px 5px;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 3px var(--qualities_border), 0px 0px 10px inset var(--qualities);
+	transition: box-shadow 0.5s, color 0.5s;
+	font-style: italic;
+	cursor: var(--cursor-pointer);
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label[data-basequality="true"] {
+	display: var(--baseQuality);
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label:has(input:checked) {
+	box-shadow: 0px 0px 5px 3px var(--qualities_border), 0px 0px 10px 5px inset var(--qualities);
+	color: var(--gold);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-generator .dialog-content > div.presets > label:hover,
+.WFRP4eLooting-generator .dialog-content > div.presets > label:has(input:checked):hover {
+	box-shadow: 0px 0px 10px 5px var(--qualities_border), 0px 0px 5px inset var(--qualities);
+	transition: box-shadow 0.5s, color 0.5s;
+}
+.WFRP4eLooting-tooltip li.qualities {
+	color: var(--qualities-green);
+}
+.WFRP4eLooting-tooltip li.flaws {
+	color: var(--qualities-red);
+}
+.WFRP4eLooting-tooltip li.scripts {
+	color: var(--qualities-cyan);
+}
+.WFRP4eLooting-tooltip hr + hr {
+	display: none;
+}
+.WFRP4eLooting-generator .dialog-content > div.props {
+	display: none;
+	border: 2px var(--color-cream) dotted;
+	border-radius: 5px;
+	padding: 3px;
+	gap: 3px;
+	flex-wrap: wrap;
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span {
+	border-radius: 5px;
+	padding: 2px;
+	color: white;
+	font-style: italic;
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span.qualities {
+	box-shadow: 0px 0px 10px inset var(--qualities-green);
+	border: 1px dashed var(--qualities-green_border);
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span.flaws {
+	box-shadow: 0px 0px 10px inset var(--qualities-red);
+	border: 1px dashed var(--qualities-red_border);
+}
+.WFRP4eLooting-generator .dialog-content > div.props > span.scripts {
+	box-shadow: 0px 0px 10px inset var(--qualities-cyan);
+	border: 1px dashed var(--qualities-cyan_border);
+}
+.WFRP4eLooting-generator .dialog-content:has(> div.presets > label > input:checked) > div.props {
+	display: flex;
+}
+.WFRP4eLooting-generator .dialog-content > button {
+	display: none;
+}
+.WFRP4eLooting-generator .dialog-content:has(> div.presets > label > input:checked) > button {
+	display: block;
+}
+
+
+.WFRP4eLooting-debug section.window-content {
+	gap: 3px;
+}
+.WFRP4eLooting-debug section.window-content > div {
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 3px;
+	padding: 2px;
+	border: 1px dashed black;
+	text-align: center;
+	border-radius: 5px;
+}
+.WFRP4eLooting-debug h5 {
+    text-align: center;
+}
