@@ -1,0 +1,35 @@
+<h3>{{item}}</h3>
+<h5>{{localize 'Price'}}</h5>
+<div class="price">
+	{{#unless (eq price.default.gc 0)}}<b style="margin: 0 1px;">{{price.default.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}
+	{{#unless (eq price.default.ss 0)}}<b style="margin: 0 1px;">{{price.default.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}
+	{{#unless (eq price.default.bp 0)}}<b style="margin: 0 1px;">{{price.default.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}
+	<i class="fas fa-arrow-right" style="color: {{#if price.value}}var(--qualities-green){{else}}var(--qualities-red){{/if}};"></i>
+	{{#unless (eq price.new.gc 0)}}<b style="margin: 0 1px;">{{price.new.gc}} {{localize 'MARKET.Abbrev.GC'}}</b>{{/unless}}
+	{{#unless (eq price.new.ss 0)}}<b style="margin: 0 1px;">{{price.new.ss}} {{localize 'MARKET.Abbrev.SS'}}</b>{{/unless}}
+	{{#unless (eq price.new.bp 0)}}<b style="margin: 0 1px;">{{price.new.bp}} {{localize 'MARKET.Abbrev.BP'}}</b>{{/unless}}
+</div>
+<h5>{{localize 'Qualities'}}</h5>
+<ul class="qualities">
+	{{#each qualities.add}}
+	<li>{{this}}</li>
+	{{/each}}
+	{{#each qualities.remove}}
+	<li class="false">{{this}}</li>
+	{{/each}}
+</ul>
+<h5>{{localize 'Flaws'}}</h5>
+<ul class="flaws">
+	{{#each flaws.add}}
+	<li>{{this}}</li>
+	{{/each}}
+	{{#each flaws.remove}}
+	<li class="false">{{this}}</li>
+	{{/each}}
+</ul>
+<h5>{{localize 'WFRP4E.Looting.Generator.Scripts.Title'}}</h5>
+<ul class="scripts">
+	{{#each scripts}}
+	<li>{{this}}</li>
+	{{/each}}
+</ul>

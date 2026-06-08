@@ -1,0 +1,15 @@
+<div class="dialog-content standard-form">
+	<div data-type="default">
+		<h6>{{localize 'WFRP4E.Looting.Loot.Dialog.Default'}}</h3>
+		{{#each params.default}}
+		<button type="button" class="{{this.type}}" data-action="clickPreset" data-type="default" data-id="{{this.id}}" data-tooltip="{{this.hint}}<hr>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.LMB'}}<br>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.Alt'}}<br>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.Ctrl'}}">{{this.name}}{{#if ../debug}} [{{this.id}}]{{/if}}</button>
+		{{/each}}
+	</div>
+	<div data-type="custom">
+		<h6>{{localize 'WFRP4E.Looting.Loot.Dialog.Custom'}}</h3>
+		{{#each params.custom}}
+		<button type="button" class="{{this.type}}" data-action="clickPreset" data-type="custom" data-id="{{this.id}}" data-tooltip="{{this.hint}}<hr>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.LMB'}}<br>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.Alt'}}<br>{{localize 'WFRP4E.Looting.Loot.Dialog.Hint.Ctrl'}}">{{this.name}}{{#if ../debug}} [{{this.id}}]{{/if}}</button>
+		{{/each}}
+		<button type="button" class="add" data-action="clickPreset" data-type="custom" data-tooltip="{{localize 'WFRP4E.Looting.Loot.Dialog.Add'}}"><i class='fas fa-plus'></i></button>
+	</div>
+</div>

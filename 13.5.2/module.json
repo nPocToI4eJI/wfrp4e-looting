@@ -1,0 +1,55 @@
+{
+	"id": "wfrp4e-looting",
+	"title": "WFRP4e - Looting",
+	"description": "<p>Этот модуль поможет Вам оптимизировать процесс создания уникального лута.</p>",
+	"version": "13.5.2",
+	"compatibility": {
+		"minimum": "13",
+		"verified": "13.351"
+	},
+	"relationships": {
+		"systems": [
+			{
+				"id": "wfrp4e",
+				"type": "system",
+				"manifest": "https://github.com/moo-man/WFRP4e-FoundryVTT/releases/latest/download/system.json",
+				"compatibility": {
+					"minimum": "9",
+					"verified": "9.3.2"
+				}
+			}
+		],
+		"requires": [
+			{
+				"id": "socketlib",
+				"type": "module",
+				"compatibility": {}
+			}
+		]
+	},
+	"socket": true,
+	"authors": [
+		{
+			"name": "nPocTo_4eJI",
+			"url": "https://www.youtube.com/@nPocTo_4eJI",
+			"discord": "npocto_4eji"
+		}
+	],
+	"languages": [
+		{"lang": "en", "name": "English", "path": "./lang/en.json"},
+		{"lang": "en", "name": "English", "path": "./lang/enGenerator.json"},
+		{"lang": "en", "name": "English", "path": "./lang/enLoot.json"},
+		{"lang": "ru", "name": "Russian", "path": "./lang/ru.json"},
+		{"lang": "ru", "name": "Russian", "path": "./lang/ruGenerator.json"},
+		{"lang": "ru", "name": "Russian", "path": "./lang/ruLoot.json"}
+	],
+	"esmodules": [
+		"/looting.js"
+	],
+	"styles": [
+		"styles/looting.css"
+	],
+	"url": "https://github.com/nPocToI4eJI/wfrp4e-looting",
+	"manifest": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.5.2/module.json",
+	"download": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.5.2/wfrp4e-looting.zip"
+}
