@@ -2627,24 +2627,27 @@ Hooks.on("renderItemSheetV2", (event, html) => {
 			button.addEventListener("click", (element) => {addNewScript()});
 			html.querySelector("header.window-header > h1.window-title").insertAdjacentElement("afterend", button);
 		};
-	} else if (!event.item.inCompendium && game.user.isGM) {
-		//Добавление кнопки "Добавить скрипт" в шапку эффектов
-		let button = addGeneratorScript(event.item, html);
-		//Сокрытие скриптов генератора
-		html.querySelectorAll("section[data-tab=\"effects\"] .list-content > div").forEach(e => {
-			let effect = fromUuidSync(e.dataset.uuid);
-			if (effect.flags.looting?.id && !game.user.isGM && game.settings.get("wfrp4e-looting", "hideEffects")) {e.hidden = true};
-		});
-		//Добавление списка скриптов
-		let scripts = [];
-		if (event.item.flags.looting?.scripts?.length) {
-			event.item.flags.looting.scripts.forEach(e => {
-				let effect = game.wfrp4e.looting.data.generator.effects.all.find(s => s.id == e);
-				if (effect.default) {scripts.push(game.i18n.localize(`WFRP4E.Looting.Generator.Lists.Scripts.${e}.Label`))}
-				else {scripts.push(effect.name)};
+	} else if (!event.item.inCompendium) {
+		if (game.user.isGM) {
+			//Добавление кнопки "Добавить скрипт" в шапку эффектов
+			let button = addGeneratorScript(event.item, html);
+			//Добавление списка скриптов
+			let scripts = [];
+			if (event.item.flags.looting?.scripts?.length) {
+				event.item.flags.looting.scripts.forEach(e => {
+					let effect = game.wfrp4e.looting.data.generator.effects.all.find(s => s.id == e);
+					if (effect.default) {scripts.push(game.i18n.localize(`WFRP4E.Looting.Generator.Lists.Scripts.${e}.Label`))}
+					else {scripts.push(effect.name)};
+				});
+			} else {scripts.push(game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.Empty"))};
+			button.dataset.tooltip = "<strong>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.Tooltip") + ": </strong><i>" + scripts.join(", ") + "</i>.<hr>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.LMB") + "<br>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.RMB");
+		} else {
+			//Сокрытие скриптов генератора
+			html.querySelectorAll("section[data-tab=\"effects\"] .list-content > div").forEach(e => {
+				let effect = fromUuidSync(e.dataset.uuid);
+				if (effect.flags.looting?.id && game.settings.get("wfrp4e-looting", "hideEffects")) {e.hidden = true};
 			});
-		} else {scripts.push(game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.Empty"))};
-		button.dataset.tooltip = "<strong>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.Tooltip") + ": </strong><i>" + scripts.join(", ") + "</i>.<hr>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.LMB") + "<br>" + game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Item.RMB");
+		};
 	};
 });
 
