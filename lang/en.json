@@ -1,0 +1,86 @@
+{
+	"WFRP4E.Looting": {
+		"Name": "Looting",
+		"Settings": {
+			"importExport": {
+				"Name": "User Settings",
+				"Label": "Import / Export",
+				"Hint": "Allows you to import and export custom templates and scripts.",
+				"Action": {
+					"Title": "Select an action",
+					"Import": "Import",
+					"Export": "Export"
+				},
+				"Replace": {
+					"Title": "Replacement",
+					"Content": "Overwrite existing \"{type}\"?",
+					"customPresets": "Custom Looting Templates",
+					"customGenerator": "Custom Generator Templates",
+					"customEffects": "Custom Scripts",
+					"Hint": "<b>Yes</b>: existing templates will be deleted.<br><b>No</b>: new templates will be added to existing ones."
+				},
+				"File": "Select the file with the user settings",
+				"Error": "Failed to read the settings file. Make sure you selected a valid export file.",
+				"Complete": "User settings imported successfully."
+			},
+			"debugMenu": {
+				"Dialog": {
+					"Reset": {
+						"Content": "Delete custom templates if they cause errors.",
+						"Hint": "Before deleting, it is recommended to save the templates by exporting them to a file.",
+						"Looting": "Custom Looting Templates",
+						"Generator": "Custom Generator Templates",
+						"Scripts": "Custom Scripts",
+						"Notify": "{type} removed.",
+						"Confirm": "Are you sure you want to delete \"{type}\"?"
+					},
+					"Update": {
+						"Label": "Update Scripts",
+						"Hint": "Use it if you encounter errors when working with them.",
+						"Notify": "The Generator Scripts have been updated. This does not apply to scripts in already created items."
+					}
+				}
+			},
+			"modifier": {
+				"Name": "Loot cost modifier",
+				"Hint": "An additional modifier that multiplies the final rolls for found coins and item values.\nFor example: \"2\" will double the coins received, while \"0.5\" will halve them."
+			},
+			"sellItems": {
+				"Name": "Quick sale",
+				"Hint": "Enabled: players can either take found items or exchange them for coins.\nDisabled: players can only take found items.",
+				"Error": "The Game Master has disabled quick sale of items."
+			},
+			"itemsModifier": {
+				"Name": "Halve item value",
+				"Hint": "Enabled: item value during quick sale is halved.\nDisabled: item value during quick sale remains unchanged.",
+				"Tooltip": "The cost of the item has been reduced <b>by half</b> for a quick sale."
+			},
+			"tokenLootButton": {
+				"Name": "Token looting",
+				"Hint": "Enabled: hovering over a dead token on the canvas displays a button for quick looting.\nDisabled: quick token looting is disabled."
+			},
+			"editName": {
+				"Name": "Name editor",
+				"Hint": "Enabled: a window will appear when generating an item allowing you to change its name.\nDisabled: the generated item's name can be edited after creation."
+			},
+			"hideQualities": {
+				"Name": "Hide qualities",
+				"Hint": "Enabled: Item Generator templates containing only a single quality are hidden.\nDisabled: Item Generator templates containing only a single quality are displayed."
+			},
+			"hideEffects": {
+				"Name": "Hide Generator Scripts",
+				"Hint": "Enabled: Item Generator scripts are hidden from players. Useful for cursed items.\nDisabled: Item Generator scripts are visible to players."
+			},
+			"effectsItem": {
+				"Item": {
+					"Name": "Looting Effects",
+					"Description": "This item is needed to store the effects of basic and custom templates.<br>You can move this item to any folder, rename or modify it, but it will be recreated when deleted."
+				}
+			},
+			"propsCompatibility": {
+				"Name": "Property compatibility",
+				"Hint": "Enabled: mutually exclusive properties are removed during Item Generation.\nDisabled: all rolled properties are added during Item Generation.\nExamples of mutually exclusive properties: \"Fine\" and \"Ugly\", \"Fast\" and \"Slow\"."
+			}
+		}
+	}
+}
