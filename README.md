@@ -196,3 +196,178 @@
 * **[WFRP4e - Tools](https://github.com/nPocToI4eJI/wfrp4e-tools)** *(обязателен)* - базовый модуль инструментов, улучшений и исправлений для системы **Warhammer Fantasy Roleplay 4th Edition** в Foundry VTT.
 * **[WFRP4e - Assistant](https://github.com/nPocToI4eJI/wfrp4e-assistant)** - этот модуль позволит Мастеру разнообразить НИП и их отыгрыш с помощью встроенных инструментов автоматизации.
 * **[WFRP4e - Sounds](https://github.com/nPocToI4eJI/wfrp4e-sounds)** - этот модуль содержит звуковые файлы, адаптированные для звуковой системы `WFRP4e - Tools`.
+
+---
+
+<a id="-english"></a>
+
+**WFRP4e - Looting** is a loot generation, quick corpse-looting, and unique item creation module for **Warhammer Fantasy Roleplay 4th Edition** on Foundry VTT. It helps the GM roll balanced loot in one click using customizable presets, lets players loot defeated tokens directly on the canvas, and allows crafting unique weapons, armour, and trappings with properties and special effects.
+
+> [!IMPORTANT]
+> This module **requires** the core **[WFRP4e - Tools](https://github.com/nPocToI4eJI/wfrp4e-tools)** module to be installed and enabled.
+
+### 📋 Contents
+- [Looting](#en-looting)
+  - [Loot Presets & Builder](#en-looting-presets)
+  - [Interactive Loot in Chat](#en-looting-chat)
+  - [Quick Looting of Dead Tokens](#en-token-looting)
+- [Item Generator](#en-generator)
+  - [Modification Presets & Price Recalculation](#en-generator-presets)
+  - [Generator Scripts](#en-generator-scripts)
+- [Settings & Debug Menu](#en-settings)
+- [Related Modules](#en-modules)
+
+---
+
+<a id="en-looting"></a>
+### 💰 Looting
+
+A button on the **Additional Tools** bar (`WFRP4e - Tools`) opens the **Looting** window featuring built-in and custom loot presets organized by wealth tier (*Brass*, *Silver*, *Gold*).
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Looting Window](https://github.com/user-attachments/assets/9c45092a-c449-493b-9c8d-d6d000e046b9)
+
+</details>
+
+---
+
+<a id="en-looting-presets"></a>
+#### 📦 Loot Presets & Builder
+The module includes a collection of ready-to-use presets and a flexible editor for creating your own.
+
+* **Quick Controls:** *LMB* - generate loot, *Alt + LMB* - view or edit a preset, *Ctrl + LMB* - duplicate an existing preset into custom presets.
+* **Coin Configuration:** configure drop chances and roll formulas with exploding dice support for each currency (BP, SS, GC).
+* **Tables & Items:** add built-in loot tables, custom RollTable entries (by key and column, supporting price formulas in the table description), and specific items from the world or compendiums.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Looting Preset Editor](https://github.com/user-attachments/assets/733694a7-fa0a-411b-a061-9be367b543fb)
+
+</details>
+
+---
+
+<a id="en-looting-chat"></a>
+#### 💬 Interactive Loot in Chat
+Generated loot is posted to chat as an interactive card synchronized across all connected users.
+
+* **One-Click Claiming:** players can claim coins and items straight into their character's inventory (individually or all at once), or hold `Alt` to post an item or credit prompt to chat for open distribution.
+* **Quick Sale:** found items can be immediately exchanged for coins directly from the loot card (the GM can restrict quick sale or halve item sale value in settings).
+* **Real-Time Synchronization:** as soon as any player claims or sells an item, it disappears from the chat card for everyone else, preventing duplicate looting.
+* **Miscellaneous Trappings:** when a generic trapping entry is rolled, the player chooses the appropriate sub-table for miscellaneous gear.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Interactive Loot Card in Chat](https://github.com/user-attachments/assets/455312aa-ad37-4a5f-b523-6bcb08e16363)
+
+</details>
+
+---
+
+<a id="en-token-looting"></a>
+#### ☠️ Quick Looting of Dead Tokens
+Lets players and the GM loot defeated enemies right on the canvas without extra clicks.
+
+* **Button Above Token:** hovering over a dead token (0 Wounds or the Dead status) displays a treasure chest button right above it.
+* **Actor Preset Binding:** the GM gets a **Set looting preset** button in the actor sheet header showing the currently assigned preset. If a preset is bound, clicking the button above the token immediately rolls loot; otherwise, the preset selection window opens.
+* **Looted Status:** once looted, the token is automatically marked as looted and hides the button from players. The GM sees a translucent icon and can reset or toggle the looted status with **RMB**.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Quick Loot Button](https://github.com/user-attachments/assets/7b9e392b-e941-4ac7-960a-c41b1b961c11)
+
+![Binding a Looting Preset](https://github.com/user-attachments/assets/e3400078-1338-43ca-b343-d75b7080f2cf)
+
+</details>
+
+---
+
+<a id="en-generator"></a>
+### 🎲 Item Generator *(GM Only)*
+
+A button in the **Items** directory header opens the **Item Generator**, allowing you to quickly craft unique weapons, ammunition, armour, and trappings based on any item from the world or compendiums.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Item Generator Window](https://github.com/user-attachments/assets/c317177b-4663-4b69-b548-df275cf8859a)
+
+</details>
+
+---
+
+<a id="en-generator-presets"></a>
+#### 🛠️ Modification Presets & Price Recalculation
+* **Combining Presets:** select one or multiple built-in and custom presets, as well as single-quality presets.
+* **Qualities & Flaws:** supports specific properties and random category pools with configurable chances, quantities, and mutually exclusive pair checks.
+* **Price Recalculation & Name Generation:** item cost is automatically recalculated according to system rules based on rolled Qualities and Flaws, while the name is assembled from prefixes, suffixes, or unique titles (with an optional edit and reroll dialog before creation).
+* **Result Summary Card:** displays a post-generation breakdown showing price changes, added/cancelled properties, attached scripts, and quick buttons to open or delete the item.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Generator Preset Editor](https://github.com/user-attachments/assets/bfcd1470-24a0-4e7d-b1f7-784942e6ae2c)
+
+![Item Generation Result Window](https://github.com/user-attachments/assets/e4b59c2e-ec0b-450a-9203-263b8a5f32ba)
+
+</details>
+
+---
+
+<a id="en-generator-scripts"></a>
+#### ⚡ Generator Scripts
+A mechanism for attaching special Active Effects to generated and regular items alike.
+
+* **Scripts Editor:** built-in and custom effect bundles are managed in a dedicated scripts editor accessible from the **Items** tab and the Generator preset editor.
+* **Manual Control on Any Item:** adds a GM button to the **Effects** tab of any item sheet (*LMB* - add Generator scripts, *RMB* - remove them from the item).
+* **Hidden from Players:** settings allow hiding Generator scripts from players on item sheets - ideal for cursed or unidentified artifacts.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Scripts Editor](https://github.com/user-attachments/assets/c6137b26-cc95-4bbc-b3b1-315ea908f357)
+
+![Add Scripts Button](https://github.com/user-attachments/assets/901ba3e7-3703-4f79-97b2-9b2a896fd879)
+
+</details>
+
+---
+
+<a id="en-settings"></a>
+### ⚙️ Settings & Debug Menu
+
+**Main Module Settings:**
+* **Loot cost modifier** - additional multiplier for found coins and item values.
+* **Quick sale** - allow or disallow players to exchange found items for coins directly from chat.
+* **Halve item value** - reduce item value by `50%` during quick sale.
+* **Token looting** - enable or disable the quick loot button when hovering over dead tokens.
+* **Name editor** - open the name editing and reroll window when creating an item in the Generator.
+* **Hide qualities** - hide Item Generator presets that contain only a single Quality.
+* **Hide Generator Scripts** - hide Generator script effects from players on item sheets.
+* **Property compatibility** - automatically remove mutually exclusive Qualities and Flaws during item generation.
+
+**Debug Menu Integration (`WFRP4e - Tools`):**
+* **Import / Export** - save custom Looting presets, Generator presets, and custom scripts to a file and transfer them to other worlds (with an option to replace or merge).
+* **Reset Custom Data** - individually clear custom Looting presets, Generator presets, or custom scripts.
+* **Update Scripts** - recreate the helper item storing Generator scripts if errors occur.
+
+<details align="center">
+<summary>📷 Screenshots</summary>
+
+![Debug Menu](https://github.com/user-attachments/assets/e79054f9-854b-4eb1-8552-ce2a0bb42818)
+
+</details>
+
+---
+
+<a id="en-modules"></a>
+### 🧩 Related Modules
+
+* **[WFRP4e - Tools](https://github.com/nPocToI4eJI/wfrp4e-tools)** *(required)* - core toolkit, quality-of-life, and bugfix module for **Warhammer Fantasy Roleplay 4th Edition** on Foundry VTT.
+* **[WFRP4e - Assistant](https://github.com/nPocToI4eJI/wfrp4e-assistant)** - allows the GM to diversify NPCs and their roleplay using built-in automation tools.
+* **[WFRP4e - Sounds](https://github.com/nPocToI4eJI/wfrp4e-sounds)** - contains sound files tailored for the `WFRP4e - Tools` audio system.
