@@ -2829,10 +2829,26 @@ Hooks.once("init", () => {
 		type: Boolean
 	});
 	//Настройки для интеграции с WFRP4e Tools
-	game.settings.register("wfrp4e-looting", "debugData", {
+	game.settings.register("wfrp4e-looting", "controlButtons", {
 		scope: "world",
 		config: false,
 		default: [
+			{
+				name: "looting",
+				title: "WFRP4E.Looting.Loot.Title",
+				icon: "fas fa-treasure-chest",
+				visible: true,
+				button: true,
+				onChange: "game.wfrp4e.tools.Looting.create()"
+			}
+		],
+		type: Array
+	});
+});
+
+Hooks.once("wfrp4e:toolsReady", async () => {
+	game.wfrp4e.tools.registerModule("wfrp4e-looting", {
+		debug: [
 			{
 				form: {id: "lootingDebug", template: "modules/wfrp4e-looting/templates/debug.hbs"},
 				listener: {
@@ -2970,27 +2986,6 @@ Hooks.once("init", () => {
 				}
 			}
 		],
-		type: Array
-	});
-	game.settings.register("wfrp4e-looting", "controlButtons", {
-		scope: "world",
-		config: false,
-		default: [
-			{
-				name: "looting",
-				title: "WFRP4E.Looting.Loot.Title",
-				icon: "fas fa-treasure-chest",
-				visible: true,
-				button: true,
-				onChange: "game.wfrp4e.tools.Looting.create()"
-			}
-		],
-		type: Array
-	});
-});
-
-Hooks.once("wfrp4e:toolsReady", async () => {
-	game.wfrp4e.tools.registerModule("wfrp4e-looting", {
 		sockets: {
 			lootingEditMessage: async (messageId, content) => {
 				let activeGM = game.users.activeGM;
@@ -3997,6 +3992,7 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 								{id: "Gromril", chance: 10},
 								{id: "Ithilmar", chance: 10},
 								{id: "Size&Species", chance: 100},
+								{id: "Ward", chance: 10},
 								{id: "Cursed", chance: 10}
 							]
 						},
@@ -4069,7 +4065,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							scripts: [
 								{id: "HeavyArmor", chance: 100},
 								{id: "Draining", chance: 50},
-								{id: "ObsidianInlays", chance: 100}
+								{id: "ObsidianInlays", chance: 100},
+								{id: "Ward", chance: 25}
 							]
 						},
 						{
@@ -4180,6 +4177,7 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 								{id: "Incendiary", chance: 15},
 								{id: "Gromril", chance: 10},
 								{id: "Throatseeker", chance: 10},
+								{id: "Ward", chance: 15},
 								{id: "Size&Species", chance: 100},
 								{id: "Cursed", chance: 10}
 							]
@@ -4301,7 +4299,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							scripts: [
 								{id: "Incendiary", chance: 10},
 								{id: "ObsidianInlays", chance: 10},
-								{id: "DrawingTheWinds", chance: 10}
+								{id: "DrawingTheWinds", chance: 10},
+								{id: "Ward", chance: 15}
 							]
 						},
 						{
@@ -4341,7 +4340,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							scripts: [
 								{id: "FullOfWind", chance: 20},
 								{id: "DrawingTheWinds", chance: 10},
-								{id: "ObsidianInlays", chance: 10}
+								{id: "ObsidianInlays", chance: 10},
+								{id: "Ward", chance: 20}
 							]
 						},
 						{
@@ -4375,7 +4375,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							scripts: [
 								{id: "TaintedWeapon", chance: 15},
 								{id: "FullOfWind", chance: 15},
-								{id: "Draining", chance: 15}
+								{id: "Draining", chance: 15},
+								{id: "Blooddrinker", chance: 15}
 							]
 						},
 						{
@@ -4602,7 +4603,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 								{id: "FullOfWind", chance: 15},
 								{id: "Draining", chance: 25},
 								{id: "RelentlessFury", chance: 15},
-								{id: "WeaponOfForsakenFortune", chance: 25}
+								{id: "WeaponOfForsakenFortune", chance: 25},
+								{id: "Blooddrinker", chance: 15}
 							]
 						},
 						{
@@ -4657,7 +4659,8 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							scripts: [
 								{id: "Throatseeker", chance: 25},
 								{id: "Poisoned", chance: 25},
-								{id: "RelentlessFury", chance: 25}
+								{id: "RelentlessFury", chance: 25},
+								{id: "Blooddrinker", chance: 15}
 							]
 						},
 						{
@@ -5464,8 +5467,38 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 							id: "Gromril",
 							effects: [
 								{
+									name: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Label"),
+									img: "modules/wfrp4e-core/icons/equipment/armour/armour.png",
+									flags: {
+										looting: {
+											default: true,
+											id: "Gromril"
+										}
+									},
+									system: {
+										transferData: {
+											documentType: "Actor",
+											equipTransfer: true
+										},
+										scriptData: [{
+											label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Label"),
+											trigger: "opposedDefender",
+											script: "if ([\"armour\", \"wfrp4e-archives3.armour\"].includes(this.item.type) && args.opposedTest.result.winner == \"attacker\" && args.opposedTest.result.crit && (this.actor.system?.status?.wounds?.value || 0) > 0) {"
+												+ "\n\tlet loc = args.opposedTest.result.hitloc?.value;"
+												+ "\n\tif (loc && (this.item.system?.AP?.[loc] || 0) > 0) {"
+												+ "\n\t\targs.opposedTest.result.crit = null;"
+												+ "\n\t\targs.opposedTest.result.other.push(\"<i>\" + game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Gromril.CritBlocked\", {"
+												+ "\n\t\t\tactor: \"<strong>\" + (this.actor.token?.name || this.actor.name) + \"</strong>\","
+												+ "\n\t\t\titem: \"<strong>\" + this.item.name + \"</strong>\""
+												+ "\n\t\t}) + \"</i>\");"
+												+ "\n\t};"
+												+ "\n};",
+										}]
+									}
+								},
+								{
 									name: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.Immediate"),
-									img: "modules/wfrp4e-core/icons/unarmed.png",
+									img: "modules/wfrp4e-core/icons/equipment/armour/armour.png",
 									flags: {
 										looting: {
 											default: true,
@@ -5481,24 +5514,37 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 												deleteEffect: true
 											},
 											script: "if ([\"armour\", \"wfrp4e-archives3.armour\"].includes(this.item.type)) {"
-												+ "\n\tlet ap = this.item.system.AP;"
-												+ "\n\tap = {"
-												+ "\n\t\tbody: ap.body > 0 ? ap.body + 1 : ap.body,"
-												+ "\n\t\thead: ap.head > 0 ? ap.head + 1 : ap.head,"
-												+ "\n\t\tlArm: ap.lArm > 0 ? ap.lArm + 1 : ap.lArm,"
-												+ "\n\t\tlLeg: ap.lLeg > 0 ? ap.lLeg + 1 : ap.lLeg,"
-												+ "\n\t\trArm: ap.rArm > 0 ? ap.rArm + 1 : ap.rArm,"
-												+ "\n\t\trLeg: ap.rLeg > 0 ? ap.rLeg + 1 : ap.rLeg"
+												+ "\n\tlet ap = foundry.utils.deepClone(this.item.system.AP || {});"
+												+ "\n\tlet boosted = [];"
+												+ "\n\tfor (let loc of [\"body\", \"head\", \"lArm\", \"lLeg\", \"rArm\", \"rLeg\"]) {"
+												+ "\n\t\tif ((Number(ap[loc]) || 0) > 0) {"
+												+ "\n\t\t\tap[loc] = Number(ap[loc]) + 1;"
+												+ "\n\t\t\tboosted.push(loc);"
+												+ "\n\t\t};"
 												+ "\n\t};"
-												+ "\n\tthis.item.update({"
-												+ "\n\t\t\"system.description.value\": \"<p>\" + game.i18n.localize(\"WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Armour\") + \"</p><br>\" + this.item.system.description.value,"
-												+ "\n\t\t\"system.AP\": ap"
-												+ "\n\t});"
-												+ "\n} else if (this.item.type == \"weapon\") {"
-												+ "\n\tlet qualities = this.item.system.qualities.value;"
-												+ "\n\tif (!qualities.find(q => q.name == \"unbreakable\")) {"
-												+ "\n\t\tqualities.push({name: \"unbreakable\"});"
-												+ "\n\t\tthis.item.update({\"system.qualities.value\": qualities});"
+												+ "\n\tlet note = \"<p>\" + game.i18n.localize(\"WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Armour\") + \"</p>\";"
+												+ "\n\tlet desc = this.item.system.description?.value || \"\";"
+												+ "\n\tif (!desc.includes(note)) {desc = note + (desc ? \"<br>\" + desc : \"\")};"
+												+ "\n\tawait this.item.update({"
+												+ "\n\t\t\"system.description.value\": desc,"
+												+ "\n\t\t\"system.AP\": ap,"
+												+ "\n\t\t\"flags.looting.gromrilAP\": boosted"
+												+ "\n\t}, {onReset: true});"
+												+ "\n} else {"
+												+ "\n\tlet armourEffect = this.item.effects.find(e => e.flags?.looting?.id == \"Gromril\" && e.system?.transferData?.documentType == \"Actor\");"
+												+ "\n\tif (armourEffect) {"
+												+ "\n\t\tawait armourEffect.update({\"flags.looting.id\": false}, {onReset: true});"
+												+ "\n\t\tawait armourEffect.delete({onReset: true});"
+												+ "\n\t};"
+												+ "\n\tif (this.item.type == \"weapon\") {"
+												+ "\n\t\tlet qualities = foundry.utils.deepClone(this.item.system.qualities?.value || []);"
+												+ "\n\t\tif (!qualities.find(q => q.name == \"unbreakable\")) {"
+												+ "\n\t\t\tqualities.push({name: \"unbreakable\"});"
+												+ "\n\t\t\tawait this.item.update({"
+												+ "\n\t\t\t\t\"system.qualities.value\": qualities,"
+												+ "\n\t\t\t\t\"flags.looting.gromrilAddedUnbreakable\": true"
+												+ "\n\t\t\t}, {onReset: true});"
+												+ "\n\t\t};"
 												+ "\n\t};"
 												+ "\n};",
 										}]
@@ -5506,7 +5552,7 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 								},
 								{
 									name: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.Delete"),
-									img: "modules/wfrp4e-core/icons/unarmed.png",
+									img: "modules/wfrp4e-core/icons/equipment/armour/armour.png",
 									flags: {
 										looting: {
 											default: true,
@@ -5519,21 +5565,27 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 											label: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.Delete"),
 											trigger: "deleteEffect",
 											script: "if (this.item && [\"armour\", \"wfrp4e-archives3.armour\"].includes(this.item.type)) {"
-												+ "\n\tlet ap = this.item.system.AP;"
-												+ "\n\tap = {"
-												+ "\n\t\tbody: ap.body > 0 ? ap.body - 1 : ap.body,"
-												+ "\n\t\thead: ap.head > 0 ? ap.head - 1 : ap.head,"
-												+ "\n\t\tlArm: ap.lArm > 0 ? ap.lArm - 1 : ap.lArm,"
-												+ "\n\t\tlLeg: ap.lLeg > 0 ? ap.lLeg - 1 : ap.lLeg,"
-												+ "\n\t\trArm: ap.rArm > 0 ? ap.rArm - 1 : ap.rArm,"
-												+ "\n\t\trLeg: ap.rLeg > 0 ? ap.rLeg - 1 : ap.rLeg"
+												+ "\n\tlet ap = foundry.utils.deepClone(this.item.system.AP || {});"
+												+ "\n\tlet boosted = Array.isArray(this.item.flags?.looting?.gromrilAP)"
+												+ "\n\t\t? this.item.flags.looting.gromrilAP"
+												+ "\n\t\t: [\"body\", \"head\", \"lArm\", \"lLeg\", \"rArm\", \"rLeg\"].filter(loc => (Number(ap[loc]) || 0) > 0);"
+												+ "\n\tfor (let loc of boosted) {"
+												+ "\n\t\tif ((Number(ap[loc]) || 0) > 0) {ap[loc] = Number(ap[loc]) - 1};"
 												+ "\n\t};"
-												+ "\n\tthis.item.update({"
-												+ "\n\t\t\"system.description.value\": this.item.system.description.value.replace(\"<p>\" + game.i18n.localize(\"WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Armour\") + \"</p><br>\", \"\"),"
-												+ "\n\t\t\"system.AP\": ap"
-												+ "\n\t});"
-												+ "\n} else if (this.item.type == \"weapon\") {"
-												+ "\n\tthis.item.update({\"system.qualities.value\": this.item.system.qualities.value.filter(q => q.name != \"unbreakable\")});"
+												+ "\n\tlet note = \"<p>\" + game.i18n.localize(\"WFRP4E.Looting.Generator.Lists.Scripts.Gromril.Armour\") + \"</p>\";"
+												+ "\n\tlet desc = (this.item.system.description?.value || \"\").replace(note + \"<br>\", \"\").replace(note, \"\");"
+												+ "\n\tawait this.item.update({"
+												+ "\n\t\t\"system.description.value\": desc,"
+												+ "\n\t\t\"system.AP\": ap,"
+												+ "\n\t\t\"flags.looting.-=gromrilAP\": null"
+												+ "\n\t}, {onReset: true});"
+												+ "\n} else if (this.item && this.item.type == \"weapon\") {"
+												+ "\n\tif (this.item.flags?.looting?.gromrilAddedUnbreakable) {"
+												+ "\n\t\tawait this.item.update({"
+												+ "\n\t\t\t\"system.qualities.value\": (this.item.system.qualities?.value || []).filter(q => q.name != \"unbreakable\"),"
+												+ "\n\t\t\t\"flags.looting.-=gromrilAddedUnbreakable\": null"
+												+ "\n\t\t}, {onReset: true});"
+												+ "\n\t};"
 												+ "\n};",
 										}]
 									}
@@ -6239,18 +6291,43 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 										scriptData: [{
 											label: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.ApplyDamage"),
 											trigger: "applyDamage",
-											script: "let wpTest = async () => {"
-												+ "\n\tlet difficulty = Math.max(Number(this.item.flags?.looting?.modifier) || 0, -20);"
-												+ "\n\tif (!this.item.flags?.looting?.modifier) {"
-												+ "\n\t\tthis.item.update({\"flags.looting.modifier\": \"0\"});"
-												+ "\n\t} else {"
-												+ "\n\t\tdifficulty -= 10;"
-												+ "\n\t\tthis.item.update({\"flags.looting.modifier\": difficulty});"
+											script: "if (args.totalWoundLoss > 0) {"
+												+ "\n\tlet wielder = args.attacker || this.actor;"
+												+ "\n\tif (!wielder) {return};"
+												+ "\n\tlet alreadyFrenzied = Boolean("
+												+ "\n\t\twielder.hasCondition?.(\"frenzied\") ||"
+												+ "\n\t\twielder.effects?.some(e => !e.disabled && (e.statuses?.has(\"frenzied\") || e.flags?.looting?.id === \"RelentlessFuryActive\" || /frenzy|ярость/i.test(`${e.name} ${e.flags?.babele?.originalName || \"\"}`)))"
+												+ "\n\t);"
+												+ "\n\tif (alreadyFrenzied) {return};"
+												+ "\n\tlet count = Number(this.item.flags?.looting?.furyCount) || 0;"
+												+ "\n\tlet mod = Math.max(-30, -(count * 10));"
+												+ "\n\tawait this.item.update({\"flags.looting.furyCount\": count + 1}, {onReset: true});"
+												+ "\n\tlet diffKey = warhammer.utility.findKey(mod, game.wfrp4e.config.difficultyModifiers) || \"challenging\";"
+												+ "\n\tlet test = await wielder.setupCharacteristic(\"wp\", {"
+												+ "\n\t\tfields: {difficulty: diffKey},"
+												+ "\n\t\tappendTitle: \" — \" + this.item.name"
+												+ "\n\t});"
+												+ "\n\tif (!test) {return};"
+												+ "\n\tawait test.roll();"
+												+ "\n\tif (!test.succeeded) {"
+												+ "\n\t\tlet frenzyTalent = wielder.itemTypes?.talent?.find(t => /frenzy|ярость/i.test(`${t.name} ${t.flags?.babele?.originalName || \"\"}`));"
+												+ "\n\t\tlet frenzyEffect = frenzyTalent?.effects?.contents?.find(e => e.system?.transferData?.documentType == \"Actor\") || frenzyTalent?.effects?.contents?.[0];"
+												+ "\n\t\tif (frenzyEffect) {"
+												+ "\n\t\t\tlet effData = frenzyEffect.toObject();"
+												+ "\n\t\t\teffData.disabled = false;"
+												+ "\n\t\t\teffData.flags = foundry.utils.mergeObject(effData.flags || {}, {looting: {id: \"RelentlessFuryActive\"}});"
+												+ "\n\t\t\tawait wielder.createEmbeddedDocuments(\"ActiveEffect\", [effData]);"
+												+ "\n\t\t} else if (game.wfrp4e.config.systemEffects?.frenzy) {"
+												+ "\n\t\t\tawait wielder.addSystemEffect(\"frenzy\");"
+												+ "\n\t\t} else {"
+												+ "\n\t\t\tawait wielder.addCondition(\"frenzied\");"
+												+ "\n\t\t};"
+												+ "\n\t\tthis.script.message(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.RelentlessFury.Failed\", {"
+												+ "\n\t\t\tactor: \"<strong>\" + (wielder.token?.name || wielder.name) + \"</strong>\","
+												+ "\n\t\t\titem: \"<strong>\" + this.item.name + \"</strong>\""
+												+ "\n\t\t}));"
 												+ "\n\t};"
-												+ "\n\tdifficulty = game.wfrp4e.config.difficultyLabels[warhammer.utility.findKey(Number(difficulty), game.wfrp4e.config.difficultyModifiers) || \"challenging\"];"
-												+ "\n\tthis.script.message(\"<strong>\" + (args.attacker.token?.name || args.attacker.name) + \"</strong> \" + game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.RelentlessFury.Message\", {difficulty}));"
-												+ "\n};"
-												+ "\nwpTest();",
+												+ "\n};",
 										}]
 									}
 								},
@@ -6264,22 +6341,35 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 										}
 									},
 									system: {
-										transferData: {documentType: "Actor"},
+										transferData: {
+											documentType: "Actor",
+											equipTransfer: true
+										},
 										scriptData: [
 											{
 												label: game.i18n.localize("NAME.Frenzy"),
 												trigger: "immediate",
-												script: "await fromUuid(\"Compendium.wfrp4e-core.items.hXcfygzujgyMN1uI\").then(item => Item.create([item.toObject()], {fromEffect: this.effect.id, parent: this.actor}));",
+												script: "let hasFrenzy = this.actor.itemTypes?.talent?.some(t => /frenzy|ярость/i.test(`${t.name} ${t.flags?.babele?.originalName || \"\"}`));"
+													+ "\nif (!hasFrenzy) {"
+													+ "\n\tlet talent = await fromUuid(\"Compendium.wfrp4e-core.items.hXcfygzujgyMN1uI\");"
+													+ "\n\tif (talent) {"
+													+ "\n\t\tawait Item.create([talent.toObject()], {fromEffect: this.effect.id, parent: this.actor, onReset: true});"
+													+ "\n\t};"
+													+ "\n};",
 											},
 											{
 												label: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.StartCombat"),
 												trigger: "startCombat",
-												script: "this.item.update({\"flags.looting.modifier\": \"10\"});",
+												script: "if (this.item && (Number(this.item.flags?.looting?.furyCount) || 0) !== 0) {"
+													+ "\n\tawait this.item.update({\"flags.looting.furyCount\": 0}, {onReset: true});"
+													+ "\n};",
 											},
 											{
 												label: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.EndCombat"),
 												trigger: "endCombat",
-												script: "this.item.update({\"flags.looting.modifier\": \"10\"});",
+												script: "if (this.item && (Number(this.item.flags?.looting?.furyCount) || 0) !== 0) {"
+													+ "\n\tawait this.item.update({\"flags.looting.furyCount\": 0}, {onReset: true});"
+													+ "\n};",
 											}
 										]
 									}
@@ -6311,35 +6401,214 @@ Hooks.once("wfrp4e:toolsReady", async () => {
 												label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Label"),
 												trigger: "dialog",
 												options: {
-													activateScript: "return this.actor.system.status.fortune?.value > 0;",
-													hideScript: "return args.weapon != this.item || this.actor.type != \"character\"",
-													submissionScript: "args.context.weaponOfForsakenFortune = true;"
+													activateScript: "return (this.actor.system.status.fortune?.value || 0) > 0;",
+													hideScript: "return args.weapon?.id != this.item.id || this.actor.type != \"character\";",
+													submissionScript: "if ((this.actor.system.status.fortune?.value || 0) > 0) {args.context.weaponOfForsakenFortune = true};"
 												},
-												script: "args.fields.modifier += 20;",
+												script: "if ((this.actor.system.status.fortune?.value || 0) > 0) {args.fields.modifier += 20};",
 											},
 											{
 												label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Label"),
 												trigger: "opposedDefender",
-												script: "if (args.opposedTest.result.winner == \"defender\" && args.defenderTest.item == this.item && args.defenderTest.options.weaponOfForsakenFortune && Number(args.opposedTest.result.differenceSL) <= 2) {"
-													+ "\n\tif (this.actor.system.status.fortune.value == 0) {"
-													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.NoFortune\", {item: \"<b>\" + this.item.name + \"</b>\", actor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\"}));"
+												script: "let usedBonus = Boolean(args.defenderTest?.context?.weaponOfForsakenFortune || args.defenderTest?.options?.weaponOfForsakenFortune);"
+													+ "\nif (args.opposedTest.result.winner == \"defender\" && args.defenderTest?.item?.id == this.item.id && usedBonus && Number(args.opposedTest.result.differenceSL) <= 2) {"
+													+ "\n\tlet curFortune = Number(this.actor.system?.status?.fortune?.value) || 0;"
+													+ "\n\tif (curFortune <= 0) {"
+													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.NoFortune\", {"
+													+ "\n\t\t\titem: \"<b>\" + this.item.name + \"</b>\","
+													+ "\n\t\t\tactor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\""
+													+ "\n\t\t}));"
 													+ "\n\t} else {"
-													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Message\", {item: \"<b>\" + this.item.name + \"</b>\", actor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\"}));"
+													+ "\n\t\tawait this.actor.update({\"system.status.fortune.value\": curFortune - 1});"
+													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Message\", {"
+													+ "\n\t\t\titem: \"<b>\" + this.item.name + \"</b>\","
+													+ "\n\t\t\tactor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\""
+													+ "\n\t\t}));"
 													+ "\n\t};"
 													+ "\n};",
-											},
-											{
-												label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Label"),
-												trigger: "opposedAttacker",
-												script: "if (args.opposedTest.result.winner == \"attacker\" && args.attackerTest.item == this.item && args.attackerTest.options.weaponOfForsakenFortune && Number(args.opposedTest.result.differenceSL) <= 2) {"
-													+ "\n\tif (this.actor.system.status.fortune.value == 0) {"
-													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.NoFortune\", {item: \"<b>\" + this.item.name + \"</b>\", actor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\"}));"
+												},
+												{
+													label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Label"),
+													trigger: "opposedAttacker",
+													script: "let usedBonus = Boolean(args.attackerTest?.context?.weaponOfForsakenFortune || args.attackerTest?.options?.weaponOfForsakenFortune);"
+													+ "\nif (args.opposedTest.result.winner == \"attacker\" && args.attackerTest?.item?.id == this.item.id && usedBonus && Number(args.opposedTest.result.differenceSL) <= 2) {"
+													+ "\n\tlet curFortune = Number(this.actor.system?.status?.fortune?.value) || 0;"
+													+ "\n\tif (curFortune <= 0) {"
+													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.NoFortune\", {"
+													+ "\n\t\t\titem: \"<b>\" + this.item.name + \"</b>\","
+													+ "\n\t\t\tactor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\""
+													+ "\n\t\t}));"
 													+ "\n\t} else {"
-													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Message\", {item: \"<b>\" + this.item.name + \"</b>\", actor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\"}));"
+													+ "\n\t\tawait this.actor.update({\"system.status.fortune.value\": curFortune - 1});"
+													+ "\n\t\targs.opposedTest.result.other.push(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.WeaponOfForsakenFortune.Message\", {"
+													+ "\n\t\t\titem: \"<b>\" + this.item.name + \"</b>\","
+													+ "\n\t\t\tactor: \"<b>\" + (this.actor.token?.name || this.actor.name) + \"</b>\""
+													+ "\n\t\t}));"
 													+ "\n\t};"
 													+ "\n};",
 											}
 										]
+									}
+								}
+							]
+						},
+						{
+							name: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Blooddrinker.Label"),
+							hint: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Blooddrinker.Hint"),
+							default: true,
+							id: "Blooddrinker",
+							effects: [
+								{
+									name: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Blooddrinker.Label"),
+									img: "systems/wfrp4e/icons/conditions/bleeding.png",
+									flags: {
+										looting: {
+											default: true,
+											id: "Blooddrinker"
+										}
+									},
+									system: {
+										transferData: {
+											documentType: "Item",
+											equipTransfer: true
+										},
+										scriptData: [{
+											label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Blooddrinker.Label"),
+											trigger: "applyDamage",
+											script: "if (args.totalWoundLoss > 0) {"
+												+ "\n\tlet wielder = args.attacker || this.actor;"
+												+ "\n\tlet target = args.actor;"
+												+ "\n\tif (!wielder || !target) {return};"
+												+ "\n\tlet isVampire = Boolean("
+												+ "\n\t\twielder.has?.(game.i18n.localize(\"NAME.Vampiric\")) ||"
+												+ "\n\t\twielder.itemTypes?.trait?.some(t => /vampir|вампир/i.test(`${t.name} ${t.flags?.babele?.originalName || \"\"}`)) ||"
+												+ "\n\t\t/vampir|вампир/i.test(`${wielder.system?.details?.species?.value || \"\"} ${wielder.system?.details?.species?.subspecies || \"\"}`) ||"
+												+ "\n\t\twielder.flags?.assistant?.reactions?.subspecies === \"Vampire\""
+												+ "\n\t);"
+												+ "\n\tif (!isVampire) {return};"
+												+ "\n\tlet isInvalidTarget = Boolean("
+												+ "\n\t\ttarget.has?.(game.i18n.localize(\"NAME.Undead\")) ||"
+												+ "\n\t\ttarget.has?.(game.i18n.localize(\"NAME.Daemonic\")) ||"
+												+ "\n\t\ttarget.itemTypes?.trait?.some(t => /undead|daemon|нежить|демон/i.test(`${t.name} ${t.flags?.babele?.originalName || \"\"}`)) ||"
+												+ "\n\t\t/undead|daemon|нежить|демон/i.test(`${target.system?.details?.species?.value || \"\"} ${target.system?.details?.species?.subspecies || \"\"}`) ||"
+												+ "\n\t\t[\"RestlessDead\", \"Daemons\"].includes(target.flags?.assistant?.reactions?.species)"
+												+ "\n\t);"
+												+ "\n\tif (isInvalidTarget) {return};"
+												+ "\n\tlet heal = Math.ceil(args.totalWoundLoss * 0.1);"
+												+ "\n\tlet cur = Number(wielder.system?.status?.wounds?.value) || 0;"
+												+ "\n\tlet max = Number(wielder.system?.status?.wounds?.max) || cur;"
+												+ "\n\tlet actualHeal = Math.min(max, cur + heal) - cur;"
+												+ "\n\tif (actualHeal > 0) {"
+												+ "\n\t\tawait wielder.update({\"system.status.wounds.value\": cur + actualHeal});"
+												+ "\n\t\tthis.script.message(game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Blooddrinker.Message\", {"
+												+ "\n\t\t\tactor: \"<strong>\" + (wielder.token?.name || wielder.name) + \"</strong>\","
+												+ "\n\t\t\twounds: \"<strong>\" + actualHeal + \"</strong>\","
+												+ "\n\t\t\titem: \"<strong>\" + this.item.name + \"</strong>\""
+												+ "\n\t\t}));"
+												+ "\n\t};"
+												+ "\n};",
+										}]
+									}
+								}
+							]
+						},
+						{
+							name: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Ward.Label"),
+							hint: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Ward.Hint"),
+							default: true,
+							id: "Ward",
+							effects: [
+								{
+									name: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Ward.Label") + " (9)",
+									img: "modules/wfrp4e-core/icons/spells/petty.png",
+									flags: {
+										looting: {
+											default: true,
+											id: "Ward",
+											rating: 9
+										}
+									},
+									system: {
+										transferData: {
+											documentType: "Actor",
+											equipTransfer: true
+										},
+										scriptData: [
+											{
+												label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Ward.Label"),
+												trigger: "opposedDefender",
+												script: "let isHit = args.opposedTest.result.winner == \"attacker\" || Boolean(args.opposedTest.result.crit);"
+												+ "\nlet isAttack = Number.isNumeric(args.attackerTest?.damage) || Number(args.opposedTest.result.damage?.value) > 0 || Boolean(args.opposedTest.result.crit);"
+												+ "\nif (isHit && isAttack && !args.opposedTest.result.wardBlocked) {"
+												+ "\n\tlet rating = Number(this.effect.name.match(/\\((\\d+)\\)/)?.[1]) || Number(this.effect.flags?.looting?.rating) || 9;"
+												+ "\n\tlet rollD10 = (await new Roll(\"1d10\").roll({allowInteractive: false})).total;"
+												+ "\n\tif (rollD10 >= rating) {"
+												+ "\n\t\targs.opposedTest.result.damage = {value: null, breakdown: null};"
+												+ "\n\t\targs.opposedTest.result.crit = null;"
+												+ "\n\t\targs.opposedTest.result.wardBlocked = true;"
+												+ "\n\t\targs.opposedTest.result.other.push(\"<i>\" + game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Ward.Blocked\", {"
+												+ "\n\t\t\tdefender: \"<strong>\" + (this.actor.token?.name || this.actor.name) + \"</strong>\","
+												+ "\n\t\t\trating,"
+												+ "\n\t\t\troll: \"<strong>\" + rollD10 + \"</strong>\""
+												+ "\n\t\t}) + \"</i>\");"
+												+ "\n\t} else {"
+												+ "\n\t\targs.opposedTest.result.other.push(\"<i>\" + game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Ward.Failed\", {"
+												+ "\n\t\t\trating,"
+												+ "\n\t\t\troll: \"<strong>\" + rollD10 + \"</strong>\""
+												+ "\n\t\t}) + \"</i>\");"
+												+ "\n\t};"
+												+ "\n};",
+											},
+											{
+												label: game.i18n.localize("WFRP4E.Looting.Generator.Lists.Scripts.Ward.Label"),
+												trigger: "preTakeDamage",
+												script: "let rating = Number(this.effect.name.match(/\\((\\d+)\\)/)?.[1]) || Number(this.effect.flags?.looting?.rating) || 9;"
+												+ "\nif (args.opposedTest?.result?.wardBlocked) {"
+												+ "\n\targs.abort = game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Ward.BlockedSimple\", {"
+												+ "\n\t\tdefender: \"<strong>\" + (this.actor.token?.name || this.actor.name) + \"</strong>\","
+												+ "\n\t\trating"
+												+ "\n\t});"
+												+ "\n} else if (!args.opposedTest) {"
+												+ "\n\tlet rollD10 = (await new Roll(\"1d10\").roll({allowInteractive: false})).total;"
+												+ "\n\tif (rollD10 >= rating) {"
+												+ "\n\t\targs.abort = game.i18n.format(\"WFRP4E.Looting.Generator.Lists.Scripts.Ward.Blocked\", {"
+												+ "\n\t\t\tdefender: \"<strong>\" + (this.actor.token?.name || this.actor.name) + \"</strong>\","
+												+ "\n\t\t\trating,"
+												+ "\n\t\t\troll: \"<strong>\" + rollD10 + \"</strong>\""
+												+ "\n\t\t});"
+												+ "\n\t};"
+												+ "\n};",
+											}
+										]
+									}
+								},
+								{
+									name: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.Immediate"),
+									img: "modules/wfrp4e-core/icons/spells/petty.png",
+									flags: {
+										looting: {
+											default: true,
+											id: "Ward"
+										}
+									},
+									system: {
+										transferData: {documentType: "Item"},
+										scriptData: [{
+											label: game.i18n.localize("WFRP4E.Looting.Generator.Scripts.Labels.Immediate"),
+											trigger: "immediate",
+											options: {
+												deleteEffect: true
+											},
+											script: "let roll = (await new Roll(\"1d100\").roll({allowInteractive: false})).total;"
+												+ "\nlet rating = roll <= 10 ? 7 : roll <= 30 ? 8 : 9;"
+												+ "\nlet wardEffect = this.item.effects.find(e => e.flags?.looting?.id == \"Ward\" && e.id != this.effect.id);"
+												+ "\nif (wardEffect) {"
+												+ "\n\tawait wardEffect.update({"
+												+ "\n\t\tname: game.i18n.localize(\"WFRP4E.Looting.Generator.Lists.Scripts.Ward.Label\") + \" (\" + rating + \")\","
+												+ "\n\t\t\"flags.looting.rating\": rating"
+												+ "\n\t}, {onReset: true});"
+												+ "\n};",
+										}]
 									}
 								}
 							]

@@ -487,7 +487,7 @@
 				},
 				"Elven": {
 					"Label": "Elven",
-					"Hint": "These garments were crafted by Wood Elf mages and make the wearer far less conspicuous. Any Perception (sight‑based) or Ballistic Skill tests made against the wearer are performed with a −20 modifier"
+					"Hint": "These garments were crafted by Wood Elf mages and make the wearer far less conspicuous. Any Perception (sight-based) or Ballistic Skill tests made against the wearer are performed with a -20 modifier"
 				},
 				"ObsidianInlays": {
 					"Label": "Obsidian Inlays",
@@ -498,7 +498,8 @@
 				"Gromril": {
 					"Label": "Gromril",
 					"Hint": "Gromril is the hardest metal in the known world and one of the rarest. Gromril armor grants 1 extra point of armor (AP) and makes the wearer immune to critical hits, except when the character has already lost all their wounds. Gromril weapons gain the Unbreakable quality.",
-					"Armour": "The wearer of the Gromril armor is immune to critical injuries that affect the areas protected by the armor, except in cases where the character has already lost all their hit points."
+					"Armour": "The wearer of Gromril armour is immune to Critical Injuries on locations protected by it, except when the character has already lost all their Wounds.",
+					"CritBlocked": "Gromril armour ({item}) protected {actor} from a Critical Injury!"
 				},
 				"Ithilmar": {
 					"Label": "Ithilmar",
@@ -575,11 +576,12 @@
 				"RelentlessFury": {
 					"Label": "Relentless Fury",
 					"Hint": "A gleaming weapon seems perfect at first glance. Every time it is used to deal damage, the character must pass a Challenging (+0) Willpower test. Moreover, each new test during a single battle receives a cumulative -10 modifier (up to a maximum of -30). If the test is failed, the character enters the Frenzy, gaining all its benefits. However, unlike regular Frenzy, it does not end when all enemies are defeated. Instead, the character is compelled to attack the nearest target, regardless of their identity. The Frenzy can only be interrupted by disarming, stunning, or incapacitating the character.",
-					"Message": "Must perform <strong>{difficulty}</strong> a Willpower test.<hr>Upon failure, the character enters a Frenzy, receiving all its benefits, however, unlike normal Frenzy, it does not end when all enemies are defeated. On the contrary, the character must attack the nearest target, whoever it may be. The condition can only be interrupted by disarming, stunning, or disabling."
+					"Message": "Must perform <strong>{difficulty}</strong> a Willpower test.<hr>Upon failure, the character enters a Frenzy, receiving all its benefits, however, unlike normal Frenzy, it does not end when all enemies are defeated. On the contrary, the character must attack the nearest target, whoever it may be. The condition can only be interrupted by disarming, stunning, or disabling.",
+					"Failed": "{actor} succumbs to {item} and enters <strong>Relentless Fury</strong>!<hr>Unlike normal Frenzy, it does not end when all enemies are defeated — the character is compelled to attack the nearest target, whoever it may be, until disarmed, stunned, or incapacitated."
 				},
 				"WeaponOfForsakenFortune": {
 					"Label": "Weapon of Forsaken Fortune",
-					"Hint": "When creating this weapon, the most exotic materials were used: light shiny metal, bright white ivory and others. As long as the owner has at least 1 Fortune point, he gets +20 to the checks related to this weapon. However, every time an attack hits, but it has 2 SL or less, that is, it hits thanks to the bonus, it steals one point of Fortune.",
+					"Hint": "When creating this weapon, the most exotic materials were used: bright gleaming metal, pure white ivory, and more. As long as the wielder has at least 1 Fortune point, they gain +20 to tests made with this weapon. However, whenever an attack or parry with it succeeds with 2 SL or less (succeeding thanks to the bonus), it steals 1 Fortune point.",
 					"Message": "{item} steals a Fortune point from {actor}!",
 					"NoFortune": "{item} trying to steal a Fortune point from {actor}, but it doesn't find any!"
 				},
@@ -601,6 +603,18 @@
 				"LootedItem": {
 					"Label": "Looted Item",
 					"Hint": "This item was removed from the body of the murdered man, and only the gods know how shoddy it can be."
+				},
+				"Blooddrinker": {
+					"Label": "Blooddrinker",
+					"Hint": "When dealing damage to any target other than Daemons or Undead, this weapon restores 10% of the damage dealt (rounded up) to its wielder. Works only if the wielder is a Vampire.",
+					"Message": "{item} drains life force and restores {wounds} Wounds to {actor}."
+				},
+				"Ward": {
+					"Label": "Ward",
+					"Hint": "Magical nature, an enchanted talisman, or sheer luck protects the bearer from enemy attacks. When targeted by a successful (including critical) attack, roll 1d10 against the rating in brackets: if the result equals or exceeds the rating, the attack is ignored. Default rating is 9 (when added: 10% chance for 7, 20% chance for 8).",
+					"Blocked": "<strong>Ward ({rating})</strong> succeeded (1d10: {roll}) — {defender} ignores the attack!",
+					"BlockedSimple": "<strong>Ward ({rating})</strong> succeeded — {defender} ignores the attack!",
+					"Failed": "Ward ({rating}): rolled 1d10 — {roll} (failed)."
 				}
 			}
 		}
