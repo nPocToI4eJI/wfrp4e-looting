@@ -196,6 +196,7 @@
 * **[WFRP4e - Tools](https://github.com/nPocToI4eJI/wfrp4e-tools)** *(обязателен)* - базовый модуль инструментов, улучшений и исправлений для системы **Warhammer Fantasy Roleplay 4th Edition** в Foundry VTT.
 * **[WFRP4e - Assistant](https://github.com/nPocToI4eJI/wfrp4e-assistant)** - этот модуль позволит Мастеру разнообразить НИП и их отыгрыш с помощью встроенных инструментов автоматизации.
 * **[WFRP4e - Sounds](https://github.com/nPocToI4eJI/wfrp4e-sounds)** - этот модуль содержит звуковые файлы, адаптированные для звуковой системы `WFRP4e - Tools`.
+* **[WFRP4e - Print sheet](https://github.com/nPocToI4eJI/wfrp4e-print-sheet)** - модуль для экспорта листов персонажей и НИП из **Warhammer Fantasy Roleplay 4th Edition** в автономные редактируемые HTML-файлы.
 
 ---
 
@@ -371,3 +372,4 @@ A mechanism for attaching special Active Effects to generated and regular items 
 * **[WFRP4e - Tools](https://github.com/nPocToI4eJI/wfrp4e-tools)** *(required)* - core toolkit, quality-of-life, and bugfix module for **Warhammer Fantasy Roleplay 4th Edition** on Foundry VTT.
 * **[WFRP4e - Assistant](https://github.com/nPocToI4eJI/wfrp4e-assistant)** - allows the GM to diversify NPCs and their roleplay using built-in automation tools.
 * **[WFRP4e - Sounds](https://github.com/nPocToI4eJI/wfrp4e-sounds)** - contains sound files tailored for the `WFRP4e - Tools` audio system.
+* **[WFRP4e - Print sheet](https://github.com/nPocToI4eJI/wfrp4e-print-sheet)** - is a module for exporting character and NPC sheets from **Warhammer Fantasy Roleplay 4th Edition** into standalone, editable HTML files.
