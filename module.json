@@ -2,7 +2,7 @@
 	"id": "wfrp4e-looting",
 	"title": "WFRP4e - Looting",
 	"description": "<p>Этот модуль поможет Мастеру оптимизировать процесс создания уникального лута.</p>&#10;&#10;<p>This module helps the GM streamline the process of creating unique loot.</p>",
-	"version": "13.6.1",
+	"version": "13.6.2",
 	"compatibility": {
 		"minimum": "13",
 		"verified": "13.351"
@@ -19,7 +19,7 @@
 				}
 			}
 		],
-		"modules": [
+		"requires": [
 			{
 				"id": "wfrp4e-tools",
 				"type": "module",
@@ -49,6 +49,6 @@
 	"esmodules": ["looting.js"],
 	"styles": ["looting.css"],
 	"url": "https://github.com/nPocToI4eJI/wfrp4e-looting",
-	"manifest": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.6.1/module.json",
-	"download": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.6.1/wfrp4e-looting.zip"
+	"manifest": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.6.2/module.json",
+	"download": "https://github.com/nPocToI4eJI/wfrp4e-looting/releases/download/13.6.2/wfrp4e-looting.zip"
 }
